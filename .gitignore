@@ -1,0 +1,8 @@
+!.gitignore
+!hypr
+!hyprland-interactive-screenshot
+!nvim
+!kitty
+!spicetify
+!waybar
+!xournalpp
