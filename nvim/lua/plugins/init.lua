@@ -19,6 +19,7 @@ local plugin_files = {
   "comment",
   "trim",
   "lualine",
+  "lsp_signature"
 }
 
 local plugins = {}
