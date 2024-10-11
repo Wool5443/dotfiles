@@ -1,0 +1,28 @@
+---
+If:
+  PathMatch: .*\.c$
+CompileFlags:
+  Remove:
+    - -std=*
+  Add:
+    - -Wno-gnu-alignof-expression
+    - -std=gnu23
+    - -Wall
+    - -Wextra
+    - -Wshadow
+---
+If:
+  PathMatch: .*\.(cc|cpp|cxx|c\+\+|hh|hpp|hxx|h\+\+)$
+CompileFlags:
+  Remove:
+    - -std=*
+    - -fdeps-format*
+    - -fmodule*
+  Add:
+    - -Wno-gnu-alignof-expression
+    - -std=gnu++26
+    - -Wall
+    - -Wextra
+    - -Wshadow
+    - -Weffc++
+

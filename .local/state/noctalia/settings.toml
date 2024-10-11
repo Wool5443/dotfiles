@@ -1,0 +1,304 @@
+config_version = 14
+
+[audio]
+enable_overdrive = true
+
+[bar]
+order = [ "default", "instruments" ]
+
+    [bar.default]
+    background_opacity = 0.71999998390674591
+    capsule = true
+    concave_edge_corners = false
+    end = [ "tray", "notifications", "clipboard", "group:g4", "group:g3", "group:g5" ]
+    margin_edge = 7
+    margin_ends = 10
+    padding = 19
+    start = [ "group:g1", "taskbar", "active_window", "media" ]
+
+        [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g3"
+        members = [ "volume", "input_volume", "brightness", "battery" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g4"
+        members = [ "network", "bluetooth", "keyboard_layout" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g5"
+        members = [ "control-center", "session" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g1"
+        members = [ "cpu", "temp", "ram", "sysmon" ]
+        opacity = 1.0
+        padding = 6.0
+
+    [bar.instruments]
+    auto_hide = true
+    center = [ "caffeine", "lid-guard", "gamermode", "widget", "widget_2", "wallpaper", "toggle", "bar" ]
+    enabled = true
+    end = []
+    layer = "overlay"
+    margin_ends = 400
+    position = "right"
+    reserve_space = false
+    show_on_workspace_switch = false
+    start = []
+
+[brightness]
+minimum_brightness = 0.019999999552965164
+
+[calendar]
+enabled = true
+event_time_format = "%-I:%M %p"
+
+    [calendar.account.twenty]
+    name = "Personal"
+    type = "google"
+
+[control_center]
+sidebar = "full"
+sidebar_section = "full"
+
+    [[control_center.shortcuts]]
+    type = "wifi"
+
+    [[control_center.shortcuts]]
+    type = "bluetooth"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "dark_mode"
+
+[desktop_widgets]
+enabled = false
+
+[dock]
+auto_hide = true
+enabled = true
+layer = "overlay"
+pinned = [ "org.telegram.desktop", "app.zen_browser.zen", "com.spotify.Client" ]
+reserve_space = false
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[location]
+address = "Moscow, Russia"
+
+[lockscreen]
+fingerprint = false
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+temperature_night = 4400
+
+[osd.kinds]
+caffeine = false
+keyboard_layout = false
+media = false
+
+[plugin_settings."alexander/screen-toolkit"]
+record-audio-in = true
+record-audio-out = true
+record-fps = 30
+selected-ocr-lang = "eng+ru"
+
+[plugin_settings."cleboost/hotspot"]
+password = "stafffffy"
+ssid = "twenty"
+
+[plugin_settings."nomadcxx/gamer-mode"]
+profile = "heavy"
+
+[plugins]
+enabled = [
+    "profidev/hypr-screen-mirror",
+    "8bury/lid-guard",
+    "ashur-d/nvim-projects",
+    "alexander/screen-toolkit",
+    "noctalia/translator",
+    "cleboost/hotspot",
+    "noctalia/timer",
+    "blackbartblues/keymap",
+    "kjvdven/case-convert"
+]
+
+[shell]
+polkit_agent = true
+time_format = "{:%-I:%M %p}"
+
+    [shell.launcher]
+    app_grid = true
+    auto_paste = "ctrl_v"
+
+    [shell.panel]
+    floating_layer = "top"
+
+    [shell.shadow]
+    direction = "down_left"
+
+[theme]
+mode = "dark"
+source = "wallpaper"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "qt" ]
+    community_ids = [
+        "telegram",
+        "libreoffice",
+        "obsidian",
+        "vscode",
+        "zed",
+        "steam",
+        "zathura",
+        "snappy-switcher",
+        "bat",
+        "fzf",
+        "konsole",
+        "lazygit",
+        "yazi"
+    ]
+
+[wallpaper]
+directory = "/home/twenty/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/twenty/Pictures/Wallpapers/Anime.png"
+
+    [wallpaper.last]
+    path = "/home/twenty/Pictures/Wallpapers/Anime.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/twenty/Pictures/Wallpapers/Anime.png"
+
+[widget.active_window]
+max_length = 100
+min_length = 0
+
+[widget.bar]
+type = "noctalia/timer:bar"
+
+[widget.clock]
+format = "{:%-I:%M %p %d.%m.%Y}"
+
+[widget.cpu]
+show_value = false
+
+[widget.gamermode]
+type = "nomadcxx/gamer-mode:gamermode"
+
+[widget.lid-guard]
+type = "8bury/lid-guard:lid-guard"
+
+[widget.media]
+max_length = 154
+
+[widget.network]
+show_label = false
+
+[widget.ram]
+show_value = false
+
+[widget.sysmon]
+show_value = false
+stat = "gpu_usage"
+
+[widget.taskbar]
+group_by_workspace = true
+window_title_max_width = 10
+
+[widget.temp]
+show_value = false
+
+[widget.toggle]
+type = "cleboost/hotspot:toggle"
+
+[widget.widget]
+type = "profidev/hypr-screen-mirror:widget"
+
+[widget.widget_2]
+type = "alexander/screen-toolkit:widget"
