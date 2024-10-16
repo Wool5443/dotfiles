@@ -18,7 +18,7 @@ return
             "--parallel 8",
         },
         cmake_soft_link_compile_commands = false,
-        cmake_build_directory = "build/${variant:buildType}",
+        cmake_build_directory = "build",
         cmake_kits_path = "~/.local/share/CMakeTools/cmake-tools-kits.json",
         cmake_dap_configuration = {
             name = "cpp",
@@ -31,4 +31,3 @@ return
 
     },
 }
-

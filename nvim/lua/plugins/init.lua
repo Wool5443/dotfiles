@@ -16,6 +16,7 @@ local plugin_files = {
   "clang_format",
   "cmake_tools",
   "nvim_dap",
+  "nvim_dap_ui",
   "comment",
   "trim",
   "lualine",
