@@ -1,4 +1,4 @@
-require("keys.alias")
+require('keys.alias')
 local set = vim.keymap.set
 
 Nm("<C-A-r>", ":NvimTreeRefresh<CR>")
@@ -20,3 +20,5 @@ set("n", "<f2>", vim.lsp.buf.rename)
 Nm("<f7>", ":CMakeBuild<CR>")
 Nm("<f5>", ":CMakeRun<CR>")
 Nm("<f6>", ":CMakeSelectLaunchTarget<CR>")
+
+-- dap
