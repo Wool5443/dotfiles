@@ -5,7 +5,8 @@ return
 {
     'nvim-tree/nvim-tree.lua',
     requires = {
-        'nvim-tree/nvim-web-devicons',
+        -- 'nvim-tree/nvim-web-devicons',
+        'DaikyXendo/nvim-material-icon',
     },
     opts = {
         hijack_netrw = true,
