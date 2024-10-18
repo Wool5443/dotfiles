@@ -1,9 +1,10 @@
 /*
 !.gitignore
-!hypr/*
-!hyprland-interactive-screenshot/*
-!kitty/*
-!nvim/*
-!spicetify/*
-!waybar/*
-!xournalpp/*
+!hypr/
+!hyprland-interactive-screenshot/
+!kitty/
+!nvim/
+!spicetify/
+!waybar/
+!xournalpp/
+xournalpp/metadata
