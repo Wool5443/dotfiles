@@ -1,6 +1,6 @@
 return
 {
-    "VonHeikemen/lsp-zero.nvim",
+    'VonHeikemen/lsp-zero.nvim',
     dependencies = {
       -- LSP support
       'neovim/nvim-lspconfig',
@@ -14,4 +14,3 @@ return
       'hrsh7th/cmp-nvim-lua',
     },
 }
-

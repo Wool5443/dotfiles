@@ -12,9 +12,9 @@ return
         -- Set up DAP configurations for C++
         dap.configurations.cpp = {
             {
-                name = "Launch",
-                type = "cpp", -- Match the adapter defined above
-                request = "launch",
+                name = 'Launch',
+                type = 'cpp', -- Match the adapter defined above
+                request = 'launch',
                 program = function()
                     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
                 end,
