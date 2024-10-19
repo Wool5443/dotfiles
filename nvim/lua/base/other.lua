@@ -1,8 +1,10 @@
 local opt = vim.opt
 local g = vim.g
 
-g.mapleader = " "
-g.maplocalleader = "\\"
+opt.langmap='ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
+
+g.mapleader = ' '
+g.maplocalleader = '\\'
 
 vim.diagnostic.config({
     virtual_text = true
@@ -11,7 +13,7 @@ vim.diagnostic.config({
 opt.number = true
 opt.relativenumber = true
 opt.clipboard = 'unnamedplus'
-opt.encoding = "UTF-8"
+opt.encoding = 'UTF-8'
 opt.ruler = true
 opt.wildmenu = true
 opt.splitright = true
