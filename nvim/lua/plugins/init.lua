@@ -22,6 +22,7 @@ local plugin_files = {
     'lualine',
     'lsp_signature',
     'auto-save',
+    -- 'gen_tags',
 }
 
 local plugins = {}
