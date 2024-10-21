@@ -7,12 +7,12 @@ return
 	},
     servers = {
         'lua_ls',
-        'rust_analyzer',
         'clangd',
+        'rust_analyzer',
+        'pyre',
     },
     config = function()
         require('lsp-zero').setup()
-        require('mason').setup()
         require('mason-lspconfig').setup_handlers {
             function (server_name)
                 require 'lspconfig' [server_name].setup {}
@@ -21,5 +21,14 @@ return
         require('mason-lspconfig').setup {
             automatic_installation = true,
         }
+        require("mason").setup({
+        ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
     end
 }
