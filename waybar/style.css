@@ -8,18 +8,25 @@
     margin: 0px 5px;
 }
 
-/* @define-color bg #262a32; */
-@define-color bg #300c45;
-@define-color fg #d8dee8;
-@define-color gr #545d70;
+/* Ori */
+/* @define-color bg #300c45; */
+/* @define-color fg #d8dee8; */
+/* @define-color gr #545d70; */
+/* @define-color red #f7768e; */
+/* @define-color green #b9f27c; */
+/* @define-color blue #4b4e6f; */
+/* @define-color cyan #0db9d7; */
+
+@define-color bg #74b8d6;
+@define-color fg #000000;
+@define-color gr #1ba6e3;
 @define-color red #f7768e;
 @define-color green #b9f27c;
 @define-color blue #4b4e6f;
 @define-color cyan #0db9d7;
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.0);
-    color: #ffffff;
+    background-color: rgba(80, 193, 242, 0.0);
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -30,12 +37,15 @@ window#waybar {
     padding: 4px 0px;
     margin: 0px 7px;
 }
+
 #workspaces button:hover {
     color: @fg;
 }
+
 #workspaces button.active {
     color: @fg;
 }
+
 #workspaces button.urgent {
     color: @red;
 }
@@ -59,7 +69,7 @@ window#waybar {
 
 #custom-menu {
     background-color: @bg;
-    color: @cyan;
+    color: @fg;
     padding: 0px 10px;
     margin: 0px 10px;
 }
@@ -70,6 +80,6 @@ window#waybar {
 
 #window {
     background-color: @bg;
-    color: @cyan;
+    color: @fg;
     font-weight: bold;
 }
