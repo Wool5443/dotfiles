@@ -2,6 +2,8 @@
 !.gitignore
 !.clang-format
 !.zshrc
+!btop/
+!xfce4/
 !mimeapps.list
 !spotify-flags.conf
 !albert/
