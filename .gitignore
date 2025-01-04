@@ -3,8 +3,7 @@
 !.clang-format
 !.zshrc
 !btop/
-!xfce4/
-xfce4/thunar.xml
+!xfce4/helpers.rc
 !mimeapps.list
 !spotify-flags.conf
 !albert/
