@@ -13,7 +13,6 @@ local plugin_files = {
     'tree_sitter',
     'mason',
     'async_path',
-    'clang_format',
     'cmake_tools',
     'comment',
     'trim',
