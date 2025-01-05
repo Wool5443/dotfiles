@@ -145,5 +145,6 @@
   "menus.clock.weather.key": "c4d73e00df4a40179cc230058242812",
   "menus.clock.time.hideSeconds": false,
   "bar.clock.format": "%a %b %d  %I:%M %p",
-  "bar.volume.rightClick": "pavucontrol"
+  "bar.volume.rightClick": "pavucontrol",
+  "menus.power.logout": "hyprctl dispatch uwsm stop"
 }
