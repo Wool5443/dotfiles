@@ -23,7 +23,14 @@ enabled=true
 
 [files]
 enabled=true
-paths=@Invalid()
+home\twenty\followSymlinks=false
+home\twenty\indexhidden=false
+home\twenty\maxDepth=255
+home\twenty\mimeFilters=inode/directory, application/*, audio/*, video/*, image/*
+home\twenty\nameFilters=@Invalid()
+home\twenty\scanInterval=5
+home\twenty\useFileSystemWatches=false
+paths=/home/twenty
 
 [mpris]
 enabled=true

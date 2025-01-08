@@ -13,4 +13,8 @@ return
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-nvim-lua',
     },
+
+    config = function()
+        require('lsp-zero').setup()
+    end
 }

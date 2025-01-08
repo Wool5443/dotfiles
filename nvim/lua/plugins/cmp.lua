@@ -16,7 +16,7 @@ return
                 ['<C-j>'] = cmp.mapping.select_next_item(), -- Move to next completion item
                 ['<Tab>'] = cmp.mapping.select_next_item(), -- Move to next completion item
                 ['<C-Space>'] = cmp.mapping.complete(), -- Trigger completion
-                ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Confirm selected completion
+                -- ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Confirm selected completion
                 ['<C-e>'] = cmp.mapping.abort(), -- Abort completion
             },
             sources = {

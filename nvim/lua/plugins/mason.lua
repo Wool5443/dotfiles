@@ -5,17 +5,10 @@ return
         'williamboman/mason-lspconfig.nvim',
         'nvim-lua/plenary.nvim',
     },
-    servers = {
-        'lua_ls',
-        'clangd',
-        'rust_analyzer',
-        'pyre',
-    },
     config = function()
-        require('lsp-zero').setup()
         require('mason-lspconfig').setup_handlers {
             function (server_name)
-                require 'lspconfig' [server_name].setup {}
+                require('lspconfig')[server_name].setup {}
             end
         }
         require('mason-lspconfig').setup {
@@ -26,7 +19,7 @@ return
                 icons = {
                     package_installed = "✓",
                     package_pending = "➜",
-                    package_uninstalled = "✗"
+                    package_uninstalled = "✗",
                 }
             }
         })

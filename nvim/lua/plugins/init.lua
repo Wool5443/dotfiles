@@ -23,6 +23,7 @@ local plugin_files = {
     'mini_animate',
     'todo_comments',
     'neogen',
+    'cppguard',
 }
 
 local plugins = {}
