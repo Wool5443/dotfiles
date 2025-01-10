@@ -1,20 +1,17 @@
 return
 {
     'nvim-treesitter/nvim-treesitter',
-    opts = {
-        ensure_installed = {
-            'c',
-            'cpp',
-            'lua',
-            'rust',
-            'bash',
-            'python',
-        },
-        sync_install = false,
-        auto_install = true,
-        indent = { enable = true },
-        highlight = { enable = true },
-    },
+
+    config = function()
+        require'nvim-treesitter.configs'.setup {
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+                incremental_selection = true,
+                indent = true,
+            },
+        }
+    end,
 
     run = ':TSUpdate',
 }
