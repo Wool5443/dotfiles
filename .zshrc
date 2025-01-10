@@ -1,4 +1,6 @@
 # Aliases
+alias t='tmux attach-session -t'
+
 alias py='python'
 alias remake='make clean; make'
 
