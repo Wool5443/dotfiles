@@ -91,7 +91,8 @@
       "left": [
         "dashboard",
         "workspaces",
-        "windowtitle"
+        "windowtitle",
+        "hyprsunset"
       ],
       "middle": [
         "media"
@@ -146,5 +147,7 @@
   "menus.clock.time.hideSeconds": false,
   "bar.clock.format": "%a %b %d  %I:%M %p",
   "bar.volume.rightClick": "pavucontrol",
-  "menus.power.logout": "hyprctl dispatch uwsm stop"
+  "menus.power.logout": "hyprctl dispatch uwsm stop",
+  "bar.customModules.hyprsunset.temperature": "5000k",
+  "theme.bar.buttons.modules.hyprsunset.background": "#448dde"
 }
