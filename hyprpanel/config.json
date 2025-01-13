@@ -148,6 +148,6 @@
   "bar.clock.format": "%a %b %d  %I:%M %p",
   "bar.volume.rightClick": "pavucontrol",
   "menus.power.logout": "hyprctl dispatch uwsm stop",
-  "bar.customModules.hyprsunset.temperature": "5000k",
+  "bar.customModules.hyprsunset.temperature": "4500k",
   "theme.bar.buttons.modules.hyprsunset.background": "#448dde"
 }
