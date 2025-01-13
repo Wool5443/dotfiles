@@ -4,6 +4,9 @@ telemetry=false
 [applications]
 enabled=true
 terminal=kitty
+use_exec=true
+use_generic_name=true
+use_keywords=true
 
 [caffeine]
 enabled=true
