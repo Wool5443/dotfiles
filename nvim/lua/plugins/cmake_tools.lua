@@ -12,7 +12,7 @@ return
             '-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE',
         },
         cmake_build_options = {
-            '--parallel 8',
+            '--parallel 6',
         },
         cmake_soft_link_compile_commands = false,
         cmake_build_directory = 'build',
