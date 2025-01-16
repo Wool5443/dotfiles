@@ -2,7 +2,7 @@
   "bar.customModules.updates.pollingInterval": 1440000,
   "menus.transition": "crossfade",
   "scalingPriority": "hyprland",
-  "theme.bar.scaling": 95,
+  "theme.bar.scaling": 90,
   "theme.bar.menus.popover.scaling": 100,
   "theme.bar.menus.menu.dashboard.scaling": 80,
   "theme.font.size": "1.0rem",
@@ -149,5 +149,9 @@
   "bar.volume.rightClick": "pavucontrol",
   "menus.power.logout": "hyprctl dispatch uwsm stop",
   "bar.customModules.hyprsunset.temperature": "4500k",
-  "theme.bar.buttons.modules.hyprsunset.background": "#448dde"
+  "theme.bar.buttons.modules.hyprsunset.background": "#448dde",
+  "bar.network.truncation_size": 4,
+  "bar.network.label": false,
+  "bar.network.showWifiInfo": true,
+  "bar.bluetooth.label": false
 }
