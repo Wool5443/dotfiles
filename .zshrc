@@ -2,7 +2,8 @@
 alias t='tmux attach-session -t'
 
 alias py='python'
-alias remake='make clean; make'
+alias remake='make clean; make -j6'
+alias reninja='ninja clean; ninja -j6'
 
 alias n='nvim .'
 alias r='ranger'
