@@ -9,6 +9,8 @@ alias n='nvim .'
 alias r='ranger'
 alias editnvim='z ~/.config/nvim; nvim .'
 
+alias QEMU='qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/x64/OVMF_CODE.4m.fd -drive if=pflash,format=raw,file=/usr/share/OVMF/x64/OVMF_VARS.4m.fd -m 4G'
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
