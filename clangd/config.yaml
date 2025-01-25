@@ -2,7 +2,6 @@ If:
   PathMatch: ".*.(cpp|hpp)$"
 CompileFlags:
   Add:
-    - "-ggdb3"
     - "-Wall"
     - "-Wextra"
     - "-Weffc++"
@@ -25,7 +24,8 @@ CompileFlags:
     - "-Winit-self"
     - "-Wredundant-decls"
     - "-Wshadow"
-    - "-Wsign-conversion"
+    - "-Wno-sign-conversion"
+    # - "-Wsign-conversion"
     - "-Wsign-promo"
     - "-Wstrict-null-sentinel"
     - "-Wstrict-overflow=2"
