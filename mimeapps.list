@@ -275,3 +275,4 @@ audio/x-it=vlc.desktop;
 audio/x-mod=vlc.desktop;
 audio/x-s3m=vlc.desktop;
 audio/x-xm=vlc.desktop;
+video/mp4=mpv.desktop;
