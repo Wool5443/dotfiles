@@ -27,4 +27,3 @@ end
 function TmR(key, command)
 	map('t', key, command, {noremap = false})
 end
-

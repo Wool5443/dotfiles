@@ -18,12 +18,13 @@ local plugin_files = {
     'trim',
     'lualine',
     'lsp_signature',
-    'auto_save',
+    -- 'auto_save',
     'gen_tags',
     'mini_animate',
     'todo_comments',
     'neogen',
     'cppguard',
+    'mirror',
 }
 
 local plugins = {}
