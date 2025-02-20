@@ -36,7 +36,16 @@
 /* @define-color cyan #0db9d7; */
 
 /* ZeroTwo */
-@define-color bg #458dde;
+/* @define-color bg #458dde; */
+/* @define-color fg #ffffff; */
+/* @define-color gr #b4c3d6; */
+/* @define-color red #f7768e; */
+/* @define-color green #b9f27c; */
+/* @define-color blue #4b4e6f; */
+/* @define-color cyan #0db9d7; */
+
+/* Sunset */
+@define-color bg #1868c2;
 @define-color fg #ffffff;
 @define-color gr #b4c3d6;
 @define-color red #f7768e;

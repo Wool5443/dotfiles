@@ -23,7 +23,7 @@ opt.completeopt = 'menuone,noselect'
 
 vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
 
-vim.api.nvim_create_autocmd("BufWinLeave", {
+vim.api.nvim_create_autocmd("BufLeave", {
     pattern = "*",
     callback = function()
         -- Get buffer options
