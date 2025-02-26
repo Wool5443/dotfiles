@@ -18,6 +18,7 @@
 !HyprPanelThemes/
 !hyprpanel/
 !lazygit/
+!eww/
 xournalpp/metadata
 lazy-lock.json
 *.log
