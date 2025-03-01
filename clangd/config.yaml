@@ -42,3 +42,6 @@ CompileFlags:
     - "-Wuseless-cast"
     - "-Wvariadic-macros"
     - "-Wstack-protector"
+  Remove:
+    - "-fdeps-format*"
+    - "-fmodule*"
