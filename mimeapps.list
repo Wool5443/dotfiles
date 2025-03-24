@@ -141,6 +141,7 @@ audio/x-it=vlc.desktop
 audio/x-mod=vlc.desktop
 audio/x-s3m=vlc.desktop
 audio/x-xm=vlc.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 image/png=org.gnome.Loupe.desktop;org.gnome.Shotwell-Viewer.desktop;
@@ -276,3 +277,4 @@ audio/x-mod=vlc.desktop;
 audio/x-s3m=vlc.desktop;
 audio/x-xm=vlc.desktop;
 video/mp4=mpv.desktop;
+application/zip=engrampa.desktop;
