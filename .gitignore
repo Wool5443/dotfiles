@@ -19,6 +19,8 @@
 !hyprpanel/
 !lazygit/
 !eww/
+!nekoray
+nekoray/config/profiles
 xournalpp/metadata
 lazy-lock.json
 *.log
