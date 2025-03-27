@@ -23,6 +23,9 @@
         },
         {
             "actionType": "route",
+            "domain_regex": [
+                ".*\\.ru.*"
+            ],
             "invert": false,
             "ip_is_private": false,
             "ip_version": "",
@@ -36,7 +39,9 @@
             "rejectMethod": "",
             "rule_set": [
                 "ru_IP",
-                "category-ru_SITE"
+                "category-ru_SITE",
+                "yandex_SITE",
+                "vk_SITE"
             ],
             "simple_action": 0,
             "sniffOverrideDest": false,

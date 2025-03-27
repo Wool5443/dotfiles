@@ -7,6 +7,9 @@ Nm("<C-A-r>", ":NvimTreeRefresh<CR>")
 Nm("<C-e>", ":NvimTreeToggle<CR>")
 Nm("<C-g>", ":LazyGit<CR>")
 
+-- Format
+Nm("<C-f>", ":LspZeroFormat<CR>")
+
 -- Comments
 
 NmR("<C-/>", "gcc")

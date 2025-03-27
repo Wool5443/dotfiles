@@ -1,8 +1,10 @@
 [General]
+memoryDecay=0.5
 telemetry=false
 
 [applications]
 enabled=true
+fuzzy=false
 terminal=kitty
 use_exec=true
 use_generic_name=true
@@ -17,12 +19,13 @@ parsing_mode=1
 
 [clipboard]
 enabled=true
+trigger=ch
 
 [datetime]
 enabled=true
 
 [docs]
-enabled=true
+enabled=false
 
 [files]
 enabled=true
@@ -83,7 +86,13 @@ enabled=true
 [path]
 enabled=true
 
+[pluginregistry]
+fuzzy=false
+
 [system]
+command_lock=hyprlock
+command_poweroff=systemctl poweroff
+command_reboot=systemctl reboot
 enabled=true
 
 [timer]
