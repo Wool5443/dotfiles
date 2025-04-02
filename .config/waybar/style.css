@@ -1,0 +1,113 @@
+* {
+    border-radius: 25;
+    border: none;
+    font-family: FiraCode-Bold, Symbols Nerd Font;
+    font-weight: normal;
+    font-size: 18;
+    padding: 0px 0px;
+    margin: 0px 5px;
+}
+
+/* Ori */
+/* @define-color bg #300c45; */
+/* @define-color fg #d8dee8; */
+/* @define-color gr #545d70; */
+/* @define-color red #f7768e; */
+/* @define-color green #b9f27c; */
+/* @define-color blue #4b4e6f; */
+/* @define-color cyan #0db9d7; */
+
+/* Stars */
+/* @define-color bg #74b8d6; */
+/* @define-color fg #000000; */
+/* @define-color gr #1ba6e3; */
+/* @define-color red #f7768e; */
+/* @define-color green #b9f27c; */
+/* @define-color blue #4b4e6f; */
+/* @define-color cyan #0db9d7; */
+
+/* Anime */
+/* @define-color bg #96415E; */
+/* @define-color fg #ffffff; */
+/* @define-color gr #ba94a0; */
+/* @define-color red #f7768e; */
+/* @define-color green #b9f27c; */
+/* @define-color blue #4b4e6f; */
+/* @define-color cyan #0db9d7; */
+
+/* ZeroTwo */
+/* @define-color bg #458dde; */
+/* @define-color fg #ffffff; */
+/* @define-color gr #b4c3d6; */
+/* @define-color red #f7768e; */
+/* @define-color green #b9f27c; */
+/* @define-color blue #4b4e6f; */
+/* @define-color cyan #0db9d7; */
+
+/* Sunset */
+@define-color bg #1868c2;
+@define-color fg #ffffff;
+@define-color gr #b4c3d6;
+@define-color red #f7768e;
+@define-color green #b9f27c;
+@define-color blue #4b4e6f;
+@define-color cyan #0db9d7;
+
+window#waybar {
+    background-color: rgba(80, 193, 242, 0.0);
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces button {
+    color: @gr;
+    background-color: @bg;
+    padding: 4px 0px;
+    margin: 0px 7px;
+}
+
+#workspaces button:hover {
+    color: @fg;
+}
+
+#workspaces button.active {
+    color: @fg;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#cpu,
+#memory,
+#battery,
+#window,
+#custom-media,
+#custom-cmus,
+#custom-weather,
+#tray,
+#language,
+#pulseaudio,
+#clock {
+    padding: 0 10px;
+    margin: 0 6px;
+    color: @fg;
+    background-color: @bg;
+}
+
+#custom-menu {
+    background-color: @bg;
+    color: @fg;
+    padding: 0px 10px;
+    margin: 0px 10px;
+}
+
+#custom-sep {
+    color: rgba(0, 0, 0, 0.0);
+}
+
+#window {
+    background-color: @bg;
+    color: @fg;
+    font-weight: bold;
+}
