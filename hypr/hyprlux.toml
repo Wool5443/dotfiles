@@ -1,4 +1,0 @@
-night_light = { enabled = true, start_time = "18:00", end_time = "9:00", temperature = 5000 }
-
-vibrance_configs = []
-
