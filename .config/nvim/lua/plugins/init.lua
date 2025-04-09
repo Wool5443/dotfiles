@@ -19,7 +19,7 @@ local plugin_files = {
     'lualine',
     'lsp_signature',
     'gen_tags',
-    'mini_animate',
+    -- 'mini_animate',
     'todo_comments',
     'neogen',
     'cppguard',
