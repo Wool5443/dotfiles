@@ -52,7 +52,7 @@
         "vpn"
     ],
     "start_minimal": false,
-    "stats_tab": "",
+    "stats_tab": "Traffic Graph",
     "sub_auto_update": -30,
     "sub_clear": false,
     "sub_insecure": false,
