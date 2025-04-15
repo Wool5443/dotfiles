@@ -1,4 +1,6 @@
 local plugin_files = {
+    'themes.tokyodark',
+    'themes.onedarkpro',
     'clangd',
     'cmp',
     'lazygit',
@@ -9,7 +11,6 @@ local plugin_files = {
     'nvim_tree',
     'plenary',
     'telescope',
-    'tokyodark',
     'tree_sitter',
     'mason',
     'async_path',
