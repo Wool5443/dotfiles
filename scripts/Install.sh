@@ -3,6 +3,8 @@
 sudo cp etcfiles/pacman.conf /etc
 sudo cp etcfiles/makepkg.conf /etc
 
+sudo pacman -S ccache
+
 sudo pacman -S --needed git base-devel && git clone \
 https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
