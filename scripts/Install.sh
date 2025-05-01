@@ -4,7 +4,8 @@ sudo pacman -S --needed git base-devel && git clone \
 https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 yay -S alhp-mirrorlist alhp-keyring
-sudo sed -i '/^\[core\]$/i\[core-x86-64-v4]\nInclude = /etc/pacman.d/alhp-mirrorlist\n\n[extra-x86-64-v4]\nInclude = /etc/pacman.d/alhp-mirrorlist\n\n[multilib-x86-64-v4]\nInclude = /etc/pacman.d/alhp-mirrorlist\n\n' /etc/pacman.conf
+sudo cp etcfiles/pacman.conf /etc
+sudo cp etcfiles/makepkg.conf /etc
 yay
 
 yay -S yes
@@ -153,3 +154,5 @@ sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/ins
 
 cd ..
 stow .
+
+spicetify backup apply
