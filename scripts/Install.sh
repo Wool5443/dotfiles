@@ -9,7 +9,7 @@ yay
 
 yay -S yes
 
-yes | yay -S \
+yes '' | yay -S \
 base-devel \
 hyprland \
 ags-hyprpanel-git \
