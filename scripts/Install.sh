@@ -58,15 +58,6 @@ hyprswitch \
 hyprsysteminfo \
 hyprutils \
 hyprwayland-scanner \
-input-wacom-dkms-git \
-intel-compute-runtime \
-intel-gmmlib \
-intel-graphics-compiler \
-intel-media-driver \
-intel-oneapi-common \
-intel-oneapi-tbb \
-intel-oneapi-tcm \
-intel-opencl-sdk \
 kitty \
 man-db \
 man-pages \
@@ -156,7 +147,7 @@ ttf-signika \
 ttf-ubuntu-font-family \
 texlive-full \
 
-
+sudo rmmod wacom hid_uclogic
 
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
