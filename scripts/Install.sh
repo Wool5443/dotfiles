@@ -7,7 +7,9 @@ yay -S alhp-mirrorlist alhp-keyring
 sudo sed -i '/^\[core\]$/i\[core-x86-64-v4]\nInclude = /etc/pacman.d/alhp-mirrorlist\n\n[extra-x86-64-v4]\nInclude = /etc/pacman.d/alhp-mirrorlist\n\n[multilib-x86-64-v4]\nInclude = /etc/pacman.d/alhp-mirrorlist\n\n' /etc/pacman.conf
 yay
 
-yay -S \
+yay -S yes
+
+yes | yay -S \
 base-devel \
 hyprland \
 ags-hyprpanel-git \
