@@ -1,11 +1,12 @@
 #/usr/bin/bash
 
+sudo cp etcfiles/pacman.conf /etc
+sudo cp etcfiles/makepkg.conf /etc
+
 sudo pacman -S --needed git base-devel && git clone \
 https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 
 yay -S alhp-mirrorlist alhp-keyring
-sudo cp etcfiles/pacman.conf /etc
-sudo cp etcfiles/makepkg.conf /etc
 yay
 
 yay -S yes
