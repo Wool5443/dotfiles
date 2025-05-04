@@ -87,7 +87,7 @@
   "wallpaper.enable": false,
   "menus.dashboard.shortcuts.left.shortcut1.icon": "",
   "bar.layouts": {
-    "0": {
+    "*": {
       "left": [
         "dashboard",
         "workspaces",
@@ -99,41 +99,10 @@
       ],
       "right": [
         "volume",
-        "network",
         "bluetooth",
         "battery",
         "systray",
         "kbinput",
-        "clock",
-        "notifications"
-      ]
-    },
-    "1": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "clock",
-        "notifications"
-      ]
-    },
-    "2": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
         "clock",
         "notifications"
       ]
