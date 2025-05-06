@@ -1,6 +1,8 @@
 # Aliases
 alias t='tmux attach-session -t'
 
+alias shkol_boot='source shkol_boot'
+
 alias py='python'
 alias remake='make clean; make -j6'
 alias reninja='ninja clean; ninja -j6'
@@ -118,3 +120,9 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(zoxide init zsh)"
 eval "$(thefuck --alias)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /home/twenty/.config/.dart-cli-completion/zsh-config.zsh ]] && . /home/twenty/.config/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
