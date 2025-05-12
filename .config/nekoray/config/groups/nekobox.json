@@ -49,11 +49,8 @@
     "remember_id": 0,
     "skip_cert": false,
     "splitter_state": "AAAA/wAAAAEAAAACAAAA4QAAAOEB/////wEAAAACAA==",
-    "spmode2": [
-        "vpn"
-    ],
     "start_minimal": false,
-    "stats_tab": "Logs",
+    "stats_tab": "",
     "sub_auto_update": -30,
     "sub_clear": false,
     "sub_insecure": false,
