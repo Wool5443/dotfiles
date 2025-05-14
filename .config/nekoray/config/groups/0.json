@@ -7,6 +7,9 @@
     "lastup": 0,
     "manually_column_width": false,
     "name": "Default",
+    "order": [
+        0
+    ],
     "skip_auto_update": false,
     "url": ""
 }

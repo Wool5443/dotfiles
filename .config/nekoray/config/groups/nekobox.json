@@ -32,7 +32,7 @@
     "inbound_socks_port": 2080,
     "is_dhcp": false,
     "language": 0,
-    "log_level": "error",
+    "log_level": "fatal",
     "max_log_line": 200,
     "mux_concurrency": 8,
     "mux_default_on": false,
