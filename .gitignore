@@ -2,3 +2,4 @@
 .config/xournalpp/settings.xml
 .config/xournalpp/metadata
 .config/btop
+.config/nvim/lazy-lock.json

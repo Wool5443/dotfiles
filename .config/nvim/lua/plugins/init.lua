@@ -26,6 +26,7 @@ local plugin_files = {
     'cppguard',
     'mirror',
     'vimtex',
+    'nvim_surround',
 }
 
 local plugins = {}
