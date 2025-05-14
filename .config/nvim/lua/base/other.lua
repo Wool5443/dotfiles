@@ -25,6 +25,7 @@ vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
 
 vim.api.nvim_create_autocmd("BufLeave", {
     pattern = "*",
+    group = vim.api.nvim_create_augroup("Twenty", { clear = true }),
     callback = function()
         -- Get buffer options
         local buftype = vim.bo.buftype
