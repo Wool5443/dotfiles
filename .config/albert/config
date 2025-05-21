@@ -89,6 +89,12 @@ enabled=true
 [pluginregistry]
 fuzzy=false
 
+[python]
+enabled=true
+
+[python.emoji]
+enabled=true
+
 [system]
 command_lock=hyprlock
 command_poweroff=systemctl poweroff
