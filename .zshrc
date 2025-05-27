@@ -16,6 +16,7 @@ alias QEMU='qemu-system-x86_64 -drive if=pflash,format=raw,readonly=on,file=/usr
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.local/share/nvim/mason/bin:$PATH
+export PATH=$HOME/dotfiles/scripts:$PATH
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
