@@ -85,6 +85,7 @@
             "process_name": [
                 "zen-bin",
                 "chrome",
+                "firefox",
                 "vesktop.bin"
             ],
             "protocol": "",
