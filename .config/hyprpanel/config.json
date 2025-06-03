@@ -37,13 +37,13 @@
   "menus.clock.weather.location": "Russia, Dubna",
   "menus.clock.weather.unit": "metric",
   "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Zen",
-  "menus.dashboard.shortcuts.left.shortcut1.command": "zen-browser",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "flatpak run app.zen_browser.zen",
   "menus.dashboard.shortcuts.left.shortcut2.command": "spotify",
   "menus.dashboard.shortcuts.left.shortcut3.command": "",
   "menus.dashboard.shortcuts.left.shortcut3.icon": "",
   "menus.dashboard.shortcuts.left.shortcut3.tooltip": "",
   "menus.dashboard.shortcuts.left.shortcut4.command": "wofi --show drun",
-  "menus.dashboard.shortcuts.right.shortcut3.command": "bash -c \"/usr/share/hyprpanel/scripts/snapshot.sh\"",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "",
   "menus.dashboard.directories.left.directory3.command": "bash -c \"xdg-open $HOME/Programming/\"",
   "theme.bar.menus.monochrome": false,
   "wallpaper.pywal": false,
@@ -125,5 +125,8 @@
   "bar.bluetooth.label": false,
   "theme.matugen_settings.mode": "dark",
   "theme.bar.menus.popover.background": "#181824",
-  "theme.bar.location": "top"
+  "theme.bar.location": "top",
+  "menus.dashboard.shortcuts.right.shortcut3.icon": "",
+  "menus.dashboard.shortcuts.right.shortcut3.tooltip": "",
+  "menus.dashboard.shortcuts.enabled": true
 }
