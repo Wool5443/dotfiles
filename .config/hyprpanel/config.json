@@ -48,7 +48,7 @@
   "theme.bar.menus.monochrome": false,
   "wallpaper.pywal": false,
   "wallpaper.image": "/home/twenty/Pictures/Wallpapers/sunset.jpg",
-  "theme.bar.menus.background": "#144e90",
+  "theme.bar.menus.background": "#11111b",
   "theme.bar.menus.opacity": 100,
   "theme.bar.menus.cards": "#1e1e2e",
   "theme.bar.menus.card_radius": "0.4em",
@@ -75,6 +75,7 @@
   "theme.bar.buttons.windowtitle.background": "#448dde",
   "theme.bar.buttons.media.background": "#448dde",
   "theme.bar.buttons.volume.background": "#448dde",
+  "theme.bar.buttons.modules.microphone.background": "#448dde",
   "theme.bar.buttons.bluetooth.background": "#448dde",
   "theme.bar.buttons.systray.background": "#448dde",
   "theme.bar.buttons.battery.background": "#448dde",
@@ -84,7 +85,7 @@
   "theme.bar.menus.menu.media.song": "#b4beff",
   "theme.bar.menus.menu.media.timestamp": "#cdd6f4",
   "theme.bar.buttons.media.text": "#111638",
-  "wallpaper.enable": false,
+  "wallpaper.enable": true,
   "menus.dashboard.shortcuts.left.shortcut1.icon": "",
   "bar.layouts": {
     "*": {
@@ -99,6 +100,7 @@
       ],
       "right": [
         "volume",
+        "microphone",
         "bluetooth",
         "battery",
         "systray",
@@ -128,5 +130,11 @@
   "theme.bar.location": "top",
   "menus.dashboard.shortcuts.right.shortcut3.icon": "",
   "menus.dashboard.shortcuts.right.shortcut3.tooltip": "",
-  "menus.dashboard.shortcuts.enabled": true
+  "menus.dashboard.shortcuts.enabled": true,
+  "theme.bar.buttons.modules.microphone.enableBorder": false,
+  "theme.bar.buttons.modules.microphone.icon_background": "#242438",
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.showApplicationIcons": false,
+  "notifications.active_monitor": false,
+  "notifications.autoDismiss": false
 }
