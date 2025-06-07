@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 if [ "$(hyprctl activewindow -j | jq -r ".class")" = "Steam" ]; then
     xdotool getactivewindow windowunmap

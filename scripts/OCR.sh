@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # Dependencies: tesseract imagemagick wl-clipboard hyprshot
 
 die() {

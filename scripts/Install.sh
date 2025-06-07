@@ -1,4 +1,4 @@
-#/usr/bin/bash
+#!/usr/bin/env sh
 
 sudo cp etcfiles/pacman.conf /etc
 sudo cp etcfiles/makepkg.conf /etc
