@@ -45,7 +45,7 @@
     "redirect_listen_address": "127.0.0.1",
     "redirect_listen_port": 443,
     "remember_enable": false,
-    "remember_id": 0,
+    "remember_id": -1919,
     "skip_cert": false,
     "speed_test_mode": 0,
     "splitter_state": "AAAA/wAAAAEAAAACAAAA4gAAAOIB/////wEAAAACAA==",
