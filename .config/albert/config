@@ -93,7 +93,7 @@ fuzzy=false
 enabled=true
 
 [python.emoji]
-enabled=true
+enabled=false
 
 [system]
 command_lock=hyprlock
