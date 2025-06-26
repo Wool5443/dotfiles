@@ -37,7 +37,7 @@
     "mux_default_on": false,
     "mux_padding": false,
     "mux_protocol": "smux",
-    "mw_size": "",
+    "mw_size": "800x600",
     "ntp_interval": "5m",
     "ntp_server_address": "",
     "ntp_server_port": 0,
