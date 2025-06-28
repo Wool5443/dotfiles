@@ -58,7 +58,7 @@
   "theme.matugen": true,
   "theme.matugen_settings.scheme_type": "content",
   "theme.matugen_settings.variation": "monochrome_3",
-  "theme.matugen_settings.contrast": 0.3,
+  "theme.matugen_settings.contrast": 0.5,
   "theme.bar.transparent": true,
   "theme.bar.background": "#11111b",
   "theme.bar.buttons.style": "default",
@@ -136,5 +136,8 @@
   "bar.workspaces.show_icons": false,
   "bar.workspaces.showApplicationIcons": false,
   "notifications.active_monitor": false,
-  "notifications.autoDismiss": false
+  "notifications.autoDismiss": false,
+  "bar.customModules.storage.paths": [
+    "/"
+  ]
 }
