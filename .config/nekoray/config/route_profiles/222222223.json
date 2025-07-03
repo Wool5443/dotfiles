@@ -23,6 +23,10 @@
         },
         {
             "actionType": "route",
+            "domain_regex": [
+                ".*46.8.238.132.*",
+                ".*twenty5443\\.duckdns\\.org.*"
+            ],
             "invert": false,
             "ip_is_private": false,
             "ip_version": "",
@@ -81,7 +85,8 @@
                 "zen-bin",
                 "chrome",
                 "firefox",
-                "vesktop.bin"
+                "vesktop.bin",
+                "spotify"
             ],
             "protocol": "",
             "rejectMethod": "",
