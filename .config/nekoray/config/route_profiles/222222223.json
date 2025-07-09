@@ -1,4 +1,5 @@
 {
+    "default_outbound": -1,
     "id": 222222223,
     "name": "Bypass Russia",
     "rules": [
@@ -86,7 +87,8 @@
                 "chrome",
                 "firefox",
                 "vesktop.bin",
-                "spotify"
+                "spotify",
+                "Discord"
             ],
             "protocol": "",
             "rejectMethod": "",

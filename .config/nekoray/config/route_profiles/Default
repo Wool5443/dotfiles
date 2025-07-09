@@ -1,6 +1,5 @@
 {
     "current_route_id": 222222223,
-    "default_outbound": "direct",
     "direct_dns": "localhost",
     "direct_dns_strategy": "",
     "dns_final_out": "remote",
