@@ -11,6 +11,7 @@
         "cpu",
         "memory",
         "battery",
+        "custom/media",
     ],
     "modules-center": [
         "custom/menu",
@@ -58,7 +59,7 @@
     "custom/menu": {
         "format": "{icon}",
         "format-icons": "󰣇",
-        "on-click": "wofi --show drun",
+        "on-click": "albert toggle",
         "escape": true,
         "tooltip": false,
     },
@@ -100,5 +101,18 @@
 
     "custom/sep": {
         "format": "_",
+    },
+
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
 }
