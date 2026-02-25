@@ -3,3 +3,4 @@
 .config/xournalpp/settings.xml
 .config/xournalpp/metadata
 .config/nvim/lazy-lock.json
+nvim-pack-lock.json

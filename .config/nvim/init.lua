@@ -135,7 +135,8 @@ require("nvim-autopairs").setup()
 vim.cmd("colorscheme onedark_dark")
 
 -- snippets
-require("luasnip").setup { enable_autosnippets = true }
+local luasnip = require("luasnip")
+luasnip.setup { enable_autosnippets = true }
 require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" }
 
 -- treesitter
@@ -228,9 +229,9 @@ vim.keymap.set("n", "<C-/>", "gcc", { remap = true })
 vim.keymap.set("v", "<C-/>", "gc", { remap = true })
 
 -- cppguard
-local luasnip = require("luasnip")
+local cppguard = require("cppguard")
 luasnip.add_snippets("cpp", {
-    require("cppguard").snippet_luasnip("guard")
+    cppguard.snippet_luasnip("guard")
 })
 
 -- cmp

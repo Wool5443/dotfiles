@@ -1,6 +1,6 @@
 {
-    "current_route_id": 2,
-    "direct_dns": "localhost",
+    "current_route_id": 1,
+    "direct_dns": "223.5.5.5",
     "direct_dns_strategy": "",
     "dns_final_out": "remote",
     "dns_object": "",
