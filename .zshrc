@@ -1,8 +1,8 @@
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/twenty/.zsh/completions:"* ]]; then export FPATH="/home/twenty/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
-# export PATH=$PATH:/home/twenty/.local/bin
-# export XDG_CONFIG_HOME=$HOME/.config
+export PATH=$PATH:/home/twenty/.local/bin
+export XDG_CONFIG_HOME=$HOME/.config
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
