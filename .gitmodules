@@ -1,0 +1,3 @@
+[submodule ".config/mpv/scripts/videoclip"]
+	path = .config/mpv/scripts/videoclip
+	url = https://github.com/Ajatt-Tools/videoclip.git
