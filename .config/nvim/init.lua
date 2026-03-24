@@ -20,12 +20,10 @@ vim.api.nvim_create_autocmd("BufLeave", {
     pattern = "*",
     group = vim.api.nvim_create_augroup("Twenty", { clear = true }),
     callback = function()
-        -- Get buffer options
         local buftype = vim.bo.buftype
         local readonly = vim.bo.readonly
         local modifiable = vim.bo.modifiable
 
-        -- Only save if the buffer is normal, not readonly, and modifiable
         if buftype == "" and not readonly and modifiable then
             vim.cmd("silent! w") -- Save current buffer
         end
@@ -86,47 +84,34 @@ vim.pack.add {
     },
 }
 -- vim.pack.update()
-
+-- Set up lsp
 require("mason").setup()
-
--- Set up lspconfig
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = vim.lsp.config
-vim.lsp.config["lua_ls"] = {
+vim.lsp.config("*", {
     capabilities = capabilities
-}
-vim.lsp.enable("lua_ls")
-vim.lsp.config["clangd"] = {
-    capabilities = capabilities
-}
-vim.lsp.enable("clangd")
-vim.lsp.config["ruff"] = {
-    capabilities = capabilities
-}
-vim.lsp.enable("ruff")
-vim.lsp.config["basedpyright"] = {
+})
+vim.lsp.config("basedpyright", {
     capabilities = capabilities,
     settings = {
         basedpyright = {
             analysis = {
+                diagnosticMode = "openFilesOnly",
                 typeCheckingMode = "basic",
+                inlayHints = {
+                    callArgumentNames = true
+                }
             },
         },
     },
-}
+})
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("clangd")
 vim.lsp.enable("basedpyright")
-vim.lsp.config["bashls"] = {
-    capabilities = capabilities
-}
+vim.lsp.enable("ruff")
 vim.lsp.enable("bashls")
-vim.lsp.config["rust_analyzer"] = {
-    capabilities = capabilities
-}
 vim.lsp.enable("rust_analyzer")
-vim.lsp.config["texlab"] = {
-    capabilities = capabilities
-}
 vim.lsp.enable("texlab")
+
 
 -- nvim-autopairs
 require("nvim-autopairs").setup()
@@ -141,20 +126,34 @@ require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" }
 
 -- treesitter
 require("nvim-treesitter.config").setup {
+    ensure_installed = {
+        "python",
+        "c",
+        "cpp",
+        "bash",
+    },
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
-        incremental_selection = true,
-        indent = true,
+    },
+    incremental_selection = {
+        enable = true,
+    },
+    indent = {
+        enable = true,
     },
 }
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { '<filetype>' },
+    callback = function() vim.treesitter.start() end,
+})
 
 -- nvim tree
 local nvim_tree_api = require "nvim-tree.api"
 require("nvim-tree").setup {
     filters = {
         dotfiles = false,
-        git_ignored = false,
+        git_ignored = true,
     },
     git = {
         enable = true,
@@ -233,12 +232,20 @@ local cppguard = require("cppguard")
 luasnip.add_snippets("cpp", {
     cppguard.snippet_luasnip("guard")
 })
+luasnip.add_snippets("hpp", {
+    cppguard.snippet_luasnip("guard")
+})
+luasnip.add_snippets("c", {
+    cppguard.snippet_luasnip("guard")
+})
+luasnip.add_snippets("h", {
+    cppguard.snippet_luasnip("guard")
+})
 
 -- cmp
 local cmp = require "cmp"
 cmp.setup {
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
             require("luasnip").lsp_expand(args.body)
         end,
@@ -248,12 +255,12 @@ cmp.setup {
         documentation = cmp.config.window.bordered(),
     },
     mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(),             -- Move to previous completion item
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),           -- Move to previous completion item
-        ["<C-j>"] = cmp.mapping.select_next_item(),             -- Move to next completion item
-        ["<Tab>"] = cmp.mapping.select_next_item(),             -- Move to next completion item
-        ["<C-Space>"] = cmp.mapping.confirm({ select = true }), -- Confirm selected completion
-        ["<C-e>"] = cmp.mapping.abort(),                        -- Abort completion
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<C-Space>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-e>"] = cmp.mapping.abort(),
     },
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
