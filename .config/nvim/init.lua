@@ -117,7 +117,24 @@ vim.lsp.enable("texlab")
 require("nvim-autopairs").setup()
 
 -- colors
+local function set_parameter_highlights()
+    local parameter_groups = {
+        "@variable.parameter",
+        "@variable.parameter.builtin",
+        "@lsp.type.parameter",
+    }
+
+    for _, group in ipairs(parameter_groups) do
+        vim.api.nvim_set_hl(0, group, { link = "@variable" })
+    end
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    group = vim.api.nvim_create_augroup("TwentyParameterHighlights", { clear = true }),
+    callback = set_parameter_highlights,
+})
 vim.cmd("colorscheme onedark_dark")
+set_parameter_highlights()
 
 -- snippets
 local luasnip = require("luasnip")
