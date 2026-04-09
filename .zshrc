@@ -116,3 +116,5 @@ alias asan="LD_PRELOAD=/lib64/libasan.so.8"
 # Initialize zsh completions (added by deno install script)
 autoload -Uz compinit
 compinit
+
+export PATH=$PATH:/home/twenty/.spicetify
