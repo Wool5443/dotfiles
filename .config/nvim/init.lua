@@ -71,6 +71,7 @@ vim.pack.add {
     { src = "https://github.com/lervag/vimtex" },
     { src = "https://github.com/kylechui/nvim-surround" },
     { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/arminveres/md-pdf.nvim" },
     {
         src = "https://github.com/folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
@@ -347,3 +348,38 @@ require("nvim-surround").setup {}
 
 -- lazydev
 require("lazydev").setup()
+
+-- md-pdf
+require("md-pdf").setup({
+    --- Set margins around document
+    margins = "1.5cm",
+    -- tango, pygments are quite nice for white on white
+    highlight = "tango",
+    -- Generate a table of contents, on by default
+    toc = true,
+    -- Render a dedicated title page (and keep ToC on a separate page)
+    title_page = false,
+    -- Define a custom preview command, enabling hooks and other custom logic
+    preview_cmd = function() return 'zathura' end,
+    -- if true, then the markdown file is continuously converted on each write, even if the
+    -- file viewer closed, e.g., Firefox is "closed" once the document is opened in it.
+    ignore_viewer_state = false,
+    -- Specify font, `nil` uses the default font of the theme
+    fonts = {
+        main_font = "FiraCode Nerd Font",
+        sans_font = "FiraCode Nerd Font",
+        mono_font = "FiraCode Nerd Font Mono",
+        math_font = "FiraCode Nerd Font",
+    },
+    -- Custom options passed to `pandoc` CLI call, can be ignored for setup
+    pandoc_user_args = nil,
+    --- Path to output. Needs to be always relative, e.g.: "./", "../", "./out" or simply "out", but
+    --- not absolute e.g.: "/"!
+    output_path = "./",
+    -- PDF converter engine
+    pdf_engine = "lualatex",
+})
+
+vim.keymap.set("n", "<Space>,", function()
+    require("md-pdf").convert_md_to_pdf()
+end)
