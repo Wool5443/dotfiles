@@ -350,7 +350,8 @@ require("nvim-surround").setup {}
 require("lazydev").setup()
 
 -- md-pdf
-require("md-pdf").setup({
+local md_pdf = require("md-pdf")
+md_pdf.setup({
     --- Set margins around document
     margins = "1.5cm",
     -- tango, pygments are quite nice for white on white
@@ -379,7 +380,8 @@ require("md-pdf").setup({
     -- PDF converter engine
     pdf_engine = "lualatex",
 })
+require("md-pdf.utils").log = function() end
 
 vim.keymap.set("n", "<Space>,", function()
-    require("md-pdf").convert_md_to_pdf()
+    md_pdf.convert_md_to_pdf()
 end)
