@@ -380,7 +380,7 @@ md_pdf.setup({
     -- PDF converter engine
     pdf_engine = "lualatex",
 })
-require("md-pdf.utils").log = function() end
+require("md-pdf.utils").warn = function(str) end
 
 vim.keymap.set("n", "<Space>,", function()
     md_pdf.convert_md_to_pdf()
