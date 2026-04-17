@@ -15,7 +15,7 @@ vim.opt.wrap = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 vim.opt.langmap =
-'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
+"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
 vim.api.nvim_create_autocmd("BufLeave", {
     pattern = "*",
     group = vim.api.nvim_create_augroup("Twenty", { clear = true }),
@@ -47,7 +47,7 @@ vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:co
 
 vim.pack.add {
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-    { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = "https://github.com/neovim/nvim-lspconfig" },
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/L3MON4D3/LuaSnip" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
@@ -86,7 +86,20 @@ vim.pack.add {
 }
 -- vim.pack.update()
 -- Set up lsp
-require("mason").setup()
+require("mason").setup
+{
+    ensure_installed = {
+        "basedpyright",
+        "bash-language-server",
+        "docker-compose-language-service",
+        "docker-language-server",
+        "dockerfile-language-server",
+        "lua-language-server",
+        "ruff",
+        "texlab",
+        "tinymist",
+    }
+}
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.lsp.config("*", {
     capabilities = capabilities
@@ -105,10 +118,19 @@ vim.lsp.config("basedpyright", {
         },
     },
 })
+vim.lsp.config("tinymist", {
+    capabilities = capabilities,
+    settings = {
+        formatterMode = "typstyle",
+        exportPdf = "onType",
+        semanticTokens = "disable"
+    }
+})
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("basedpyright")
 vim.lsp.enable("ruff")
+vim.lsp.enable("tinymist")
 vim.lsp.enable("bashls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("texlab")
@@ -118,10 +140,10 @@ vim.lsp.enable("texlab")
 require("nvim-autopairs").setup()
 
 -- colors
-require('onedark').setup {
-    style = 'darker'
+require("onedark").setup {
+    style = "darker"
 }
-require('onedark').load()
+require("onedark").load()
 
 -- snippets
 local luasnip = require("luasnip")
@@ -147,8 +169,8 @@ require("nvim-treesitter.config").setup {
         enable = true,
     },
 }
-vim.api.nvim_create_autocmd('FileType', {
-    pattern = { '<filetype>' },
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "<filetype>" },
     callback = function() vim.treesitter.start() end,
 })
 
@@ -170,7 +192,7 @@ vim.keymap.set("n", "<C-A-r>", nvim_tree_api.tree.reload)
 vim.keymap.set("n", "<C-g>", ":LazyGit<CR>")
 
 -- telescope
-local telescope_builtin = require('telescope.builtin')
+local telescope_builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files)
 vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep)
 vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers)
@@ -182,21 +204,21 @@ vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages)
 
 -- cmake
 require("cmake-tools").setup {
-    cmake_command = 'cmake',
-    ctest_command = 'ctest',
+    cmake_command = "cmake",
+    ctest_command = "ctest",
     cmake_use_preset = true,
     cmake_regenerate_on_save = true,
     cmake_generate_options = {
-        '-DCMAKE_BUILD_TYPE=Debug',
-        '-GNinja',
-        '-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE',
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-GNinja",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
     },
     cmake_build_options = {
-        '--parallel 6',
+        "--parallel 6",
     },
     cmake_soft_link_compile_commands = false,
-    cmake_build_directory = 'build',
-    cmake_kits_path = '~/.local/share/CMakeTools/cmake-tools-kits.json',
+    cmake_build_directory = "build",
+    cmake_kits_path = "~/.local/share/CMakeTools/cmake-tools-kits.json",
 }
 
 vim.keymap.set("n", "<f7>", ":CMakeBuild<CR>")
@@ -212,8 +234,8 @@ require("trim").setup {
     trim_last_line = false,
     trim_first_line = true,
     highlight = false,
-    highlight_bg = '#ff0000',
-    highlight_ctermbg = 'red',
+    highlight_bg = "#ff0000",
+    highlight_ctermbg = "red",
     notifications = true,
 }
 
@@ -298,7 +320,7 @@ local lspkind = require "lspkind"
 cmp.setup {
     formatting = {
         format = lspkind.cmp_format({
-            mode = 'symbol', -- show only symbol annotations
+            mode = "symbol", -- show only symbol annotations
             maxwidth = {
                 -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                 -- can also be a function to dynamically calculate max width such as
@@ -306,7 +328,7 @@ cmp.setup {
                 menu = 50,            -- leading text (labelDetails)
                 abbr = 50,            -- actual suggestion item
             },
-            ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            ellipsis_char = "...",    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
             show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 
             -- The function below will be called before any actual modifications from lspkind
@@ -331,17 +353,28 @@ require("lsp_signature").setup {
     floating_window = true, -- Show signature in a floating window.
     hint_enable = true,     -- Enable virtual text hints.
     handler_opts = {
-        border = 'rounded'  -- 'single', 'double', 'rounded', 'solid', 'shadow'
+        border = "rounded"  -- "single", "double", "rounded", "solid", "shadow"
     },
     -- You can tweak these parameters to adjust the behavior to your preference.
     max_height = 12,
     max_width = 80,
-    hint_prefix = '🐼 ', -- Can be any symbol you prefer
+    hint_prefix = "🐼 ", -- Can be any symbol you prefer
 }
 
 -- vimtex
 vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_quickfix_open_on_warning = 0
+
+-- typst
+vim.api.nvim_create_user_command("OpenPdf", function()
+    local filepath = vim.api.nvim_buf_get_name(0)
+
+    if filepath:match("%.typ$") then
+        local pdf_path = filepath:gsub("%.typ$", ".pdf")
+        vim.system({ "zathura", pdf_path })
+    end
+end, {})
+
 
 -- nvim-surround
 require("nvim-surround").setup {}
@@ -361,7 +394,7 @@ md_pdf.setup({
     -- Render a dedicated title page (and keep ToC on a separate page)
     title_page = false,
     -- Define a custom preview command, enabling hooks and other custom logic
-    preview_cmd = function() return 'zathura' end,
+    preview_cmd = function() return "zathura" end,
     -- if true, then the markdown file is continuously converted on each write, even if the
     -- file viewer closed, e.g., Firefox is "closed" once the document is opened in it.
     ignore_viewer_state = false,

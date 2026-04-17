@@ -109,7 +109,7 @@ source $ZSH/oh-my-zsh.sh
 alias n="nvim ."
 alias r="ranger"
 
-alias copynametex="cp ~/Documents/Work/Shkolkovo/ShkolkovoCreate/name.tex task.tex; cp task.tex solution.tex"
+alias copynametex="cp ~/Documents/Work/Shkolkovo/ShkolkovoCreate/Шаблоны/name.tex task.tex && cp task.tex solution.tex"
 
 alias asan="LD_PRELOAD=/lib64/libasan.so.8"
 
