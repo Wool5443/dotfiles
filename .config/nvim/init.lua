@@ -116,6 +116,31 @@ vim.lsp.config("tinymist", {
     }
 })
 vim.lsp.config('lua_ls', {
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        local config_root = vim.fn.stdpath('config')
+
+        if fname == '' then
+            on_dir(config_root)
+            return
+        end
+
+        local normalized = vim.fs.normalize(fname)
+        local config_root_norm = vim.fs.normalize(config_root)
+        local fname_real = vim.uv.fs_realpath(normalized) or normalized
+        local config_real = vim.uv.fs_realpath(config_root_norm) or config_root_norm
+
+        if
+            normalized:sub(1, #config_root_norm) == config_root_norm
+            or fname_real:sub(1, #config_real) == config_real
+        then
+            on_dir(config_real)
+            return
+        end
+
+        local project_root = vim.fs.root(normalized, { '.luarc.json', '.luarc.jsonc', '.luacheckrc', 'stylua.toml' })
+        on_dir(project_root or vim.fs.dirname(normalized))
+    end,
     on_init = function(client)
         if client.workspace_folders then
             local path = client.workspace_folders[1].name
@@ -141,6 +166,8 @@ vim.lsp.config('lua_ls', {
                 library = {
                     vim.env.VIMRUNTIME,
                 },
+                maxPreload = 2000,
+                preloadFileSize = 200,
             },
         })
     end,
