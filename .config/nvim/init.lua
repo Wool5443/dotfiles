@@ -73,117 +73,14 @@ vim.pack.add {
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/arminveres/md-pdf.nvim" },
 }
--- vim.pack.update()
+
+-- Update command
+vim.api.nvim_create_user_command("PluginsUpdate", function()
+    vim.pack.update()
+end, {})
+
 -- Set up lsp
-require("mason").setup
-{
-    ensure_installed = {
-        "basedpyright",
-        "bash-language-server",
-        "docker-compose-language-service",
-        "docker-language-server",
-        "dockerfile-language-server",
-        "lua-language-server",
-        "ruff",
-        "texlab",
-        "tinymist",
-    }
-}
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-vim.lsp.config("*", {
-    capabilities = capabilities
-})
-vim.lsp.config("basedpyright", {
-    capabilities = capabilities,
-    settings = {
-        basedpyright = {
-            analysis = {
-                diagnosticMode = "openFilesOnly",
-                typeCheckingMode = "basic",
-                inlayHints = {
-                    callArgumentNames = true
-                }
-            },
-        },
-    },
-})
-vim.lsp.config("tinymist", {
-    capabilities = capabilities,
-    settings = {
-        formatterMode = "typstyle",
-        exportPdf = "onType",
-        semanticTokens = "disable"
-    }
-})
-vim.lsp.config('lua_ls', {
-    root_dir = function(bufnr, on_dir)
-        local fname = vim.api.nvim_buf_get_name(bufnr)
-        local config_root = vim.fn.stdpath('config')
-
-        if fname == '' then
-            on_dir(config_root)
-            return
-        end
-
-        local normalized = vim.fs.normalize(fname)
-        local config_root_norm = vim.fs.normalize(config_root)
-        local fname_real = vim.uv.fs_realpath(normalized) or normalized
-        local config_real = vim.uv.fs_realpath(config_root_norm) or config_root_norm
-
-        if
-            normalized:sub(1, #config_root_norm) == config_root_norm
-            or fname_real:sub(1, #config_real) == config_real
-        then
-            on_dir(config_real)
-            return
-        end
-
-        local project_root = vim.fs.root(normalized, { '.luarc.json', '.luarc.jsonc', '.luacheckrc', 'stylua.toml' })
-        on_dir(project_root or vim.fs.dirname(normalized))
-    end,
-    on_init = function(client)
-        if client.workspace_folders then
-            local path = client.workspace_folders[1].name
-            if
-                path ~= vim.fn.stdpath('config')
-                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
-            then
-                return
-            end
-        end
-
-        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-                version = 'LuaJIT',
-                path = {
-                    'lua/?.lua',
-                    'lua/?/init.lua',
-                },
-            },
-            -- Make the server aware of Neovim runtime files
-            workspace = {
-                checkThirdParty = false,
-                library = {
-                    vim.env.VIMRUNTIME,
-                },
-                maxPreload = 2000,
-                preloadFileSize = 200,
-            },
-        })
-    end,
-    settings = {
-        Lua = {},
-    },
-})
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("clangd")
-vim.lsp.enable("basedpyright")
-vim.lsp.enable("ruff")
-vim.lsp.enable("tinymist")
-vim.lsp.enable("bashls")
-vim.lsp.enable("rust_analyzer")
-vim.lsp.enable("texlab")
-
+require("config.lsp").setup()
 
 -- nvim-autopairs
 require("nvim-autopairs").setup()
@@ -288,16 +185,6 @@ require("trim").setup {
     notifications = true,
 }
 
--- lsp
-vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-vim.keymap.set("n", "K", vim.lsp.buf.hover)
-vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol)
-vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float)
-vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action)
-vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references)
-vim.keymap.set("n", "<f2>", vim.lsp.buf.rename)
-vim.keymap.set({ "n", "v" }, "<C-f>", vim.lsp.buf.format)
-
 -- comment
 vim.keymap.set("n", "<C-/>", "gcc", { remap = true })
 vim.keymap.set("v", "<C-/>", "gc", { remap = true })
@@ -395,20 +282,6 @@ require("todo-comments").setup()
 
 --neogen
 require("neogen").setup {}
-
--- lsp-signature
-require("lsp_signature").setup {
-    bind = true,            -- This is mandatory, otherwise border config won't get registered.
-    floating_window = true, -- Show signature in a floating window.
-    hint_enable = true,     -- Enable virtual text hints.
-    handler_opts = {
-        border = "rounded"  -- "single", "double", "rounded", "solid", "shadow"
-    },
-    -- You can tweak these parameters to adjust the behavior to your preference.
-    max_height = 12,
-    max_width = 80,
-    hint_prefix = "🐼 ", -- Can be any symbol you prefer
-}
 
 -- vimtex
 vim.g.vimtex_view_method = "zathura"
