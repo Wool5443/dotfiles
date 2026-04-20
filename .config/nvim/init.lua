@@ -46,32 +46,38 @@ vim.keymap.set("n", "<CR>", "<Cmd>call append(line('.'),     repeat([''], v:coun
 vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
 
 vim.pack.add {
-    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-    { src = "https://github.com/neovim/nvim-lspconfig" },
-    { src = "https://github.com/mason-org/mason.nvim" },
-    { src = "https://github.com/L3MON4D3/LuaSnip" },
-    { src = "https://github.com/nvim-telescope/telescope.nvim" },
-    { src = "https://github.com/nvim-lua/plenary.nvim" },
-    { src = "https://github.com/nvim-tree/nvim-tree.lua" },
-    { src = "https://github.com/kdheepak/lazygit.nvim" },
-    { src = "https://github.com/Civitasv/cmake-tools.nvim" },
     { src = "https://github.com/navarasu/onedark.nvim" },
-    { src = "https://github.com/cappyzawa/trim.nvim" },
-    { src = "https://github.com/pogyomo/cppguard.nvim" },
-    { src = "https://github.com/onsails/lspkind.nvim" },
-    { src = "https://github.com/folke/todo-comments.nvim" },
+
+    { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/Civitasv/cmake-tools.nvim" },
+    { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/lervag/vimtex" },
+    { src = "https://github.com/neovim/nvim-lspconfig" },
+
     { src = "https://github.com/hrsh7th/nvim-cmp" },
+    { src = "https://github.com/hrsh7th/cmp-buffer" },
+    { src = "https://github.com/hrsh7th/cmp-cmdline" },
     { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
     { src = "https://github.com/hrsh7th/cmp-path" },
-    { src = "https://github.com/hrsh7th/cmp-cmdline" },
-    { src = "https://github.com/hrsh7th/cmp-buffer" },
-    { src = "https://github.com/danymat/neogen" },
-    { src = "https://github.com/ray-x/lsp_signature.nvim" },
-    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
-    { src = "https://github.com/lervag/vimtex" },
-    { src = "https://github.com/kylechui/nvim-surround" },
+    { src = "https://github.com/L3MON4D3/LuaSnip" },
+    { src = "https://github.com/saadparwaiz1/cmp_luasnip" },
+    { src = "https://github.com/onsails/lspkind.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/pogyomo/cppguard.nvim" },
+    { src = "https://github.com/kylechui/nvim-surround" },
+
+    { src = "https://github.com/danymat/neogen" },
+    { src = "https://github.com/cappyzawa/trim.nvim" },
+    { src = "https://github.com/folke/todo-comments.nvim" },
+
+    { src = "https://github.com/nvim-tree/nvim-tree.lua" },
+    { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    { src = "https://github.com/kdheepak/lazygit.nvim" },
+
     { src = "https://github.com/arminveres/md-pdf.nvim" },
+    { src = "https://github.com/nvim-lua/plenary.nvim" },
+    { src = "https://github.com/nvim-tree/nvim-web-devicons" },
+    { src = "https://github.com/ray-x/lsp_signature.nvim" },
 }
 
 -- Update command
@@ -85,16 +91,47 @@ require("config.lsp").setup()
 -- nvim-autopairs
 require("nvim-autopairs").setup()
 
--- colors
+-- Colors
 require("onedark").setup {
-    style = "darker"
+    -- Main options --
+    style = "darker",             -- Default theme style. Choose between "dark", "darker", "cool", "deep", "warm", "warmer" and "light"
+    transparent = false,          -- Show/hide background
+    term_colors = true,           -- Change terminal color as per the selected theme style
+    ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
+    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+
+    -- toggle theme style ---
+    toggle_style_key = nil,                                                              -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+    toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
+
+    -- Change code style ---
+    -- Options are italic, bold, underline, none
+    -- You can configure multiple style with comma separated, For e.g., keywords = "italic,bold"
+    code_style = {
+        comments = "none",
+        keywords = "none",
+        functions = "none",
+        strings = "none",
+        variables = "none"
+    },
+
+    -- Lualine options --
+    lualine = {
+        transparent = false, -- lualine center bar transparency
+    },
+
+    -- Custom Highlights --
+    colors = {},     -- Override default colors
+    highlights = {}, -- Override highlight groups
+
+    -- Plugins Config --
+    diagnostics = {
+        darker = true,     -- darker colors for diagnostic
+        undercurl = true,  -- use undercurl instead of underline for diagnostics
+        background = true, -- use background color for virtual text
+    },
 }
 require("onedark").load()
-
--- snippets
-local luasnip = require("luasnip")
-luasnip.setup { enable_autosnippets = true }
-require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" }
 
 -- treesitter
 require("nvim-treesitter.config").setup {
@@ -188,6 +225,11 @@ require("trim").setup {
 -- comment
 vim.keymap.set("n", "<C-/>", "gcc", { remap = true })
 vim.keymap.set("v", "<C-/>", "gc", { remap = true })
+
+-- snippets
+local luasnip = require("luasnip")
+luasnip.setup { enable_autosnippets = true }
+require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" }
 
 -- cppguard
 local cppguard = require("cppguard")
