@@ -231,20 +231,43 @@ local luasnip = require("luasnip")
 luasnip.setup { enable_autosnippets = true }
 require("luasnip.loaders.from_lua").load { paths = "~/.config/nvim/snippets/" }
 
--- cppguard
-local cppguard = require("cppguard")
-luasnip.add_snippets("cpp", {
-    cppguard.snippet_luasnip("guard")
-})
-luasnip.add_snippets("hpp", {
-    cppguard.snippet_luasnip("guard")
-})
-luasnip.add_snippets("c", {
-    cppguard.snippet_luasnip("guard")
-})
-luasnip.add_snippets("h", {
-    cppguard.snippet_luasnip("guard")
-})
+-- include guard snippet (always includes relative file path + filename)
+local s = luasnip.snippet
+local t = luasnip.text_node
+local i = luasnip.insert_node
+local f = luasnip.function_node
+
+local function custom_guard_name()
+    local file_path = vim.api.nvim_buf_get_name(0)
+    local rel = vim.fn.fnamemodify(file_path, ":.")
+    local project = vim.fn.fnamemodify(vim.fn.getcwd(), ":t"):upper()
+    local norm = rel:gsub("[^%w]", "_"):upper()
+    norm = norm:gsub("^_+", ""):gsub("_+$", "")
+    return string.format("%s_%s_", project, norm)
+end
+
+local function include_guard_snippet()
+    return s("guard", {
+        f(function()
+            return "#ifndef " .. custom_guard_name()
+        end),
+        t { "", "" },
+        f(function()
+            return "#define " .. custom_guard_name()
+        end),
+        t { "", "", "" },
+        i(0),
+        t { "", "", "" },
+        f(function()
+            return "#endif // " .. custom_guard_name()
+        end),
+    })
+end
+
+luasnip.add_snippets("cpp", { include_guard_snippet() })
+luasnip.add_snippets("hpp", { include_guard_snippet() })
+luasnip.add_snippets("c", { include_guard_snippet() })
+luasnip.add_snippets("h", { include_guard_snippet() })
 
 -- cmp
 local cmp = require "cmp"
