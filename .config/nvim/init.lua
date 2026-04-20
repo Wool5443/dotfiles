@@ -72,17 +72,6 @@ vim.pack.add {
     { src = "https://github.com/kylechui/nvim-surround" },
     { src = "https://github.com/windwp/nvim-autopairs" },
     { src = "https://github.com/arminveres/md-pdf.nvim" },
-    {
-        src = "https://github.com/folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-            library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            },
-        },
-    },
 }
 -- vim.pack.update()
 -- Set up lsp
@@ -125,6 +114,39 @@ vim.lsp.config("tinymist", {
         exportPdf = "onType",
         semanticTokens = "disable"
     }
+})
+vim.lsp.config('lua_ls', {
+    on_init = function(client)
+        if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if
+                path ~= vim.fn.stdpath('config')
+                and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+            then
+                return
+            end
+        end
+
+        client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+                version = 'LuaJIT',
+                path = {
+                    'lua/?.lua',
+                    'lua/?/init.lua',
+                },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+                checkThirdParty = false,
+                library = {
+                    vim.env.VIMRUNTIME,
+                },
+            },
+        })
+    end,
+    settings = {
+        Lua = {},
+    },
 })
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("clangd")
@@ -378,9 +400,6 @@ end, {})
 
 -- nvim-surround
 require("nvim-surround").setup {}
-
--- lazydev
-require("lazydev").setup()
 
 -- md-pdf
 local md_pdf = require("md-pdf")

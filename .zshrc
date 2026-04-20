@@ -117,4 +117,6 @@ alias asan="LD_PRELOAD=/lib64/libasan.so.8"
 autoload -Uz compinit
 compinit
 
+eval $(codex completion zsh)
+
 export PATH=$PATH:/home/twenty/.spicetify
