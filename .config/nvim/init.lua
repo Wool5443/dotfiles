@@ -47,6 +47,7 @@ vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:co
 
 vim.pack.add {
     { src = "https://github.com/navarasu/onedark.nvim" },
+    { src = "https://github.com/EdenEast/nightfox.nvim" },
 
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/Civitasv/cmake-tools.nvim" },
