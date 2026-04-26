@@ -32,18 +32,18 @@ vim.api.nvim_create_autocmd("BufLeave", {
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
-vim.keymap.set("n", "<leader>w", ":write<CR>")
-vim.keymap.set("n", "<leader>q", ":quit<CR>")
-vim.keymap.set("n", "<leader>", ":noh<CR>")
-vim.keymap.set({ "n", "v" }, "<C-s>", ":w<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
-vim.keymap.set({ "n", "v" }, "<leader>d", '"+d')
-vim.keymap.set("n", "<C-t>", "<C-e>", { noremap = true })
-vim.keymap.set("t", "<C-k>", "<C-\\><C-n>")
+vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>", { desc = "Save and source config" })
+vim.keymap.set("n", "<leader>w", ":write<CR>", { desc = "Write file" })
+vim.keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Quit window" })
+-- vim.keymap.set("n", "<leader>", ":noh<CR>")
+vim.keymap.set({ "n", "v" }, "<C-s>", ":w<CR>", { desc = "Write file" })
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>d", '"+d', { desc = "Delete to system clipboard" })
+vim.keymap.set("n", "<C-t>", "<C-e>", { noremap = true, desc = "Scroll down" })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set("n", "<CR>", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>")
-vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>")
+vim.keymap.set("n", "<CR>", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = "Insert line below" })
+vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Insert line above" })
 
 vim.pack.add {
     { src = "https://github.com/navarasu/onedark.nvim" },
@@ -55,7 +55,6 @@ vim.pack.add {
     { src = "https://github.com/lervag/vimtex" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
 
-    { src = "https://github.com/folke/lazydev.nvim" },
     { src = "https://github.com/hrsh7th/nvim-cmp" },
     { src = "https://github.com/hrsh7th/cmp-buffer" },
     { src = "https://github.com/hrsh7th/cmp-cmdline" },
@@ -98,9 +97,6 @@ require("config.lsp").setup()
 
 -- nvim-autopairs
 require("nvim-autopairs").setup()
-
--- lazydev
-require("lazydev").setup()
 
 -- which-key
 require("which-key").setup()
@@ -171,7 +167,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function() vim.treesitter.start() end,
 })
 
--- nvim tree
+-- nvim-tree
 local nvim_tree_api = require "nvim-tree.api"
 require("nvim-tree").setup {
     filters = {
@@ -182,34 +178,65 @@ require("nvim-tree").setup {
         enable = true,
     },
 }
-vim.keymap.set("n", "<C-e>", nvim_tree_api.tree.toggle)
-vim.keymap.set("n", "<C-A-r>", nvim_tree_api.tree.reload)
+vim.keymap.set("n", "<C-e>", nvim_tree_api.tree.toggle, { desc = "Toggle file tree" })
+vim.keymap.set("n", "<C-A-r>", nvim_tree_api.tree.reload, { desc = "Reload file tree" })
 
 -- lazygit
-vim.keymap.set("n", "<C-g>", ":LazyGit<CR>")
+vim.keymap.set("n", "<C-g>", ":LazyGit<CR>", { desc = "Open lazygit" })
 
 -- telescope
 local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files)
-vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep)
-vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers)
-vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_workspace_symbols)
-vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references)
-vim.keymap.set("n", "<leader>fd", telescope_builtin.lsp_definitions)
-vim.keymap.set("n", "<leader>fi", telescope_builtin.lsp_implementations)
-vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages)
-pcall(function()
-    require("telescope").load_extension("fzf")
-end)
+vim.keymap.set("n", "<leader>ff", telescope_builtin.find_files, { desc = "Find files" })
+vim.keymap.set("n", "<leader>fg", telescope_builtin.live_grep, { desc = "Live grep" })
+vim.keymap.set("n", "<leader>fb", telescope_builtin.buffers, { desc = "Find buffers" })
+vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_workspace_symbols, { desc = "Workspace symbols" })
+vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references, { desc = "LSP references" })
+vim.keymap.set("n", "<leader>fd", telescope_builtin.lsp_definitions, { desc = "LSP definitions" })
+vim.keymap.set("n", "<leader>fi", telescope_builtin.lsp_implementations, { desc = "LSP implementations" })
+vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages, { desc = "Man pages" })
+
+local function load_telescope_fzf()
+    local telescope = require("telescope")
+
+    if pcall(telescope.load_extension, "fzf") then
+        return
+    end
+
+    local fzf_lib = vim.api.nvim_get_runtime_file("lua/fzf_lib.lua", false)[1]
+    if not fzf_lib then
+        return
+    end
+
+    local plugin_dir = vim.fs.dirname(vim.fs.dirname(fzf_lib))
+    local lib_path = plugin_dir .. "/build/libfzf.so"
+    if vim.uv.fs_stat(lib_path) then
+        return
+    end
+
+    vim.notify("Building telescope-fzf-native.nvim", vim.log.levels.INFO)
+    vim.system({ "make" }, { cwd = plugin_dir }, function(result)
+        vim.schedule(function()
+            if result.code ~= 0 then
+                vim.notify("Failed to build telescope-fzf-native.nvim", vim.log.levels.ERROR)
+                return
+            end
+
+            pcall(telescope.load_extension, "fzf")
+            vim.notify("telescope-fzf-native.nvim built", vim.log.levels.INFO)
+        end)
+    end)
+end
+
+load_telescope_fzf()
 
 -- trouble
 require("trouble").setup()
-vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
-vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")
-vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>")
-vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>")
-vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>")
-vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics" })
+vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer diagnostics" })
+vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Document symbols" })
+vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP definitions/references" })
+vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location list" })
+vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix list" })
 
 -- gitsigns
 require("gitsigns").setup {
@@ -228,18 +255,18 @@ require("gitsigns").setup {
             end
             vim.schedule(gitsigns.next_hunk)
             return "<Ignore>"
-        end, { expr = true })
+        end, { expr = true, desc = "Next git hunk" })
         map("n", "[c", function()
             if vim.wo.diff then
                 return "[c"
             end
             vim.schedule(gitsigns.prev_hunk)
             return "<Ignore>"
-        end, { expr = true })
-        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
-        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
-        map("n", "<leader>hp", gitsigns.preview_hunk)
-        map("n", "<leader>hb", gitsigns.blame_line)
+        end, { expr = true, desc = "Previous git hunk" })
+        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Stage git hunk" })
+        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "Reset git hunk" })
+        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview git hunk" })
+        map("n", "<leader>hb", gitsigns.blame_line, { desc = "Git blame line" })
     end,
 }
 
@@ -247,16 +274,16 @@ require("gitsigns").setup {
 require("flash").setup()
 vim.keymap.set({ "n", "x", "o" }, "s", function()
     require("flash").jump()
-end)
+end, { desc = "Flash jump" })
 vim.keymap.set({ "n", "x", "o" }, "S", function()
     require("flash").treesitter()
-end)
+end, { desc = "Flash treesitter" })
 vim.keymap.set("o", "r", function()
     require("flash").remote()
-end)
+end, { desc = "Flash remote" })
 vim.keymap.set({ "o", "x" }, "R", function()
     require("flash").treesitter_search()
-end)
+end, { desc = "Flash treesitter search" })
 
 -- conform
 require("conform").setup {
@@ -275,7 +302,7 @@ require("conform").setup {
 }
 vim.keymap.set({ "n", "v" }, "<C-f>", function()
     require("conform").format({ async = true, lsp_format = "fallback" })
-end)
+end, { desc = "Format buffer or selection" })
 
 -- cmake
 require("cmake-tools").setup {
@@ -296,9 +323,9 @@ require("cmake-tools").setup {
     cmake_kits_path = "~/.local/share/CMakeTools/cmake-tools-kits.json",
 }
 
-vim.keymap.set("n", "<f7>", ":CMakeBuild<CR>")
-vim.keymap.set("n", "<f5>", ":CMakeRun<CR>")
-vim.keymap.set("n", "<f6>", ":CMakeSelectLaunchTarget<CR>")
+vim.keymap.set("n", "<f7>", ":CMakeBuild<CR>", { desc = "CMake build" })
+vim.keymap.set("n", "<f5>", ":CMakeRun<CR>", { desc = "CMake run" })
+vim.keymap.set("n", "<f6>", ":CMakeSelectLaunchTarget<CR>", { desc = "CMake select launch target" })
 
 -- trim
 require("trim").setup {
@@ -315,8 +342,8 @@ require("trim").setup {
 }
 
 -- comment
-vim.keymap.set("n", "<C-/>", "gcc", { remap = true })
-vim.keymap.set("v", "<C-/>", "gc", { remap = true })
+vim.keymap.set("n", "<C-/>", "gcc", { remap = true, desc = "Toggle comment line" })
+vim.keymap.set("v", "<C-/>", "gc", { remap = true, desc = "Toggle comment selection" })
 
 -- snippets
 local luasnip = require("luasnip")
@@ -407,7 +434,6 @@ cmp.setup.cmdline(":", {
     matching = { disallow_symbol_nonprefix_matching = false }
 })
 
-
 -- lspkind
 local lspkind = require "lspkind"
 cmp.setup {
@@ -454,43 +480,5 @@ vim.api.nvim_create_user_command("OpenPdf", function()
     end
 end, {})
 
-
 -- nvim-surround
 require("nvim-surround").setup {}
-
--- md-pdf
-local md_pdf = require("md-pdf")
-md_pdf.setup({
-    --- Set margins around document
-    margins = "1.5cm",
-    -- tango, pygments are quite nice for white on white
-    highlight = "tango",
-    -- Generate a table of contents, on by default
-    toc = true,
-    -- Render a dedicated title page (and keep ToC on a separate page)
-    title_page = false,
-    -- Define a custom preview command, enabling hooks and other custom logic
-    preview_cmd = function() return "zathura" end,
-    -- if true, then the markdown file is continuously converted on each write, even if the
-    -- file viewer closed, e.g., Firefox is "closed" once the document is opened in it.
-    ignore_viewer_state = false,
-    -- Specify font, `nil` uses the default font of the theme
-    fonts = {
-        main_font = "FiraCode Nerd Font",
-        sans_font = "FiraCode Nerd Font",
-        mono_font = "FiraCode Nerd Font Mono",
-        math_font = "FiraCode Nerd Font",
-    },
-    -- Custom options passed to `pandoc` CLI call, can be ignored for setup
-    pandoc_user_args = nil,
-    --- Path to output. Needs to be always relative, e.g.: "./", "../", "./out" or simply "out", but
-    --- not absolute e.g.: "/"!
-    output_path = "./",
-    -- PDF converter engine
-    pdf_engine = "lualatex",
-})
-require("md-pdf.utils").warn = function(str) end
-
-vim.keymap.set("n", "<Space>,", function()
-    md_pdf.convert_md_to_pdf()
-end)

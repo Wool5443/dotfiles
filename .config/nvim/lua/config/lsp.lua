@@ -108,14 +108,14 @@ function M.setup()
     vim.lsp.enable("rust_analyzer")
     vim.lsp.enable("texlab")
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover)
-    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol)
-    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float)
-    vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action)
-    vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references)
-    vim.keymap.set("n", "<f2>", vim.lsp.buf.rename)
-    vim.keymap.set({ "n", "v" }, "<C-f>", vim.lsp.buf.format)
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
+    vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, { desc = "Workspace symbols" })
+    vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+    vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, { desc = "Code action" })
+    vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, { desc = "LSP references" })
+    vim.keymap.set("n", "<f2>", vim.lsp.buf.rename, { desc = "LSP rename" })
+    vim.keymap.set({ "n", "v" }, "<C-f>", vim.lsp.buf.format, { desc = "LSP format" })
 
     require("lsp_signature").setup {
         bind = true,
