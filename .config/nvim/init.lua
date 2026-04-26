@@ -43,7 +43,8 @@ vim.keymap.set("n", "<C-t>", "<C-e>", { noremap = true, desc = "Scroll down" })
 vim.keymap.set("t", "<C-k>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 vim.keymap.set("n", "<CR>", "<Cmd>call append(line('.'),     repeat([''], v:count1))<CR>", { desc = "Insert line below" })
-vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>", { desc = "Insert line above" })
+vim.keymap.set("n", "<S-CR>", "<Cmd>call append(line('.') - 1, repeat([''], v:count1))<CR>",
+    { desc = "Insert line above" })
 
 vim.pack.add {
     { src = "https://github.com/navarasu/onedark.nvim" },
@@ -102,16 +103,28 @@ require("nvim-autopairs").setup()
 require("which-key").setup()
 
 -- Colors
+local colorscheme_file = vim.fn.stdpath("state") .. "/colorscheme"
+local onedark_style_file = vim.fn.stdpath("state") .. "/onedark_style"
+
+local function read_onedark_style()
+    if vim.fn.filereadable(onedark_style_file) == 0 then
+        return nil
+    end
+
+    local lines = vim.fn.readfile(onedark_style_file)
+    return lines[1]
+end
+
 require("onedark").setup {
     -- Main options --
-    style = "darker",             -- Default theme style. Choose between "dark", "darker", "cool", "deep", "warm", "warmer" and "light"
+    style = read_onedark_style() or "darker", -- Default theme style. Choose between "dark", "darker", "cool", "deep", "warm", "warmer" and "light"
     transparent = false,          -- Show/hide background
     term_colors = true,           -- Change terminal color as per the selected theme style
     ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
     -- toggle theme style ---
-    toggle_style_key = nil,                                                              -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+    toggle_style_key = "<leader>ts",                                                     -- keybind to toggle heme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
     toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
 
     -- Change code style ---
@@ -141,7 +154,43 @@ require("onedark").setup {
         background = true, -- use background color for virtual text
     },
 }
-require("onedark").load()
+
+local function read_colorscheme()
+    if vim.fn.filereadable(colorscheme_file) == 0 then
+        return nil
+    end
+
+    local lines = vim.fn.readfile(colorscheme_file)
+    return lines[1]
+end
+
+local function load_colorscheme()
+    local colorscheme = read_colorscheme()
+    if colorscheme and pcall(vim.cmd.colorscheme, colorscheme) then
+        return
+    end
+
+    require("onedark").load()
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+    group = vim.api.nvim_create_augroup("TwentyColorscheme", { clear = true }),
+    callback = function()
+        local colorscheme = vim.g.colors_name
+        if not colorscheme then
+            return
+        end
+
+        vim.fn.mkdir(vim.fn.fnamemodify(colorscheme_file, ":h"), "p")
+        vim.fn.writefile({ colorscheme }, colorscheme_file)
+
+        if colorscheme == "onedark" and vim.g.onedark_config then
+            vim.fn.writefile({ vim.g.onedark_config.style }, onedark_style_file)
+        end
+    end,
+})
+
+load_colorscheme()
 
 -- treesitter
 require("nvim-treesitter.config").setup {
@@ -194,6 +243,9 @@ vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references, { desc = "LS
 vim.keymap.set("n", "<leader>fd", telescope_builtin.lsp_definitions, { desc = "LSP definitions" })
 vim.keymap.set("n", "<leader>fi", telescope_builtin.lsp_implementations, { desc = "LSP implementations" })
 vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages, { desc = "Man pages" })
+vim.keymap.set("n", "<leader>ut", function()
+    telescope_builtin.colorscheme({ enable_preview = true })
+end, { desc = "Select colorscheme" })
 
 local function load_telescope_fzf()
     local telescope = require("telescope")
@@ -234,7 +286,8 @@ require("trouble").setup()
 vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { desc = "Buffer diagnostics" })
 vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", { desc = "Document symbols" })
-vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", { desc = "LSP definitions/references" })
+vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+    { desc = "LSP definitions/references" })
 vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>", { desc = "Location list" })
 vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix list" })
 
