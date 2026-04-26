@@ -55,6 +55,7 @@ vim.pack.add {
     { src = "https://github.com/lervag/vimtex" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
 
+    { src = "https://github.com/folke/lazydev.nvim" },
     { src = "https://github.com/hrsh7th/nvim-cmp" },
     { src = "https://github.com/hrsh7th/cmp-buffer" },
     { src = "https://github.com/hrsh7th/cmp-cmdline" },
@@ -63,16 +64,22 @@ vim.pack.add {
     { src = "https://github.com/L3MON4D3/LuaSnip" },
     { src = "https://github.com/saadparwaiz1/cmp_luasnip" },
     { src = "https://github.com/onsails/lspkind.nvim" },
+    { src = "https://github.com/stevearc/conform.nvim" },
     { src = "https://github.com/windwp/nvim-autopairs" },
+    { src = "https://github.com/folke/flash.nvim" },
     { src = "https://github.com/pogyomo/cppguard.nvim" },
     { src = "https://github.com/kylechui/nvim-surround" },
 
     { src = "https://github.com/danymat/neogen" },
     { src = "https://github.com/cappyzawa/trim.nvim" },
     { src = "https://github.com/folke/todo-comments.nvim" },
+    { src = "https://github.com/lewis6991/gitsigns.nvim" },
+    { src = "https://github.com/folke/trouble.nvim" },
+    { src = "https://github.com/folke/which-key.nvim" },
 
     { src = "https://github.com/nvim-tree/nvim-tree.lua" },
     { src = "https://github.com/nvim-telescope/telescope.nvim" },
+    { src = "https://github.com/nvim-telescope/telescope-fzf-native.nvim" },
     { src = "https://github.com/kdheepak/lazygit.nvim" },
 
     { src = "https://github.com/arminveres/md-pdf.nvim" },
@@ -91,6 +98,12 @@ require("config.lsp").setup()
 
 -- nvim-autopairs
 require("nvim-autopairs").setup()
+
+-- lazydev
+require("lazydev").setup()
+
+-- which-key
+require("which-key").setup()
 
 -- Colors
 require("onedark").setup {
@@ -185,6 +198,84 @@ vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references)
 vim.keymap.set("n", "<leader>fd", telescope_builtin.lsp_definitions)
 vim.keymap.set("n", "<leader>fi", telescope_builtin.lsp_implementations)
 vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages)
+pcall(function()
+    require("telescope").load_extension("fzf")
+end)
+
+-- trouble
+require("trouble").setup()
+vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
+vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")
+vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>")
+vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>")
+vim.keymap.set("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>")
+vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")
+
+-- gitsigns
+require("gitsigns").setup {
+    current_line_blame = false,
+    on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+        local map = function(mode, lhs, rhs, opts)
+            opts = opts or {}
+            opts.buffer = bufnr
+            vim.keymap.set(mode, lhs, rhs, opts)
+        end
+
+        map("n", "]c", function()
+            if vim.wo.diff then
+                return "]c"
+            end
+            vim.schedule(gitsigns.next_hunk)
+            return "<Ignore>"
+        end, { expr = true })
+        map("n", "[c", function()
+            if vim.wo.diff then
+                return "[c"
+            end
+            vim.schedule(gitsigns.prev_hunk)
+            return "<Ignore>"
+        end, { expr = true })
+        map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
+        map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
+        map("n", "<leader>hp", gitsigns.preview_hunk)
+        map("n", "<leader>hb", gitsigns.blame_line)
+    end,
+}
+
+-- flash
+require("flash").setup()
+vim.keymap.set({ "n", "x", "o" }, "s", function()
+    require("flash").jump()
+end)
+vim.keymap.set({ "n", "x", "o" }, "S", function()
+    require("flash").treesitter()
+end)
+vim.keymap.set("o", "r", function()
+    require("flash").remote()
+end)
+vim.keymap.set({ "o", "x" }, "R", function()
+    require("flash").treesitter_search()
+end)
+
+-- conform
+require("conform").setup {
+    formatters_by_ft = {
+        lua = { "stylua" },
+        python = { "ruff_format", "ruff_organize_imports" },
+        c = { "clang_format" },
+        cpp = { "clang_format" },
+        h = { "clang_format" },
+        hpp = { "clang_format" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        typst = { "typstyle" },
+        markdown = { "prettier" },
+    },
+}
+vim.keymap.set({ "n", "v" }, "<C-f>", function()
+    require("conform").format({ async = true, lsp_format = "fallback" })
+end)
 
 -- cmake
 require("cmake-tools").setup {

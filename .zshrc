@@ -106,8 +106,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 alias n="nvim ."
-alias r="ranger"
+alias ipy="ipython"
 
 alias copynametex="cp ~/Documents/Work/Shkolkovo/ShkolkovoCreate/Шаблоны/name.tex task.tex && cp task.tex solution.tex"
 
