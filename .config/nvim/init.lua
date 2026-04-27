@@ -38,7 +38,6 @@ vim.keymap.set("n", "<leader>o", function()
 end, { desc = "Save and source config" })
 vim.keymap.set("n", "<leader>w", ":write<CR>", { desc = "Write file" })
 vim.keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Quit window" })
--- vim.keymap.set("n", "<leader>", ":noh<CR>")
 vim.keymap.set({ "n", "v" }, "<C-s>", ":w<CR>", { desc = "Write file" })
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to system clipboard" })
 vim.keymap.set({ "n", "v" }, "<leader>d", '"+d', { desc = "Delete to system clipboard" })
@@ -121,10 +120,10 @@ end
 require("onedark").setup {
     -- Main options --
     style = read_onedark_style() or "darker", -- Default theme style. Choose between "dark", "darker", "cool", "deep", "warm", "warmer" and "light"
-    transparent = false,          -- Show/hide background
-    term_colors = true,           -- Change terminal color as per the selected theme style
-    ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
-    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+    transparent = false,                      -- Show/hide background
+    term_colors = true,                       -- Change terminal color as per the selected theme style
+    ending_tildes = false,                    -- Show the end-of-buffer tildes. By default they are hidden
+    cmp_itemkind_reverse = false,             -- reverse item kind highlights in cmp menu
 
     -- toggle theme style ---
     toggle_style_key = "<leader>ts",                                                     -- keybind to toggle heme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
@@ -574,7 +573,8 @@ local function tex_change_range(command, action, start_mark, end_mark, mode)
     else
         local prefix = "\\" .. command .. "{"
         local suffix = "}"
-        local before_start = vim.api.nvim_buf_get_text(0, start_row, math.max(start_col - #prefix, 0), start_row, start_col, {})[1]
+        local before_start = vim.api.nvim_buf_get_text(0, start_row, math.max(start_col - #prefix, 0), start_row,
+            start_col, {})[1]
         local after_end = vim.api.nvim_buf_get_text(0, end_row, end_col, end_row, end_col + #suffix, {})[1]
         if before_start == prefix and after_end == suffix then
             vim.api.nvim_buf_set_text(0, end_row, end_col, end_row, end_col + #suffix, {})
