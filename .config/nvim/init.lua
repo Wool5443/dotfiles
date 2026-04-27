@@ -32,7 +32,10 @@ vim.api.nvim_create_autocmd("BufLeave", {
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>", { desc = "Save and source config" })
+vim.keymap.set("n", "<leader>o", function()
+    vim.cmd.write()
+    vim.cmd.source(vim.env.MYVIMRC)
+end, { desc = "Save and source config" })
 vim.keymap.set("n", "<leader>w", ":write<CR>", { desc = "Write file" })
 vim.keymap.set("n", "<leader>q", ":quit<CR>", { desc = "Quit window" })
 -- vim.keymap.set("n", "<leader>", ":noh<CR>")
@@ -181,11 +184,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
             return
         end
 
-        vim.fn.mkdir(vim.fn.fnamemodify(colorscheme_file, ":h"), "p")
-        vim.fn.writefile({ colorscheme }, colorscheme_file)
+        pcall(vim.fn.mkdir, vim.fn.fnamemodify(colorscheme_file, ":h"), "p")
+        pcall(vim.fn.writefile, { colorscheme }, colorscheme_file)
 
         if colorscheme == "onedark" and vim.g.onedark_config then
-            vim.fn.writefile({ vim.g.onedark_config.style }, onedark_style_file)
+            pcall(vim.fn.writefile, { vim.g.onedark_config.style }, onedark_style_file)
         end
     end,
 })
@@ -522,6 +525,154 @@ require("neogen").setup {}
 -- vimtex
 vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_quickfix_open_on_warning = 0
+vim.g.vimtex_compiler_latexmk = {
+    aux_dir = ".texbuild",
+    out_dir = ".",
+}
+
+local function tex_range_from_marks(start_mark, end_mark, mode)
+    local start_pos = vim.api.nvim_buf_get_mark(0, start_mark)
+    local end_pos = vim.api.nvim_buf_get_mark(0, end_mark)
+    if start_pos[1] == 0 or end_pos[1] == 0 then
+        return nil
+    end
+
+    local start_row = start_pos[1] - 1
+    local start_col = start_pos[2]
+    local end_row = end_pos[1] - 1
+    local end_col = end_pos[2]
+
+    if start_row > end_row or (start_row == end_row and start_col > end_col) then
+        start_row, end_row = end_row, start_row
+        start_col, end_col = end_col, start_col
+    end
+
+    if mode == "line" or mode == "V" then
+        start_col = 0
+        end_col = #vim.api.nvim_buf_get_lines(0, end_row, end_row + 1, false)[1]
+    else
+        end_col = end_col + 1
+    end
+
+    return start_row, start_col, end_row, end_col
+end
+
+local function tex_change_range(command, action, start_mark, end_mark, mode)
+    local start_row, start_col, end_row, end_col = tex_range_from_marks(start_mark, end_mark, mode)
+    if not start_row then
+        return
+    end
+
+    local lines = vim.api.nvim_buf_get_text(0, start_row, start_col, end_row, end_col, {})
+    if #lines == 0 then
+        return
+    end
+
+    if action == "wrap" then
+        lines[1] = "\\" .. command .. "{" .. lines[1]
+        lines[#lines] = lines[#lines] .. "}"
+    else
+        local prefix = "\\" .. command .. "{"
+        local suffix = "}"
+        local before_start = vim.api.nvim_buf_get_text(0, start_row, math.max(start_col - #prefix, 0), start_row, start_col, {})[1]
+        local after_end = vim.api.nvim_buf_get_text(0, end_row, end_col, end_row, end_col + #suffix, {})[1]
+        if before_start == prefix and after_end == suffix then
+            vim.api.nvim_buf_set_text(0, end_row, end_col, end_row, end_col + #suffix, {})
+            vim.api.nvim_buf_set_text(0, start_row, start_col - #prefix, start_row, start_col, {})
+            return
+        end
+
+        local text = table.concat(lines, "\n")
+        local inner = text:match("^\\" .. command .. "%{([%s%S]*)%}$")
+        if not inner then
+            return
+        end
+        lines = vim.split(inner, "\n", { plain = true })
+    end
+
+    vim.api.nvim_buf_set_text(0, start_row, start_col, end_row, end_col, lines)
+end
+
+function _G.TwentyTexOperator(mode)
+    local operator = vim.b.twenty_tex_operator
+    if not operator then
+        return
+    end
+
+    tex_change_range(operator.command, operator.action, "[", "]", mode)
+end
+
+local function tex_change_visual(command, action)
+    local mode = vim.fn.visualmode()
+    vim.cmd("normal! \27")
+    tex_change_range(command, action, "<", ">", mode)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    group = vim.api.nvim_create_augroup("TwentyTex", { clear = true }),
+    callback = function(event)
+        local operator = function(command, action)
+            vim.b.twenty_tex_operator = { command = command, action = action }
+            vim.go.operatorfunc = "v:lua.TwentyTexOperator"
+            return "g@"
+        end
+
+        vim.keymap.set("n", "<leader>tb", function()
+            return operator("textbf", "wrap")
+        end, {
+            buffer = event.buf,
+            expr = true,
+            desc = "LaTeX bold motion",
+        })
+        vim.keymap.set("n", "<leader>ti", function()
+            return operator("textit", "wrap")
+        end, {
+            buffer = event.buf,
+            expr = true,
+            desc = "LaTeX italic motion",
+        })
+        vim.keymap.set("n", "<leader>tB", function()
+            return operator("textbf", "unwrap")
+        end, {
+            buffer = event.buf,
+            expr = true,
+            desc = "LaTeX unbold motion",
+        })
+        vim.keymap.set("n", "<leader>tI", function()
+            return operator("textit", "unwrap")
+        end, {
+            buffer = event.buf,
+            expr = true,
+            desc = "LaTeX unitalic motion",
+        })
+
+        vim.keymap.set("v", "<leader>tb", function()
+            tex_change_visual("textbf", "wrap")
+        end, {
+            buffer = event.buf,
+            desc = "LaTeX bold selection",
+        })
+        vim.keymap.set("v", "<leader>ti", function()
+            tex_change_visual("textit", "wrap")
+        end, {
+            buffer = event.buf,
+            desc = "LaTeX italic selection",
+        })
+        vim.keymap.set("v", "<leader>tB", function()
+            tex_change_visual("textbf", "unwrap")
+        end, {
+            buffer = event.buf,
+            desc = "LaTeX unbold selection",
+        })
+        vim.keymap.set("v", "<leader>tI", function()
+            tex_change_visual("textit", "unwrap")
+        end, {
+            buffer = event.buf,
+            desc = "LaTeX unitalic selection",
+        })
+    end,
+})
 
 -- typst
 vim.api.nvim_create_user_command("OpenPdf", function()
