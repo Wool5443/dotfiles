@@ -1,3 +1,6 @@
 [submodule ".config/mpv/scripts/videoclip"]
 	path = .config/mpv/scripts/videoclip
 	url = https://github.com/Ajatt-Tools/videoclip.git
+[submodule ".config/xournalpp/plugins/vi-xournalpp"]
+	path = .config/xournalpp/plugins/vi-xournalpp
+	url = https://github.com/lryffel/vi-xournalpp
