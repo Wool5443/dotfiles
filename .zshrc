@@ -2,6 +2,7 @@
 if [[ ":$FPATH:" != *":/home/twenty/.zsh/completions:"* ]]; then export FPATH="/home/twenty/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:/home/twenty/.local/bin
+export PATH=$PATH:/usr/lib/jvm/jre-25/bin
 export XDG_CONFIG_HOME=$HOME/.config
 
 # Path to your Oh My Zsh installation.
@@ -73,7 +74,7 @@ ZSH_THEME="amuse"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting fzf docker docker-compose gh zoxide dnf extract npm pip python virtualenv)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting fzf docker docker-compose gh zoxide dnf extract npm pip python virtualenv autoswitch_virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 

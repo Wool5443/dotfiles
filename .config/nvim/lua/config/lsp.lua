@@ -99,14 +99,48 @@ function M.setup()
         },
     })
 
-    vim.lsp.enable("lua_ls")
-    vim.lsp.enable("clangd")
-    vim.lsp.enable("basedpyright")
-    vim.lsp.enable("ruff")
-    vim.lsp.enable("tinymist")
-    vim.lsp.enable("bashls")
-    vim.lsp.enable("rust_analyzer")
-    vim.lsp.enable("texlab")
+    local servers = {
+        "lua_ls",
+        "clangd",
+        "basedpyright",
+        "ruff",
+        "tinymist",
+        "bashls",
+        "rust_analyzer",
+        "texlab",
+    }
+
+    for _, server in ipairs(servers) do
+        vim.lsp.enable(server)
+    end
+
+    vim.api.nvim_create_user_command("LspRestart", function(opts)
+        local clients = opts.bang and vim.lsp.get_clients() or vim.lsp.get_clients({ bufnr = 0 })
+
+        if vim.tbl_isempty(clients) then
+            vim.notify("No active LSP clients", vim.log.levels.INFO)
+            return
+        end
+
+        local names = {}
+        for _, client in ipairs(clients) do
+            names[client.name] = true
+        end
+
+        for name in pairs(names) do
+            vim.lsp.enable(name, false)
+        end
+
+        vim.defer_fn(function()
+            for name in pairs(names) do
+                vim.lsp.enable(name)
+            end
+            vim.notify("LSP restarted", vim.log.levels.INFO)
+        end, 500)
+    end, {
+        bang = true,
+        desc = "Restart LSP clients for the current buffer, or all clients with !",
+    })
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Line diagnostics" })
