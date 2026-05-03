@@ -100,14 +100,14 @@ function M.setup()
     })
 
     local servers = {
-        "lua_ls",
-        "clangd",
         "basedpyright",
-        "ruff",
-        "tinymist",
         "bashls",
+        "clangd",
+        "lua_ls",
+        "ruff",
         "rust_analyzer",
         "texlab",
+        "tinymist",
     }
 
     for _, server in ipairs(servers) do
