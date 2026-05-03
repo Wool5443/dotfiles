@@ -10,6 +10,7 @@ for i in *.mp4; do
 
     # Convert MP4 to ProRes MOV (software encoding for ProRes)
     ffmpeg -i "$i" \
+        -vf "scale=1920:1080" \
         -c:v prores_ks \
         -profile:v 2 \
         -qscale:v 9 \
