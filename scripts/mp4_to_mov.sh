@@ -14,5 +14,6 @@ for i in *.mp4; do
         -profile:v 2 \
         -qscale:v 9 \
         -c:a pcm_s16le \
+        -r 30 \
         "${filename}_prores.mov"
 done

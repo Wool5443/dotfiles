@@ -130,7 +130,3 @@ eval $(codex completion zsh)
 
 export PATH=$PATH:/home/twenty/.spicetify
 
-# >>> Added by Spyder >>>
-alias spyder=/home/twenty/.local/spyder-6/envs/spyder-runtime/bin/spyder
-alias uninstall-spyder=/home/twenty/.local/spyder-6/uninstall-spyder.sh
-# <<< Added by Spyder <<<
