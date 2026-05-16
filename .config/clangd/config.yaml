@@ -26,7 +26,6 @@ CompileFlags:
     - "-Wredundant-decls"
     - "-Wshadow"
     - "-Wno-sign-conversion"
-    - "-Wsign-conversion"
     - "-Wsign-promo"
     - "-Wstrict-null-sentinel"
     - "-Wstrict-overflow=2"

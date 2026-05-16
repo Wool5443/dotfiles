@@ -91,6 +91,7 @@ vim.pack.add {
     { src = "https://github.com/nvim-lua/plenary.nvim" },
     { src = "https://github.com/nvim-tree/nvim-web-devicons" },
     { src = "https://github.com/ray-x/lsp_signature.nvim" },
+    { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim' },
 }
 
 -- Update command
@@ -204,6 +205,7 @@ require("nvim-treesitter.config").setup {
         "c",
         "cpp",
         "bash",
+        "typst",
     },
     highlight = {
         enable = true,
@@ -545,3 +547,33 @@ end, {})
 
 -- nvim-surround
 require("nvim-surround").setup {}
+
+-- render-markdown
+require("render-markdown").setup {}
+
+-- md-pdf
+local md_pdf = require("md-pdf")
+md_pdf.setup {
+    margins = "1.5cm",
+    highlight = "tango",
+    toc = true,
+    title_page = false,
+    preview_cmd = function()
+        return "zathura"
+    end,
+    ignore_viewer_state = false,
+    fonts = {
+        main_font = "FiraCode Nerd Font",
+        sans_font = "FiraCode Nerd Font",
+        mono_font = "FiraCode Nerd Font Mono",
+        math_font = "FiraCode Nerd Font",
+    },
+    pandoc_user_args = nil,
+    output_path = "./",
+    pdf_engine = "lualatex",
+}
+require("md-pdf.utils").warn = function() end
+
+vim.keymap.set("n", "<leader>mp", function()
+    md_pdf.convert_md_to_pdf()
+end, { desc = "Markdown to PDF" })
