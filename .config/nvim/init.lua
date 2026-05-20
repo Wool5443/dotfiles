@@ -359,6 +359,13 @@ require("conform").setup {
         typst = { "typstyle" },
         markdown = { "prettier" },
     },
+    formatters = {
+        clang_format = {
+            prepend_args = {
+                "--style=file:" .. vim.fn.stdpath("config") .. "/.clang-format",
+            },
+        },
+    },
 }
 vim.keymap.set({ "n", "v" }, "<C-f>", function()
     require("conform").format({ async = true, lsp_format = "fallback" })

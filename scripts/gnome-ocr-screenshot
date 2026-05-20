@@ -257,6 +257,7 @@ class GnomeOCRApp(Gtk.Application):
         try:
             available_langs = pytesseract.get_languages()
             ocr_lang = self.lang or "+".join(available_langs[:-1])
+            print(ocr_lang)
             logger.info(f"Using language(s): {ocr_lang}")
 
             if QR_CODE_SUPPORTED:
