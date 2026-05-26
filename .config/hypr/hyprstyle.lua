@@ -1,11 +1,47 @@
+local function loadNoctaliaColors()
+    local defaults = {
+        primary = "rgb(ffb3b0)",
+        surface = "rgb(181212)",
+        secondary = "rgb(e6bdba)",
+        error = "rgb(ffb4ab)",
+    }
+    local colors = {}
+
+    for key, value in pairs(defaults) do
+        colors[key] = value
+    end
+
+    local home = os.getenv("HOME")
+    if not home then
+        return colors
+    end
+
+    local file = io.open(home .. "/.config/hypr/noctalia/noctalia-colors.conf", "r")
+    if not file then
+        return colors
+    end
+
+    for line in file:lines() do
+        local name, value = line:match("^%s*%$([%w_]+)%s*=%s*(rgb%([%x]+%))%s*$")
+        if name and value then
+            colors[name] = value
+        end
+    end
+
+    file:close()
+    return colors
+end
+
+local colors = loadNoctaliaColors()
+
 hl.config({
     general = {
         gaps_in = 5,
         gaps_out = 20,
         border_size = 2,
         col = {
-            active_border = "rgb(ffb3b0)",
-            inactive_border = "rgb(181212)",
+            active_border = colors.primary,
+            inactive_border = colors.surface,
         },
         resize_on_border = false,
         allow_tearing = false,
@@ -13,17 +49,17 @@ hl.config({
     },
     group = {
         col = {
-            border_active = "rgb(e6bdba)",
-            border_inactive = "rgb(181212)",
-            border_locked_active = "rgb(ffb4ab)",
-            border_locked_inactive = "rgb(181212)",
+            border_active = colors.secondary,
+            border_inactive = colors.surface,
+            border_locked_active = colors.error,
+            border_locked_inactive = colors.surface,
         },
         groupbar = {
             col = {
-                active = "rgb(e6bdba)",
-                inactive = "rgb(181212)",
-                locked_active = "rgb(ffb4ab)",
-                locked_inactive = "rgb(181212)",
+                active = colors.secondary,
+                inactive = colors.surface,
+                locked_active = colors.error,
+                locked_inactive = colors.surface,
             },
         },
     },
