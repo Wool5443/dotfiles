@@ -1,4 +1,8 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("qs -c noctalia-shell")
     hl.exec_cmd("sh -c '~/.config/rofi/scripts/file-index >/dev/null 2>&1 &'")
+    hl.exec_cmd("flatpak run app.zen_browser.zen")
+    hl.exec_cmd("flatpak run org.telegram.desktop")
+    hl.exec_cmd("/home/twenty/Apps/Throne-1.0.13-linux-amd64/Throne/Throne -tray")
+    hl.exec_cmd("flatpak run com.spotify.Client")
 end)

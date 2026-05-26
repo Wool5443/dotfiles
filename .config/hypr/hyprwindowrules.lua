@@ -10,6 +10,10 @@ hl.window_rule({ match = { title = ".*Properties.*" }, float = true })
 hl.window_rule({ match = { title = "File Operation Progress" }, float = true })
 hl.window_rule({ match = { class = "qalculate-gtk" }, float = true })
 
+hl.window_rule({ match = { class = "zen" }, workspace = 1, fullscreen = true })
+hl.window_rule({ match = { class = "TelegramDesktop" }, workspace = 2 })
+hl.window_rule({ match = { class = "spotify" }, workspace = 10 })
+
 hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
 -- hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, pin = true })
 

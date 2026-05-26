@@ -486,13 +486,13 @@
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
-        "enabled": false,
+        "enabled": true,
         "forced": false,
-        "manualSunrise": "06:30",
-        "manualSunset": "18:30",
-        "nightTemp": "4000"
+        "manualSunrise": "07:00",
+        "manualSunset": "20:00",
+        "nightTemp": "5403"
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": true,

@@ -1,9 +1,13 @@
 configuration {
     modi: "combi,drun,run,file:/home/twenty/.config/rofi/scripts/file-search,window";
-    combi-modi: "drun,file,run";
+    combi-modi: "drun,file";
     combi-display-format: "{mode}: {text}";
     show-icons: true;
     matching: "fuzzy";
+    sort: true;
+    sorting-method: "fzf";
+    tokenize: true;
+    drun-match-fields: "name,generic,exec";
     display-drun: "app";
     display-run: "run";
     display-file: "file";
