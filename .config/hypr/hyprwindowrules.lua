@@ -1,3 +1,5 @@
+hl.window_rule({ match = { class = "blueman-manager" }, float = true })
+
 hl.window_rule({ match = { class = "pavucontrol" }, float = true })
 hl.window_rule({ match = { title = "Open File" }, float = true })
 hl.window_rule({ match = { class = "org.matplotlib.Matplotlib3" }, float = true })
