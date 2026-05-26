@@ -5,7 +5,8 @@ background_blur 0
 enable_audio_bell no
 
 touch_scroll_multiplier 5.0
-# background #470627
+
+background #470627
 
 hide_window_decorations yes
 confirm_os_window_close 0
@@ -63,9 +64,3 @@ map ctrl+. layout_action bias 80
 # keeping other windows visible in their horizontal positions. Press again
 # to restore the original layout.
 # map ctrl+shift+up layout_action maximize vertical
-
-
-# BEGIN_KITTY_THEME
-# Noctalia
-include current-theme.conf
-# END_KITTY_THEME
