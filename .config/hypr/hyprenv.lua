@@ -1,14 +1,11 @@
 local cursorSize = "14"
 local cursorTheme = "oreo_pink_cursors"
 
-hl.env("XDG_CONFIG_HOME", "$HOME/.config")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_DATA_DIRS",
     "/usr/share:/usr/local/share:/var/lib/flatpak/exports/share:/home/twenty/.local/share:/home/twenty/.local/share/flatpak/exports/share")
-hl.env("SSH_AUTH_SOCK", "$XDG_RUNTIME_DIR/ssh-agent.socket")
-
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")

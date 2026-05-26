@@ -1,0 +1,46 @@
+#!/bin/sh
+
+set -eu
+
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}"
+index="$cache_dir/rofi-file-index"
+tmp="$index.tmp"
+roots="$cache_dir/rofi-file-index-roots"
+
+mkdir -p "$cache_dir"
+
+{
+    printf '%s\n' \
+        "$HOME/Desktop" \
+        "$HOME/Documents" \
+        "$HOME/Downloads" \
+        "$HOME/Music" \
+        "$HOME/Pictures" \
+        "$HOME/Videos" \
+        "$HOME/Projects" \
+        "$HOME/dotfiles"
+} | while IFS= read -r dir; do
+    [ -d "$dir" ] && printf '%s\n' "$dir"
+done >"$roots"
+
+while IFS= read -r dir; do
+    fd . "$dir" \
+        --type f \
+        --hidden \
+        --exclude .git \
+        --exclude node_modules \
+        --exclude target \
+        --exclude build \
+        --exclude dist \
+        --exclude .cache \
+        --exclude .local/share/Trash \
+        --exclude .var/app/*/cache \
+        --exclude .mozilla \
+        --exclude google-chrome \
+        --exclude chromium \
+        --exclude discord \
+        2>/dev/null
+done <"$roots" |
+    sort -fu >"$tmp"
+
+mv "$tmp" "$index"

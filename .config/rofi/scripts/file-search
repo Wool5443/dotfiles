@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -eu
+
+index="${XDG_CACHE_HOME:-$HOME/.cache}/rofi-file-index"
+
+if [ "${ROFI_RETV:-0}" = "1" ] && [ -n "${ROFI_INFO:-}" ]; then
+    setsid xdg-open "$ROFI_INFO" >/dev/null 2>&1 &
+    exit 0
+fi
+
+if [ ! -s "$index" ]; then
+    "$HOME/.config/rofi/scripts/file-index" >/dev/null 2>&1 &
+fi
+
+echo "\0prompt\x1fFiles"
+echo "\0markup-rows\x1ffalse"
+echo "\0no-custom\x1ftrue"
+echo "\0message\x1fType !f to search indexed files. Index refreshes on Hyprland start."
+
+[ -s "$index" ] || exit 0
+
+while IFS= read -r path; do
+    name=${path##*/}
+    dir=${path%/*}
+    printf '%s\0icon\x1ftext-x-generic\x1finfo\x1f%s\x1fmeta\x1f%s\n' "$name" "$path" "$dir"
+done <"$index"

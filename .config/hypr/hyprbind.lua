@@ -32,7 +32,7 @@ hl.bind(mainMod .. " + P", hl.dsp.window.pin())
 hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit"))
 
 -- Launcher
-hl.bind(mainMod .. " + R", cmd("hyprlauncher"))
+hl.bind(mainMod .. " + R", cmd("rofi -show combi"))
 
 -- Game mode
 hl.bind(mainMod .. " + G", cmd("~/dotfiles/scripts/GameMode.sh"))

@@ -1,0 +1,86 @@
+* {
+    primary: #ffb3b0;
+    secondary: #e6bdba;
+    tertiary: #e3c28c;
+    error: #ffb4ab;
+
+    surface: #181212;
+    surface-lowest: #120d0d;
+    surface-high: #241a1a;
+    text: #f5dddb;
+    text-muted: #d8c2bf;
+    outline: #5a4240;
+
+    background-color: transparent;
+    font: "Inter 11";
+}
+
+window {
+    width: 720px;
+    border: 2px;
+    border-color: @primary;
+    border-radius: 10px;
+    background-color: @surface;
+}
+
+mainbox {
+    padding: 14px;
+    spacing: 12px;
+    background-color: transparent;
+}
+
+inputbar {
+    padding: 10px 12px;
+    spacing: 10px;
+    border: 1px;
+    border-color: @outline;
+    border-radius: 8px;
+    background-color: @surface-lowest;
+    text-color: @text;
+}
+
+prompt {
+    text-color: @tertiary;
+}
+
+entry {
+    placeholder: "Search";
+    placeholder-color: @text-muted;
+    text-color: @text;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    fixed-height: true;
+    spacing: 4px;
+    background-color: transparent;
+}
+
+element {
+    padding: 9px 10px;
+    spacing: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @text;
+}
+
+element selected {
+    background-color: @primary;
+    text-color: @surface-lowest;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element-text {
+    text-color: inherit;
+}
+
+message {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: @surface-high;
+    text-color: @error;
+}

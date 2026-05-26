@@ -1,0 +1,16 @@
+configuration {
+    modi: "combi,drun,run,file:/home/twenty/.config/rofi/scripts/file-search,window";
+    combi-modi: "drun,file,run";
+    combi-display-format: "{mode}: {text}";
+    show-icons: true;
+    matching: "fuzzy";
+    display-drun: "app";
+    display-run: "run";
+    display-file: "file";
+    display-combi: "search";
+    display-window: "win";
+    drun-display-format: "{name}";
+    sidebar-mode: false;
+}
+
+@theme "noctalia"
