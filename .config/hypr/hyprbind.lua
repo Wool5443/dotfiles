@@ -38,16 +38,11 @@ hl.bind(mainMod .. " + i", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + r", cmd("rofi -show combi"))
 hl.bind(mainMod .. " + SHIFT + v", cmd("rofi -show clipboard"))
 
--- OCR
-hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
-
 -- Screenshots
 hl.bind("Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
 hl.bind("CTRL + Print", cmd("~/dotfiles/scripts/screenshot.sh window"))
 hl.bind("SHIFT + Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
-
--- Panel
-hl.bind(mainMod .. " + w", cmd("killall waybar || waybar"))
+hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
 
 -- Focus change
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))

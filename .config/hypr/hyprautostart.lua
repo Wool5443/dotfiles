@@ -1,4 +1,5 @@
 hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("noctalia --daemon")
     hl.exec_cmd("qs -c noctalia-shell")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")

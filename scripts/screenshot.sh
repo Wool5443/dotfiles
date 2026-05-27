@@ -1,8 +1,13 @@
 #!/usr/bin/env sh
 
 screenshotfile=$(hyprshot -s -m $1 -o ~/Pictures/Screenshots -- echo)
-shouldedit=$(notify-send --expire-time=30000 --app-name=swappy --action="edit=Edit" Screenshot "Screenshot was captured")
+action=$(notify-send --expire-time=30000 --app-name=swappy --action="edit=Edit" --action="show=Show in folder" Screenshot "Screenshot was captured")
 
-if [ "$shouldedit" == "edit" ]; then
-    swappy -f $screenshotfile -o $screenshotfile
-fi
+case "$action" in
+    edit)
+        swappy -f "$screenshotfile" -o "$screenshotfile"
+        ;;
+    show)
+        xdg-open "$(dirname "$screenshotfile")"
+        ;;
+esac
