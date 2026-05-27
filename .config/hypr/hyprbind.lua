@@ -16,6 +16,9 @@ local function app(command)
     return cmd(apps.runPrefix .. " " .. command)
 end
 
+-- Power
+hl.bind(mainMod .. " + L", cmd("noctalia msg screen-lock"))
+
 -- App start
 hl.bind(mainMod .. " + B", app(apps.browser))
 hl.bind(mainMod .. " + E", app(apps.fileManager))
@@ -33,6 +36,7 @@ hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit"))
 
 -- Launcher
 hl.bind(mainMod .. " + R", cmd("rofi -show combi"))
+hl.bind(mainMod .. " + SHIFT + V", cmd("rofi -show clipboard"))
 
 -- Game mode
 hl.bind(mainMod .. " + G", cmd("~/dotfiles/scripts/GameMode.sh"))
@@ -61,11 +65,19 @@ hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
 -- Hyprswitch
 hl.bind(
     mainMod .. " + " .. hyprswitchKey,
-    cmd("hyprswitch gui --mod-key " .. mainMod .. " --key " .. hyprswitchKey .. " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch")
+    cmd("hyprswitch gui --mod-key " ..
+    mainMod ..
+    " --key " ..
+    hyprswitchKey ..
+    " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch")
 )
 hl.bind(
     mainMod .. " + " .. hyprswitchReverse .. " + " .. hyprswitchKey,
-    cmd("hyprswitch gui --mod-key " .. mainMod .. " --key " .. hyprswitchKey .. " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch -r")
+    cmd("hyprswitch gui --mod-key " ..
+    mainMod ..
+    " --key " ..
+    hyprswitchKey ..
+    " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch -r")
 )
 
 -- Move windows
@@ -123,7 +135,8 @@ hl.bind(mainMod .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 50, relative
 hl.bind(mainMod .. " + CTRL + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
 
 -- Media
-hl.bind("XF86AudioRaiseVolume", cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+    { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
 hl.bind("ALT + M", cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))

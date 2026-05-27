@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+if [ -n "$1" ]; then
+    printf '%s' "$1" | cliphist decode | wl-copy
+    exit 0
+fi
+
+cliphist list

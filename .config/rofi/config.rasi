@@ -1,5 +1,5 @@
 configuration {
-    modi: "combi,drun,run,file:/home/twenty/.config/rofi/scripts/file-search,window";
+    modi: "combi,drun,run,file:/home/twenty/.config/rofi/scripts/file-search,clipboard:/home/twenty/.config/rofi/scripts/cliphist,window";
     combi-modi: "drun,file";
     combi-display-format: "{mode}: {text}";
     show-icons: true;
@@ -11,6 +11,7 @@ configuration {
     display-drun: "app";
     display-run: "run";
     display-file: "file";
+    display-clipboard: "clip";
     display-combi: "search";
     display-window: "win";
     drun-display-format: "{name}";
