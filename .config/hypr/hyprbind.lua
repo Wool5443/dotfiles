@@ -1,5 +1,7 @@
 local apps = require("hyprapps")
 
+local ipc = "qs -c noctalia-shell ipc call"
+
 local mainMod = "SUPER"
 local hyprswitchKey = "tab"
 local hyprswitchReverse = "SHIFT"
@@ -17,7 +19,7 @@ local function app(command)
 end
 
 -- Power
-hl.bind(mainMod .. " + L", cmd("noctalia msg screen-lock"))
+hl.bind(mainMod .. " + L", cmd(ipc .. " lockScreen lock"))
 
 -- App start
 hl.bind(mainMod .. " + B", app(apps.browser))
@@ -66,18 +68,18 @@ hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "d" }))
 hl.bind(
     mainMod .. " + " .. hyprswitchKey,
     cmd("hyprswitch gui --mod-key " ..
-    mainMod ..
-    " --key " ..
-    hyprswitchKey ..
-    " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch")
+        mainMod ..
+        " --key " ..
+        hyprswitchKey ..
+        " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch")
 )
 hl.bind(
     mainMod .. " + " .. hyprswitchReverse .. " + " .. hyprswitchKey,
     cmd("hyprswitch gui --mod-key " ..
-    mainMod ..
-    " --key " ..
-    hyprswitchKey ..
-    " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch -r")
+        mainMod ..
+        " --key " ..
+        hyprswitchKey ..
+        " --close mod-key-release --reverse-key=mod=" .. hyprswitchReverse .. " --sort-recent && hyprswitch dispatch -r")
 )
 
 -- Move windows
