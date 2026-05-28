@@ -39,9 +39,9 @@ hl.bind(mainMod .. " + r", cmd(ipc .. " launcher toggle"))
 hl.bind(mainMod .. " + SHIFT + v", cmd(ipc .. " plugin:clipper toggle"))
 
 -- Screenshots
-hl.bind("Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
+hl.bind("Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
+hl.bind("SHIFT + Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
 hl.bind("CTRL + Print", cmd("~/dotfiles/scripts/screenshot.sh window"))
-hl.bind("SHIFT + Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
 hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
 
 hl.bind(mainMod .. " + SHIFT + Print", cmd("~/dotfiles/scripts/screencast.sh region"))

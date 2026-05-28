@@ -1,8 +1,9 @@
 hl.window_rule({ match = { class = "blueman-manager" }, float = true })
 
 hl.layer_rule({ match = { namespace = "selection" }, animation = "fade" })
+hl.layer_rule({ match = { namespace = "hyprpicker" }, animation = "fade" })
 
-hl.window_rule({ match = { class = "pavucontrol" }, float = true })
+hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol" }, float = true })
 hl.window_rule({ match = { title = "Open File" }, float = true })
 hl.window_rule({ match = { class = "org.matplotlib.Matplotlib3" }, float = true })
 hl.window_rule({ match = { class = "nm-connection-editor" }, float = true })
