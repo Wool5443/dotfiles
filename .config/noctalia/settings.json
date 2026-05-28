@@ -176,7 +176,7 @@
                     ],
                     "chevronColor": "none",
                     "colorizeIcons": false,
-                    "drawerEnabled": true,
+                    "drawerEnabled": false,
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
@@ -191,12 +191,41 @@
                     "textColor": "none"
                 },
                 {
+                    "defaultSettings": {
+                        "density": "comfortable",
+                        "maxHistorySize": 100,
+                        "showImagePreviews": true
+                    },
+                    "id": "plugin:clipboard"
+                },
+                {
                     "hideWhenZero": false,
                     "hideWhenZeroUnread": false,
                     "iconColor": "none",
                     "id": "NotificationHistory",
                     "showUnreadBadge": true,
                     "unreadBadgeColor": "primary"
+                },
+                {
+                    "defaultSettings": {
+                        "colorHistory": [
+                        ],
+                        "detectedRecorder": "",
+                        "filenameFormat": "",
+                        "gifMaxSeconds": 30,
+                        "installedLangs": [
+                            "eng"
+                        ],
+                        "paletteColors": [
+                        ],
+                        "recordCopyToClipboard": false,
+                        "recordSkipConfirmation": false,
+                        "screenshotPath": "",
+                        "selectedOcrLang": "eng",
+                        "transAvailable": false,
+                        "videoPath": ""
+                    },
+                    "id": "plugin:screen-toolkit"
                 },
                 {
                     "deviceNativePath": "__default__",
@@ -341,7 +370,7 @@
         "backgroundOpacity": 1,
         "colorizeIcons": false,
         "deadOpacity": 0.6,
-        "displayMode": "auto_hide",
+        "displayMode": "always_visible",
         "dockType": "floating",
         "enabled": false,
         "floatingRatio": 1,
@@ -365,7 +394,7 @@
         "pinnedStatic": false,
         "position": "bottom",
         "showDockIndicator": false,
-        "showLauncherIcon": false,
+        "showLauncherIcon": true,
         "sitOnFrame": false,
         "size": 1
     },
@@ -550,7 +579,7 @@
         "notifyUpdates": true
     },
     "sessionMenu": {
-        "countdownDuration": 10000,
+        "countdownDuration": 3000,
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": true,

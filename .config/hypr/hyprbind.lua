@@ -35,14 +35,18 @@ hl.bind(mainMod .. " + p", hl.dsp.window.pin())
 hl.bind(mainMod .. " + i", hl.dsp.layout("togglesplit"))
 
 -- Launcher
-hl.bind(mainMod .. " + r", cmd("rofi -show combi"))
-hl.bind(mainMod .. " + SHIFT + v", cmd("rofi -show clipboard"))
+hl.bind(mainMod .. " + r", cmd(ipc .. " launcher toggle"))
+hl.bind(mainMod .. " + SHIFT + v", cmd(ipc .. " plugin:clipboard toggle"))
 
 -- Screenshots
-hl.bind("Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
-hl.bind("CTRL + Print", cmd("~/dotfiles/scripts/screenshot.sh window"))
-hl.bind("SHIFT + Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
-hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
+-- hl.bind("Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
+-- hl.bind("CTRL + Print", cmd("~/dotfiles/scripts/screenshot.sh window"))
+-- hl.bind("SHIFT + Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
+-- hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
+
+hl.bind("Print", cmd(ipc .. " plugin:screen-toolkit annotateFullscreen"))
+hl.bind("CTRL + Print", cmd(ipc .. " plugin:screen-toolkit annotateWindow"))
+hl.bind("SHIFT + Print", cmd(ipc .. " plugin:screen-toolkit annotate"))
 
 -- Focus change
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))

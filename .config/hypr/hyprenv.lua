@@ -22,6 +22,8 @@ hl.env("WINIT_UNIX_BACKEND", "wayland")
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
+hl.env("PATH", os.getenv("PATH") .. ":/home/twenty/.cargo/bin")
+
 hl.env("XCURSOR_SIZE", cursorSize)
 hl.env("XCURSOR_THEME", cursorTheme)
 hl.env("HYPRCURSOR_SIZE", cursorSize)

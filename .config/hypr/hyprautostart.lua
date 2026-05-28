@@ -1,4 +1,7 @@
 hl.on("hyprland.start", function()
+    hl.exec_cmd(
+    "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE")
+    hl.exec_cmd("gnome-keyring-daemon --start --components=secrets,ssh,pkcs11")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("noctalia --daemon")
     hl.exec_cmd("qs -c noctalia-shell")

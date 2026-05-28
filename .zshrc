@@ -127,6 +127,6 @@ autoload -Uz compinit
 compinit
 
 eval $(codex completion zsh)
+eval $(wl-screenrec --generate-completions zsh)
 
 export PATH=$PATH:/home/twenty/.spicetify
-
