@@ -2,6 +2,7 @@ hl.window_rule({ match = { class = "blueman-manager" }, float = true })
 
 hl.layer_rule({ match = { namespace = "selection" }, animation = "fade" })
 hl.layer_rule({ match = { namespace = "hyprpicker" }, animation = "fade" })
+hl.layer_rule({ match = { namespace = "snappy-switcher" }, animation = "fade" })
 
 hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol" }, float = true })
 hl.window_rule({ match = { title = "Qalculate!" }, float = true })
