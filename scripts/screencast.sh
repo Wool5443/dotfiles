@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Dependencies: wf-recorder slurp libnotify
+# Dependencies: wf-recorder slurp libnotify pactl
 
 set -eu
 
@@ -21,6 +21,23 @@ notify_saved() {
     if [ "$action" = "show" ]; then
         xdg-open "$dir" >/dev/null 2>&1 &
     fi
+}
+
+desktop_audio_source() {
+    if [ "${SCREENCAST_AUDIO_SOURCE+x}" ]; then
+        printf '%s\n' "$SCREENCAST_AUDIO_SOURCE"
+        return 0
+    fi
+
+    if command -v pactl >/dev/null 2>&1; then
+        sink="$(pactl get-default-sink 2>/dev/null || true)"
+        if [ -n "$sink" ]; then
+            printf '%s.monitor\n' "$sink"
+            return 0
+        fi
+    fi
+
+    return 1
 }
 
 if [ -s "$pidfile" ]; then
@@ -52,10 +69,15 @@ fullscreen | full)
 esac
 
 file="$dir/$(date +"$template")"
+audio_source="$(desktop_audio_source)" || {
+    notify-send --urgency=critical --app-name=wf-recorder "Could not find desktop audio source"
+    exit 1
+}
 
 # Use Intel Quick Sync HEVC. Override via SCREENCAST_CODEC if needed.
 wf-recorder \
     "$@" \
+    --audio="$audio_source" \
     -f "$file" \
     -r "${SCREENCAST_FRAMERATE:-60}" \
     -x "${SCREENCAST_PIXEL_FORMAT:-p010le}" \
