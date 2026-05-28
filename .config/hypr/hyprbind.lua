@@ -16,8 +16,8 @@ local function app(command)
     return cmd(apps.runPrefix .. " " .. command)
 end
 
--- Power
-hl.bind(mainMod .. " + ALT + l", cmd(ipc .. " lockScreen lock"))
+-- Lockscreen
+hl.bind("switch:off:Lid Switch", cmd(ipc .. " lockScreen lock"), { locked = true })
 
 -- App start
 hl.bind(mainMod .. " + b", app(apps.browser))
@@ -30,7 +30,7 @@ hl.bind(mainMod .. " + f4", cmd("hyprctl kill"))
 -- Tiling
 hl.bind(mainMod .. " + x", hl.dsp.window.close())
 hl.bind(mainMod .. " + f", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. " + v", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + v", hl.dsp.window.float())
 hl.bind(mainMod .. " + p", hl.dsp.window.pin())
 hl.bind(mainMod .. " + i", hl.dsp.layout("togglesplit"))
 
@@ -46,10 +46,6 @@ hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
 
 hl.bind(mainMod .. " + SHIFT + Print", cmd("~/dotfiles/scripts/screencast.sh region"))
 hl.bind(mainMod .. " + CTRL + Print", cmd("~/dotfiles/scripts/screencast.sh fullscreen"))
-
--- hl.bind("Print", cmd(ipc .. " plugin:screen-toolkit annotateFullscreen"))
--- hl.bind("CTRL + Print", cmd(ipc .. " plugin:screen-toolkit annotateWindow"))
--- hl.bind("SHIFT + Print", cmd(ipc .. " plugin:screen-toolkit annotate"))
 
 -- Focus change
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))

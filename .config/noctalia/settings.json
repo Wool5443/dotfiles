@@ -79,25 +79,13 @@
         "widgets": {
             "center": [
                 {
-                    "characterCount": 2,
-                    "colorizeIcons": false,
-                    "emptyColor": "secondary",
-                    "enableScrollWheel": true,
-                    "focusedColor": "primary",
-                    "followFocusedScreen": false,
-                    "fontWeight": "bold",
-                    "groupedBorderOpacity": 1,
-                    "hideUnoccupied": false,
-                    "iconScale": 0.8,
-                    "id": "Workspace",
-                    "labelMode": "index",
-                    "occupiedColor": "secondary",
-                    "pillSize": 0.6,
-                    "showApplications": true,
-                    "showApplicationsHover": false,
-                    "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
+                    "clockColor": "none",
+                    "customFont": "",
+                    "formatHorizontal": "h:m AP dddd, MMMM d",
+                    "formatVertical": "h m AP - d M yyyy",
+                    "id": "Clock",
+                    "tooltipFormat": "dd.MM.yyyy",
+                    "useCustomFont": false
                 }
             ],
             "left": [
@@ -110,15 +98,6 @@
                     "iconColor": "none",
                     "id": "Launcher",
                     "useDistroLogo": false
-                },
-                {
-                    "clockColor": "none",
-                    "customFont": "",
-                    "formatHorizontal": "HH:mm ddd, MMM dd",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false
                 },
                 {
                     "compactMode": true,
@@ -160,14 +139,35 @@
                     "id": "MediaMini",
                     "maxWidth": 145,
                     "panelShowAlbumArt": true,
-                    "scrollingMode": "hover",
+                    "scrollingMode": "always",
                     "showAlbumArt": true,
-                    "showArtistFirst": true,
+                    "showArtistFirst": false,
                     "showProgressRing": true,
-                    "showVisualizer": false,
+                    "showVisualizer": true,
                     "textColor": "none",
                     "useFixedWidth": false,
-                    "visualizerType": "linear"
+                    "visualizerType": "wave"
+                },
+                {
+                    "characterCount": 2,
+                    "colorizeIcons": false,
+                    "emptyColor": "secondary",
+                    "enableScrollWheel": true,
+                    "focusedColor": "primary",
+                    "followFocusedScreen": false,
+                    "fontWeight": "bold",
+                    "groupedBorderOpacity": 1,
+                    "hideUnoccupied": false,
+                    "iconScale": 0.8,
+                    "id": "Workspace",
+                    "labelMode": "index",
+                    "occupiedColor": "secondary",
+                    "pillSize": 0.6,
+                    "showApplications": true,
+                    "showApplicationsHover": false,
+                    "showBadge": true,
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
                 }
             ],
             "right": [
@@ -219,13 +219,16 @@
                     "id": "plugin:clipper"
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": false,
-                    "showPowerProfiles": false
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Network",
+                    "textColor": "none"
+                },
+                {
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Bluetooth",
+                    "textColor": "none"
                 },
                 {
                     "displayMode": "onhover",
@@ -235,11 +238,13 @@
                     "textColor": "none"
                 },
                 {
-                    "applyToAllMonitors": false,
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "Brightness",
-                    "textColor": "none"
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic-clean",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": false,
+                    "showPowerProfiles": false
                 },
                 {
                     "colorizeDistroLogo": false,
@@ -468,15 +473,15 @@
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": false,
+        "enabled": true,
         "fadeDuration": 5,
         "lockCommand": "",
-        "lockTimeout": 660,
+        "lockTimeout": 300,
         "resumeLockCommand": "",
         "resumeScreenOffCommand": "",
         "resumeSuspendCommand": "",
         "screenOffCommand": "",
-        "screenOffTimeout": 600,
+        "screenOffTimeout": 180,
         "suspendCommand": "",
         "suspendTimeout": 1800
     },
@@ -689,6 +694,14 @@
             {
                 "enabled": true,
                 "id": "zenBrowser"
+            },
+            {
+                "enabled": true,
+                "id": "zathura"
+            },
+            {
+                "enabled": true,
+                "id": "telegram"
             }
         ],
         "enableUserTheming": true
