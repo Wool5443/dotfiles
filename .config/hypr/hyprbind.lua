@@ -36,7 +36,7 @@ hl.bind(mainMod .. " + i", hl.dsp.layout("togglesplit"))
 
 -- Launcher
 hl.bind(mainMod .. " + r", cmd(ipc .. " launcher toggle"))
-hl.bind(mainMod .. " + SHIFT + v", cmd(ipc .. " plugin:clipboard toggle"))
+hl.bind(mainMod .. " + SHIFT + v", cmd(ipc .. " plugin:clipper toggle"))
 
 -- Screenshots
 -- hl.bind("Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
