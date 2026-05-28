@@ -9,7 +9,6 @@ hl.window_rule({ match = { title = "Qalculate!" }, float = true })
 hl.window_rule({ match = { title = ".*[Ss]ettings.*" }, float = true })
 
 hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
--- hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, pin = true })
 
 hl.window_rule({ match = { class = "albert" }, no_blur = true })
 hl.window_rule({ match = { class = "albert" }, border_size = 0 })
