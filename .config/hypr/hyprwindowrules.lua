@@ -1,5 +1,3 @@
-hl.window_rule({ match = { class = "blueman-manager" }, float = true })
-
 hl.layer_rule({ match = { namespace = "selection" }, animation = "fade" })
 hl.layer_rule({ match = { namespace = "hyprpicker" }, animation = "fade" })
 hl.layer_rule({ match = { namespace = "snappy-switcher" }, animation = "fade" })
@@ -9,9 +7,6 @@ hl.window_rule({ match = { title = "Qalculate!" }, float = true })
 hl.window_rule({ match = { title = ".*[Ss]ettings.*" }, float = true })
 
 hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
-
-hl.window_rule({ match = { class = "albert" }, no_blur = true })
-hl.window_rule({ match = { class = "albert" }, border_size = 0 })
 
 hl.window_rule({ match = { title = "as_toolbar" }, pin = true })
 hl.window_rule({ match = { title = "zoom_linux_float_video_window" }, float = true })
