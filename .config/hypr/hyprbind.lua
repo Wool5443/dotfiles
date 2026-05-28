@@ -8,23 +8,15 @@ local function cmd(command)
     return hl.dsp.exec_cmd(command)
 end
 
-local function app(command)
-    if apps.runPrefix == "" then
-        return cmd(command)
-    end
-
-    return cmd(apps.runPrefix .. " " .. command)
-end
-
 -- Lockscreen
 hl.bind("switch:off:Lid Switch", cmd(ipc .. " lockScreen lock"), { locked = true })
 
 -- App start
-hl.bind(mainMod .. " + b", app(apps.browser))
-hl.bind(mainMod .. " + e", app(apps.fileManager))
-hl.bind(mainMod .. " + t", app(apps.terminal))
--- hl.bind(mainMod .. " + c", app("code --enable-features=UseOzonePlatform --ozone-platform=wayland"))
--- hl.bind(mainMod .. " + c", app("code"))
+hl.bind(mainMod .. " + b", cmd(apps.browser))
+hl.bind(mainMod .. " + e", cmd(apps.fileManager))
+hl.bind(mainMod .. " + t", cmd(apps.terminal))
+-- hl.bind(mainMod .. " + c", cmd("code --enable-features=UseOzonePlatform --ozone-platform=wayland"))
+-- hl.bind(mainMod .. " + c", cmd("code"))
 
 hl.bind(mainMod .. " + f4", cmd("hyprctl kill"))
 
@@ -47,6 +39,10 @@ hl.bind(mainMod .. " + Print", cmd("~/dotfiles/scripts/OCR.sh"))
 
 hl.bind(mainMod .. " + SHIFT + Print", cmd("~/dotfiles/scripts/screencast.sh region"))
 hl.bind(mainMod .. " + CTRL + Print", cmd("~/dotfiles/scripts/screencast.sh fullscreen"))
+
+-- Switcher
+hl.bind("ALT + Tab", cmd("snappy-switcher next"))
+hl.bind("ALT + SHIFT + Tab", cmd("snappy-switcher prev"))
 
 -- Focus change
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))

@@ -81,8 +81,8 @@
                 {
                     "clockColor": "none",
                     "customFont": "",
-                    "formatHorizontal": "h:m AP dddd, MMMM d",
-                    "formatVertical": "h m AP - d M yyyy",
+                    "formatHorizontal": "h:mm AP dddd, MMMM d",
+                    "formatVertical": "h mm AP - d M yyyy",
                     "id": "Clock",
                     "tooltipFormat": "dd.MM.yyyy",
                     "useCustomFont": false
@@ -702,6 +702,10 @@
             {
                 "enabled": true,
                 "id": "telegram"
+            },
+            {
+                "enabled": true,
+                "id": "zed"
             }
         ],
         "enableUserTheming": true
