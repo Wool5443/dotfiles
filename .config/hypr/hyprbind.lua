@@ -23,7 +23,8 @@ hl.bind("switch:off:Lid Switch", cmd(ipc .. " lockScreen lock"), { locked = true
 hl.bind(mainMod .. " + b", app(apps.browser))
 hl.bind(mainMod .. " + e", app(apps.fileManager))
 hl.bind(mainMod .. " + t", app(apps.terminal))
-hl.bind(mainMod .. " + c", app("code --enable-features=UseOzonePlatform --ozone-platform=wayland"))
+-- hl.bind(mainMod .. " + c", app("code --enable-features=UseOzonePlatform --ozone-platform=wayland"))
+-- hl.bind(mainMod .. " + c", app("code"))
 
 hl.bind(mainMod .. " + f4", cmd("hyprctl kill"))
 
