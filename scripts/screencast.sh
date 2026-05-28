@@ -12,13 +12,13 @@ mkdir -p "$dir"
 
 notify_saved() {
     action="$(notify-send \
-        --expire-time=30000 \
+        --expire-time=10000 \
         --app-name=wf-recorder \
-        --action="default=Open folder" \
+        --action="show=Show in folder" \
         "Screencast saved" \
         "$file" || true)"
 
-    if [ "$action" = "default" ]; then
+    if [ "$action" = "show" ]; then
         xdg-open "$dir" >/dev/null 2>&1 &
     fi
 }
