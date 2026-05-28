@@ -1,12 +1,15 @@
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/twenty/.zsh/completions:"* ]]; then export FPATH="/home/twenty/.zsh/completions:$FPATH"; fi
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:/home/twenty/.local/bin
-export PATH=$PATH:/usr/lib/jvm/jre-25/bin
-export XDG_CONFIG_HOME=$HOME/.config
+# export PATH=$PATH:/home/twenty/.local/bin
+# export PATH=$PATH:/usr/lib/jvm/jre-25/bin
+# export XDG_CONFIG_HOME=$HOME/.config
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+mkdir -p ~/.cache/zsh
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -29,7 +32,7 @@ ZSH_THEME="amuse"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -45,13 +48,13 @@ ZSH_THEME="amuse"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories

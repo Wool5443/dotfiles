@@ -6,6 +6,8 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 hl.env("XDG_DATA_DIRS",
     "/usr/share:/usr/local/share:/var/lib/flatpak/exports/share:/home/twenty/.local/share:/home/twenty/.local/share/flatpak/exports/share")
+hl.env("XDG_CONFIG_HOME", os.getenv("HOME") .. "/.config")
+
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
 hl.env("QT_WAYLAND_DISABLE_WINDOWDECORATION", "1")
@@ -23,6 +25,8 @@ hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 
 hl.env("PATH", os.getenv("PATH") .. ":/home/twenty/.cargo/bin")
+hl.env("PATH", os.getenv("PATH") .. ":/home/twenty/.local/bin")
+hl.env("PATH", os.getenv("PATH") .. ":/usr/lib/jvm/jre-25/bin")
 
 hl.env("XCURSOR_SIZE", cursorSize)
 hl.env("XCURSOR_THEME", cursorTheme)
