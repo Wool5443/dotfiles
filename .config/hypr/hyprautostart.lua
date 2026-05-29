@@ -1,20 +1,24 @@
 hl.on("hyprland.start", function()
 
     hl.exec_cmd(
-        "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE")
+        "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP")
+    hl.exec_cmd(
+        "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP")
+    hl.exec_cmd("systemctl --user start hyprland-session.target")
+    -- hl.exec_cmd("systemctl --user restart xdg-desktop-portal.service")
     hl.exec_cmd("gnome-keyring-daemon --start --components=secrets,ssh,pkcs11")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.exec_cmd("noctalia --daemon")
     hl.exec_cmd("qs -c noctalia-shell")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("snappy-switcher --daemon")
+    hl.exec_cmd("wayland-pipewire-idle-inhibit")
     hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1" })
     hl.exec_cmd("flatpak run org.telegram.desktop", { workspace = "2 silent" })
     hl.exec_cmd("/home/twenty/Apps/Throne-1.0.13-linux-amd64/Throne/Throne -tray")
     hl.exec_cmd("flatpak run com.spotify.Client", { workspace = "10" })
 
-    os.execute("sleep 1")
+    os.execute("sleep 2")
     hl.dsp.window.move({ workspace = "1", follow = false, window = "class:app.zen_browser.zen"})
     hl.dsp.window.move({ workspace = "2", follow = false, window = "class:org.telegram.desktop"})
     hl.dsp.window.move({ workspace = "10", follow = false, window = "class:spotify"})
