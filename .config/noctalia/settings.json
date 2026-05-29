@@ -349,6 +349,12 @@
                 },
                 {
                     "id": "NightLight"
+                },
+                {
+                    "defaultSettings": {
+                        "iconColor": "none"
+                    },
+                    "id": "plugin:mimeapp-gui"
                 }
             ]
         }
