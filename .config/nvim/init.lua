@@ -379,7 +379,7 @@ require("cmake-tools").setup {
     cmake_regenerate_on_save = true,
     cmake_generate_options = {
         "-DCMAKE_BUILD_TYPE=Debug",
-        "-GNinja",
+        "-G 'Ninja Multi-Config'",
         "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
     },
     cmake_build_options = {
