@@ -249,7 +249,9 @@ vim.keymap.set("n", "<leader>fs", telescope_builtin.lsp_workspace_symbols, { des
 vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references, { desc = "LSP references" })
 vim.keymap.set("n", "<leader>fd", telescope_builtin.lsp_definitions, { desc = "LSP definitions" })
 vim.keymap.set("n", "<leader>fi", telescope_builtin.lsp_implementations, { desc = "LSP implementations" })
-vim.keymap.set("n", "<leader>fm", telescope_builtin.man_pages, { desc = "Man pages" })
+vim.keymap.set("n", "<leader>fm", function()
+    telescope_builtin.man_pages({ sections = { "ALL" } })
+end, { desc = "Man pages" })
 vim.keymap.set("n", "<leader>ut", function()
     telescope_builtin.colorscheme({ enable_preview = true })
 end, { desc = "Select colorscheme" })
@@ -379,7 +381,7 @@ require("cmake-tools").setup {
     cmake_regenerate_on_save = true,
     cmake_generate_options = {
         "-DCMAKE_BUILD_TYPE=Debug",
-        "-G 'Ninja Multi-Config'",
+        "-G Ninja",
         "-DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE",
     },
     cmake_build_options = {

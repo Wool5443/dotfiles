@@ -114,8 +114,8 @@ hl.bind("XF86AudioRaiseVolume", cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 
 hl.bind("XF86AudioLowerVolume", cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioMute", cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
 hl.bind("ALT + M", cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
-hl.bind("XF86MonBrightnessUp", cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
 
 -- Brightness
 hl.bind("XF86MonBrightnessUp", cmd("brightnessctl -e4 -n2 set 2%+"))
