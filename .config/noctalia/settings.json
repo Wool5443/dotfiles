@@ -720,7 +720,7 @@
         "boxBorderEnabled": false,
         "fontDefault": "Sans Serif",
         "fontDefaultScale": 1,
-        "fontFixed": "FiraCode Nerd Font Mono",
+        "fontFixed": "FiraCode Nerd Font",
         "fontFixedScale": 1,
         "panelBackgroundOpacity": 0.93,
         "panelsAttachedToBar": true,
