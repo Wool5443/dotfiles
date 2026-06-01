@@ -116,6 +116,8 @@ hl.bind("XF86AudioMute", cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { lo
 hl.bind("ALT + M", cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
 hl.bind("XF86MonBrightnessUp", cmd("brightnessctl set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
+hl.bind("XF86AudioNext", cmd("playerctl next"), { locked = true })
+hl.bind("XF86AudioPrev", cmd("playerctl previous"), { locked = true })
 
 -- Brightness
 hl.bind("XF86MonBrightnessUp", cmd("brightnessctl -e4 -n2 set 2%+"))

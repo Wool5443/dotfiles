@@ -44,6 +44,8 @@ BraceWrapping:
   SplitEmptyRecord: true
   SplitEmptyNamespace: true
 BreakBeforeInheritanceComma: false
+BreakAfterOpenBracketBracedList: true
+BreakBeforeCloseBracketBracedList: true
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeComma
 BreakStringLiterals: true
