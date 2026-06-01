@@ -118,6 +118,8 @@ hl.bind("XF86MonBrightnessUp", cmd("brightnessctl set 5%+"), { locked = true, re
 hl.bind("XF86MonBrightnessDown", cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioNext", cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPrev", cmd("playerctl previous"), { locked = true })
+hl.bind("XF86AudioPlay", cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPause", cmd("playerctl play-pause"), { locked = true })
 
 -- Brightness
 hl.bind("XF86MonBrightnessUp", cmd("brightnessctl -e4 -n2 set 2%+"))
