@@ -5,6 +5,7 @@ CompileFlags:
   Remove:
     - -std=*
   Add:
+    - -Wno-gnu-alignof-expression
     - -std=gnu23
     - -Wall
     - -Wextra
@@ -16,6 +17,7 @@ CompileFlags:
   Remove:
     - -std=*
   Add:
+    - -Wno-gnu-alignof-expression
     - -std=gnu++23
     - -Wall
     - -Wextra
