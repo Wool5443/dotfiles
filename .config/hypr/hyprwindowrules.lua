@@ -2,9 +2,11 @@ hl.layer_rule({ match = { namespace = "selection" }, animation = "fade" })
 hl.layer_rule({ match = { namespace = "hyprpicker" }, animation = "fade" })
 hl.layer_rule({ match = { namespace = "snappy-switcher" }, animation = "fade" })
 
-hl.window_rule({ match = { class = "org.pulseaudio.pavucontrol" }, float = true })
-hl.window_rule({ match = { title = "Qalculate!" }, float = true })
+hl.window_rule({ match = { class = "org\\.pulseaudio\\.pavucontrol" }, float = true })
 hl.window_rule({ match = { title = ".*[Ss]ettings.*" }, float = true })
+hl.window_rule({ match = { class = "org\\.gnome\\.NautilusPreviewer" }, float = true })
+hl.window_rule({ match = { title = "Qalculate!" }, float = true })
+hl.window_rule({ match = { title = "Bitwarden" }, float = true })
 
 hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
 

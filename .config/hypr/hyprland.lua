@@ -1,7 +1,7 @@
 require("hyprapps")
 require("hyprenv")
+require("hyprautostart")
 require("hyprhardware")
 require("hyprstyle")
-require("hyprautostart")
 require("hyprbind")
 require("hyprwindowrules")

@@ -501,14 +501,14 @@
     "location": {
         "analogClockInCalendar": false,
         "autoLocate": false,
-        "firstDayOfWeek": -1,
+        "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "",
+        "name": "Moscow, RU",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
-        "use12hourFormat": false,
+        "use12hourFormat": true,
         "useFahrenheit": false,
         "weatherEnabled": true,
         "weatherShowEffects": true,
@@ -522,10 +522,10 @@
         "bluetoothRssiPollingEnabled": false,
         "disableDiscoverability": false,
         "networkPanelView": "wifi",
-        "wifiDetailsViewMode": "grid"
+        "wifiDetailsViewMode": "list"
     },
     "nightLight": {
-        "autoSchedule": false,
+        "autoSchedule": true,
         "dayTemp": "6500",
         "enabled": true,
         "forced": false,

@@ -16,6 +16,8 @@ If:
 CompileFlags:
   Remove:
     - -std=*
+    - -fdeps-format*
+    - -fmodule*
   Add:
     - -Wno-gnu-alignof-expression
     - -std=gnu++23
