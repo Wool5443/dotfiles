@@ -7,6 +7,7 @@ hl.window_rule({ match = { title = ".*[Ss]ettings.*" }, float = true })
 hl.window_rule({ match = { class = "org\\.gnome\\.NautilusPreviewer" }, float = true })
 hl.window_rule({ match = { title = "Qalculate!" }, float = true })
 hl.window_rule({ match = { title = "Bitwarden" }, float = true })
+hl.window_rule({ match = { class = "photoshop\\.exe" }, float = true })
 
 hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
 

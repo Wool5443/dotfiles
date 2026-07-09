@@ -10,6 +10,7 @@ hl.monitor({
     mode = "1920x1080@60",
     position = "auto-up",
     scale = 1,
+    mirror = "eDP-1",
 })
 
 hl.config({

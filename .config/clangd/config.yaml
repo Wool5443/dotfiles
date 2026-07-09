@@ -20,7 +20,7 @@ CompileFlags:
     - -fmodule*
   Add:
     - -Wno-gnu-alignof-expression
-    - -std=gnu++23
+    - -std=gnu++26
     - -Wall
     - -Wextra
     - -Wshadow

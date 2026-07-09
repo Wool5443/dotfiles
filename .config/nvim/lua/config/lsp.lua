@@ -108,6 +108,8 @@ function M.setup()
         "rust_analyzer",
         "texlab",
         "tinymist",
+        "tinymist",
+        "ts_ls",
     }
 
     for _, server in ipairs(servers) do
