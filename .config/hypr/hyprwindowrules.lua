@@ -14,6 +14,8 @@ hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
 hl.window_rule({ match = { title = "as_toolbar" }, pin = true })
 hl.window_rule({ match = { title = "zoom_linux_float_video_window" }, float = true })
 
+hl.window_rule({ match = { class = "mpv" }, render_unfocused = true })
+
 hl.window_rule({
     name = "suppress-maximize-events",
     match = { class = ".*" },

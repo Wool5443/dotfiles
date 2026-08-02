@@ -8,6 +8,10 @@ local function cmd(command)
     return hl.dsp.exec_cmd(command)
 end
 
+-- OBS
+-- hl.bind("CTRL + 1", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+-- hl.bind("CTRL + 2", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
+
 -- Lockscreen
 hl.bind("switch:off:Lid Switch", cmd(ipc .. " lockScreen lock"), { locked = true })
 
