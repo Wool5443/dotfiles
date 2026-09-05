@@ -4,5 +4,4 @@
 .config/xournalpp/metadata
 .config/nvim/lazy-lock.json
 nvim-pack-lock.json
-/.config/nvim/nvim.log
-/.config/hypr/.secretenv.lua
+.config/nvim/nvim.log
