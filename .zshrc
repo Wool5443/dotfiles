@@ -120,6 +120,9 @@ function y() {
 
 alias n="nvim ."
 alias ipy="ipython"
+alias dnfs="sudo dnf install -y"
+alias dnfx="sudo dnf remove"
+alias dnfr="sudo dnf remove"
 
 alias copynametex="cp ~/Documents/Work/Shkolkovo/ShkolkovoCreate/Шаблоны/name.tex task.tex && cp task.tex solution.tex"
 

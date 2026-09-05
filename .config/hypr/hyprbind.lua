@@ -1,6 +1,6 @@
 local apps = require("hyprapps")
 
-local ipc = "qs -c noctalia-shell ipc call"
+local ipc = "noctalia msg "
 
 local mainMod = "SUPER"
 
@@ -13,7 +13,7 @@ end
 -- hl.bind("CTRL + 2", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
 
 -- Lockscreen
-hl.bind("switch:off:Lid Switch", cmd(ipc .. " lockScreen lock"), { locked = true })
+hl.bind("switch:off:Lid Switch", cmd(ipc .. "lockScreen lock"), { locked = true })
 
 -- App start
 hl.bind(mainMod .. " + b", cmd(apps.browser))
@@ -32,8 +32,8 @@ hl.bind(mainMod .. " + p", hl.dsp.window.pin())
 hl.bind(mainMod .. " + i", hl.dsp.layout("togglesplit"))
 
 -- Launcher
-hl.bind(mainMod .. " + r", cmd(ipc .. " launcher toggle"))
-hl.bind(mainMod .. " + SHIFT + v", cmd(ipc .. " plugin:clipper toggle"))
+hl.bind(mainMod .. " + r", cmd(ipc .. "panel-toggle launcher"))
+hl.bind(mainMod .. " + SHIFT + v", cmd(ipc .. "panel-toggle clipboard"))
 
 -- Screenshots
 hl.bind("Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
@@ -45,8 +45,9 @@ hl.bind(mainMod .. " + SHIFT + Print", cmd("~/dotfiles/scripts/screencast.sh reg
 hl.bind(mainMod .. " + CTRL + Print", cmd("~/dotfiles/scripts/screencast.sh fullscreen"))
 
 -- Switcher
-hl.bind("ALT + Tab", cmd("snappy-switcher next"))
-hl.bind("ALT + SHIFT + Tab", cmd("snappy-switcher prev"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+-- hl.bind("ALT + Tab", cmd("snappy-switcher next"))
+-- hl.bind("ALT + SHIFT + Tab", cmd("snappy-switcher prev"))
 
 -- Focus change
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))
@@ -113,17 +114,17 @@ hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.resize({ x = 0, y = 50, relative
 hl.bind(mainMod .. " + CTRL + down", hl.dsp.window.resize({ x = 0, y = 50, relative = true }))
 
 -- Media
-hl.bind("XF86AudioRaiseVolume", cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-    { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute", cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true, repeating = true })
 hl.bind("ALT + M", cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
-hl.bind("XF86MonBrightnessUp", cmd("brightnessctl set +5%"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", cmd("brightnessctl set 5%-"), { locked = true, repeating = true })
 hl.bind("XF86AudioNext", cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPrev", cmd("playerctl previous"), { locked = true })
 hl.bind("XF86AudioPlay", cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPause", cmd("playerctl play-pause"), { locked = true })
+
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
 
 -- Brightness
 hl.bind("XF86MonBrightnessUp", cmd("brightnessctl -e4 -n2 set 2%+"))
