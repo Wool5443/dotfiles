@@ -27,6 +27,7 @@ hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto")
 hl.env("PATH", os.getenv("PATH") .. ":/home/twenty/.cargo/bin")
 hl.env("PATH", os.getenv("PATH") .. ":/home/twenty/.local/bin")
 hl.env("PATH", os.getenv("PATH") .. ":/usr/lib/jvm/jre-25/bin")
+hl.env("PATH", os.getenv("PATH") .. ":/home/twenty/.local/share/yabdrige")
 
 hl.env("XCURSOR_SIZE", cursorSize)
 hl.env("XCURSOR_THEME", cursorTheme)

@@ -133,5 +133,3 @@ autoload -Uz compinit
 compinit
 
 eval $(codex completion zsh)
-
-export PATH=$PATH:/home/twenty/.spicetify
