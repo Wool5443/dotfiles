@@ -123,6 +123,7 @@ alias ipy="ipython"
 alias dnfs="sudo dnf install -y"
 alias dnfx="sudo dnf remove"
 alias dnfr="sudo dnf remove"
+alias e="eza -lah"
 
 alias copynametex="cp ~/Documents/Work/Shkolkovo/ShkolkovoCreate/Шаблоны/name.tex task.tex && cp task.tex solution.tex"
 

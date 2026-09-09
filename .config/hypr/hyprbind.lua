@@ -52,8 +52,8 @@ hl.bind(main_mod .. " + Print", cmd(ipc .. "plugin alexander/screen-toolkit:serv
 
 -- Switcher
 -- hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
-hl.bind("ALT + Tab", cmd("snappy-switcher next"))
-hl.bind("ALT + SHIFT + Tab", cmd("snappy-switcher prev"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod alt"))
+hl.bind("SHIFT + ALT + Tab", hl.dsp.exec_cmd("snappy-switcher prev --mod alt"))
 
 -- Focus change
 hl.bind(main_mod .. " + h", hl.dsp.focus({ direction = "l" }))
