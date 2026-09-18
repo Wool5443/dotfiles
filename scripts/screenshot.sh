@@ -1,18 +1,34 @@
 #!/usr/bin/env sh
 
-mode=$*
 freeze=-z
 output_dir=$HOME/Pictures/Screenshots
 filename=$(date +'%Y-%m-%d-%H%M%S_hyprshot.png')
 screenshotfile=$output_dir/$filename
 
-case " $mode " in
+case " $* " in
 *" output "*)
     freeze=
     ;;
 esac
 
-hyprshot $freeze -s -m $mode -f "$filename" -o "$output_dir"
+case "$1 ${2-}" in
+"active output")
+    set -- -m active -m output
+    ;;
+"window ")
+    set -- -m window
+    ;;
+"region ")
+    set -- -m region
+    ;;
+*)
+    printf 'Usage: %s {region|window||active output}\n' "$0" >&2
+    exit 2
+    ;;
+esac
+
+mkdir -p "$output_dir"
+hyprshot $freeze -s "$@" -f "$filename" -o "$output_dir"
 
 [ -f "$screenshotfile" ] || exit
 

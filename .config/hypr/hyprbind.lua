@@ -37,9 +37,12 @@ hl.bind(main_mod .. " + SHIFT + v", cmd(ipc .. "panel-toggle clipboard"))
 hl.bind(main_mod .. " + period", cmd(ipc .. "panel-toggle liamwh/emoji-picker:wide"))
 
 -- Screenshots
-hl.bind("Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotate"))
-hl.bind("SHIFT + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateFullscreen"))
-hl.bind("CTRL + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateWindow"))
+-- hl.bind("Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotate"))
+-- hl.bind("SHIFT + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateFullscreen"))
+-- hl.bind("CTRL + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateWindow"))
+hl.bind("Print", cmd("~/scripts/screenshot.sh region"))
+hl.bind("SHIFT + Print", cmd("~/scripts/screenshot.sh active output"))
+hl.bind("CTRL + Print", cmd("~/scripts/screenshot.sh window"))
 hl.bind(main_mod .. " + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all ocr"))
 
 -- hl.bind("Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
