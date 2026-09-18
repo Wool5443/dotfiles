@@ -11,3 +11,4 @@ nvim-pack-lock.json
 /.local/state/noctalia/notification_history.json
 /.local/state/noctalia/recently_used.json
 /.local/state/noctalia/usage_counts.json
+/.local/state/noctalia/community-templates/libreoffice/build/noctalia-theme.oxt
