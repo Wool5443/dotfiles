@@ -9,3 +9,5 @@ nvim-pack-lock.json
 /.local/state/noctalia/plugins/sources
 /.local/state/noctalia/notification_history_assets
 /.local/state/noctalia/notification_history.json
+/.local/state/noctalia/recently_used.json
+/.local/state/noctalia/usage_counts.json
