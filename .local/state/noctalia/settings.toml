@@ -108,7 +108,7 @@ enabled = false
 auto_hide = true
 enabled = true
 layer = "overlay"
-pinned = [ "org.telegram.desktop", "app.zen_browser.zen", "com.spotify.Client" ]
+pinned = [ "app.zen_browser.zen", "org.telegram.desktop", "com.spotify.Client" ]
 reserve_space = false
 
 [idle]
@@ -222,7 +222,6 @@ time_format = "{:%-I:%M %p}"
     direction = "down_left"
 
 [theme]
-mode = "dark"
 source = "wallpaper"
 
     [theme.templates]
