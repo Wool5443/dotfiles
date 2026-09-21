@@ -58,7 +58,7 @@ order = [ "default", "instruments" ]
 
     [bar.instruments]
     auto_hide = true
-    center = [ "caffeine", "lid-guard", "gamermode", "widget", "widget_2", "wallpaper", "toggle", "bar" ]
+    center = [ "caffeine", "lid-guard", "gamermode", "widget", "widget_2", "wallpaper", "bar" ]
     enabled = true
     end = []
     layer = "overlay"
@@ -222,7 +222,10 @@ time_format = "{:%-I:%M %p}"
     direction = "down_left"
 
 [theme]
+community_palette = "Oxocarbon"
+mode = "dark"
 source = "wallpaper"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "qt" ]
@@ -292,9 +295,6 @@ window_title_max_width = 10
 
 [widget.temp]
 show_value = false
-
-[widget.toggle]
-type = "cleboost/hotspot:toggle"
 
 [widget.widget]
 type = "profidev/hypr-screen-mirror:widget"
