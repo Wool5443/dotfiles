@@ -42,7 +42,7 @@ order = [ "default", "instruments" ]
         enabled = true
         fill = "surface_variant"
         id = "g5"
-        members = [ "control-center", "session" ]
+        members = [ "session" ]
         opacity = 1.0
         padding = 6.0
 
