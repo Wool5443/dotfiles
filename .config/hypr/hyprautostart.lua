@@ -2,7 +2,7 @@ hl.on("hyprland.start", function()
     -- System
     hl.exec_cmd(
         "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP")
-        hl.exec_cmd("systemctl --user start plasma-kwallet-pam.service")
+    hl.exec_cmd("systemctl --user start gnome-keyring-daemon.service")
     hl.exec_cmd("systemctl --user start hyprland-session.target")
 
     -- GDrive

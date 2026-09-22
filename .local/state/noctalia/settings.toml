@@ -222,27 +222,27 @@ time_format = "{:%-I:%M %p}"
     direction = "down_left"
 
 [theme]
-community_palette = "Oxocarbon"
+builtin = "Ayu"
+community_palette = "Oasis Abyss"
 mode = "dark"
-source = "wallpaper"
+source = "community"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "qt" ]
     community_ids = [
-        "telegram",
         "libreoffice",
         "obsidian",
-        "vscode",
         "zed",
         "steam",
+        "fastfetch",
         "zathura",
+        "hyprtoolkit",
         "snappy-switcher",
         "bat",
         "fzf",
         "konsole",
-        "lazygit",
-        "yazi"
+        "lazygit"
     ]
 
 [wallpaper]
@@ -265,7 +265,7 @@ min_length = 0
 type = "noctalia/timer:bar"
 
 [widget.clock]
-format = "{:%-I:%M %p %d.%m.%Y}"
+format = "{:%-I:%M:%S %p %d.%m.%Y}"
 
 [widget.cpu]
 show_value = false
