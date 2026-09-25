@@ -219,7 +219,7 @@ time_format = "{:%-I:%M %p}"
     floating_layer = "top"
 
     [shell.shadow]
-    direction = "down_left"
+    alpha = 0.0
 
 [theme]
 builtin = "Ayu"
@@ -231,6 +231,7 @@ wallpaper_scheme = "m3-content"
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "qt" ]
     community_ids = [
+        "codex",
         "libreoffice",
         "obsidian",
         "zed",
