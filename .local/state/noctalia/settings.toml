@@ -75,8 +75,8 @@ minimum_brightness = 0.019999999552965164
 enabled = true
 event_time_format = "%-I:%M %p"
 
-    [calendar.account.twenty]
-    name = "Personal"
+    [calendar.account.personal]
+    name = "Twenty"
     type = "google"
 
 [control_center]
@@ -204,7 +204,8 @@ enabled = [
     "cleboost/hotspot",
     "noctalia/timer",
     "blackbartblues/keymap",
-    "kjvdven/case-convert"
+    "kjvdven/case-convert",
+    "nightwatch75/file-search"
 ]
 
 [shell]
