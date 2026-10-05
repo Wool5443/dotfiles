@@ -54,7 +54,6 @@ hl.bind(main_mod .. " + Print", cmd(ipc .. "plugin alexander/screen-toolkit:serv
 hl.bind(main_mod .. " + ALT + Print", cmd("~/.local/bin/snypr draw --via-daemon"))
 hl.bind(main_mod .. " + ALT + p", cmd("~/.local/bin/snypr draw --via-daemon --toggle-passthrough"))
 
-
 -- Snypr live drawing: toggle overlay and recover keyboard focus from click-through.
 hl.bind(main_mod .. " + ALT + Print", cmd("~/.local/bin/snypr draw --via-daemon"))
 hl.bind(main_mod .. " + ALT + p", cmd("~/.local/bin/snypr draw --via-daemon --toggle-passthrough"))
