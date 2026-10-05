@@ -13,6 +13,7 @@ hl.on("hyprland.start", function()
     -- Shell
     hl.exec_cmd("noctalia")
     hl.exec_cmd("snappy-switcher --daemon")
+    hl.exec_cmd("~/.local/bin/snypr daemon --systray")
 
     -- Apps
     hl.exec_cmd("flatpak run app.zen_browser.zen", { workspace = "1" })

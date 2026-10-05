@@ -2,8 +2,8 @@
 twenty_calendars = ""
 
 [calendar_reminders]
-digest_date = ""
-fired = "_64p42e1p8crk8b9g6ksj8b9k8p34aba28cp3aba36cojighj60sjge1n60|1790956800|1800"
+digest_date = "2026-10-05"
+fired = ""
 
 [security_migrations]
 calendar_credentials_v1 = true

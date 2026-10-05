@@ -40,10 +40,15 @@ hl.bind(main_mod .. " + period", cmd(ipc .. "panel-toggle liamwh/emoji-picker:wi
 -- hl.bind("Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotate"))
 -- hl.bind("SHIFT + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateFullscreen"))
 -- hl.bind("CTRL + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateWindow"))
-hl.bind("Print", cmd("~/scripts/screenshot.sh region"))
-hl.bind("SHIFT + Print", cmd("~/scripts/screenshot.sh active output"))
-hl.bind("CTRL + Print", cmd("~/scripts/screenshot.sh window"))
+hl.bind("Print", cmd("~/.local/bin/snypr screenshot --interactive --edit"))
+hl.bind("SHIFT + Print", cmd("~/.local/bin/snypr screenshot --focused --edit"))
+hl.bind("CTRL + Print", cmd("~/.local/bin/snypr screenshot --window --edit"))
+hl.bind("ALT + Print", cmd("~/.local/bin/snypr screenshot --full"))
 hl.bind(main_mod .. " + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all ocr"))
+
+-- Snypr live drawing: toggle overlay and recover keyboard focus from click-through.
+hl.bind(main_mod .. " + ALT + Print", cmd("~/.local/bin/snypr draw --via-daemon"))
+hl.bind(main_mod .. " + ALT + p", cmd("~/.local/bin/snypr draw --via-daemon --toggle-passthrough"))
 
 -- hl.bind("Print", cmd("~/dotfiles/scripts/screenshot.sh region"))
 -- hl.bind("SHIFT + Print", cmd('~/dotfiles/scripts/screenshot.sh "active -m output"'))
