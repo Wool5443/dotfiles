@@ -1,0 +1,11 @@
+[Unit]
+Description=Private reverse SSH connection from AFFiNE to local Ollama
+Requires=affine-ollama.service affine-ai-adapter.service
+After=affine-ollama.service affine-ai-adapter.service
+[Service]
+ExecStartPre=/usr/bin/ssh -F /dev/null -i /home/twenty/.ssh/id_ed25519 -o UserKnownHostsFile=/home/twenty/.ssh/known_hosts -o StrictHostKeyChecking=yes -o BatchMode=yes -o ConnectTimeout=15 root@46.8.238.132 "if test -S /opt/affine/local-ai/run/ollama.sock; then rm -f /opt/affine/local-ai/run/ollama.sock; fi"
+ExecStart=/usr/bin/ssh -F /dev/null -NT -i /home/twenty/.ssh/id_ed25519 -o UserKnownHostsFile=/home/twenty/.ssh/known_hosts -o StrictHostKeyChecking=yes -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=20 -o ServerAliveCountMax=3 -o ConnectTimeout=15 -o StreamLocalBindUnlink=yes -R /opt/affine/local-ai/run/ollama.sock:127.0.0.1:11433 root@46.8.238.132
+Restart=always
+RestartSec=10
+[Install]
+WantedBy=default.target

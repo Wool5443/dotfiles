@@ -1,8 +1,8 @@
 # Fedora KDE dotfiles
 
 KDE Plasma 6 on Wayland, with Kitty, Dolphin, Zen, ten virtual desktops,
-and the existing application themes. The Hyprland and Noctalia files remain
-available for the original session; Plasma uses its own panel, launcher,
+and application configurations. The Hyprland files remain available for the
+original session; Plasma uses its own panel, launcher,
 clipboard, lock screen, window switcher, audio controls, and brightness controls.
 
 ## Setup
@@ -29,11 +29,9 @@ to prevent the running desktop from overwriting them. If you already have KDE
 customizations, merge the supplied keys into your existing files instead of
 replacing them. Log out and back in after installing the profile.
 The remaining application configurations can be copied individually as needed.
-The saved Noctalia themes work without running Noctalia, but no longer update
-automatically with the Plasma wallpaper.
 
 Plasma supplies the Qt theme, scaling, cursor, and session environment. Configure
-these in System Settings. Do not source `hyprenv.lua` or launch Noctalia and
+these in System Settings. Do not source `hyprenv.lua` or launch
 snappy-switcher in the Plasma session. The KDE portal profile retains this
 repository's GNOME Keyring secret provider, so keep `gnome-keyring` installed.
 Use System Settings → Autostart for additional applications or rclone mounts;

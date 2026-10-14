@@ -14,12 +14,6 @@ hl.window_rule({ match = { class = "karing" }, float = true })
 hl.window_rule({ match = { title = ".*Picture-in-Picture.*" }, float = true })
 
 hl.window_rule({
-    match = { class = "dev.noctalia.Noctalia" },
-    float = true,
-    size = { 1080, 920 },
-})
-
-hl.window_rule({
     name = "suppress-maximize-events",
     match = { class = ".*" },
     suppress_event = "maximize",

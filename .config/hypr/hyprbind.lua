@@ -1,7 +1,5 @@
 local apps = require("hyprapps")
 
-local ipc = "noctalia msg "
-
 local main_mod = "SUPER"
 
 local function cmd(command)
@@ -11,9 +9,6 @@ end
 -- OBS
 -- hl.bind("CTRL + 1", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
 -- hl.bind("CTRL + 2", hl.dsp.pass({ window = "class:^(com\\.obsproject\\.Studio)$" }))
-
--- Lockscreen
-hl.bind("switch:off:Lid Switch", cmd(ipc .. "lockScreen lock"), { locked = true })
 
 -- App start
 hl.bind(main_mod .. " + b", cmd(apps.browser))
@@ -31,19 +26,11 @@ hl.bind(main_mod .. " + v", hl.dsp.window.float())
 hl.bind(main_mod .. " + p", hl.dsp.window.pin())
 hl.bind(main_mod .. " + i", hl.dsp.layout("togglesplit"))
 
--- Launcher
-hl.bind(main_mod .. " + r", cmd(ipc .. "panel-toggle launcher"))
-hl.bind(main_mod .. " + SHIFT + v", cmd(ipc .. "panel-toggle clipboard"))
-hl.bind(main_mod .. " + period", cmd(ipc .. "panel-toggle liamwh/emoji-picker:wide"))
-
 -- Screenshots
--- hl.bind("Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotate"))
--- hl.bind("SHIFT + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateFullscreen"))
--- hl.bind("CTRL + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all annotateWindow"))
 hl.bind("Print", cmd("~/scripts/screenshot.sh region"))
 hl.bind("SHIFT + Print", cmd("~/scripts/screenshot.sh active output"))
 hl.bind("CTRL + Print", cmd("~/scripts/screenshot.sh window"))
-hl.bind(main_mod .. " + Print", cmd(ipc .. "plugin alexander/screen-toolkit:service all ocr"))
+hl.bind(main_mod .. " + Print", cmd("~/scripts/OCR.sh"))
 
 -- hl.bind("Print", cmd("~/.local/bin/snypr screenshot --interactive --edit"))
 -- hl.bind("SHIFT + Print", cmd("~/.local/bin/snypr screenshot --focused --edit"))
@@ -67,7 +54,6 @@ hl.bind(main_mod .. " + ALT + p", cmd("~/.local/bin/snypr draw --via-daemon --to
 -- hl.bind(mainMod .. " + CTRL + Print", cmd("~/dotfiles/scripts/screencast.sh fullscreen"))
 
 -- Switcher
--- hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
 hl.bind("ALT + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod alt"))
 hl.bind("SHIFT + ALT + Tab", hl.dsp.exec_cmd("snappy-switcher prev --mod alt"))
 
@@ -142,10 +128,10 @@ hl.bind("XF86AudioPrev", cmd("playerctl previous"), { locked = true })
 hl.bind("XF86AudioPlay", cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPause", cmd("playerctl play-pause"), { locked = true })
 
-hl.bind("XF86AudioRaiseVolume", cmd(ipc .. "volume-up"), { locked = true, repeating = true})
-hl.bind("XF86AudioLowerVolume", cmd(ipc .. "volume-down"), { locked = true, repeating = true})
-hl.bind("XF86AudioMute", cmd(ipc .. "volume-mute"))
+hl.bind("XF86AudioRaiseVolume", cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true})
+hl.bind("XF86AudioLowerVolume", cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true})
+hl.bind("XF86AudioMute", cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
 
 -- Brightness
-hl.bind("XF86MonBrightnessUp", cmd(ipc .. "brightness-up"), { locked = true, repeating = true})
-hl.bind("XF86MonBrightnessDown", cmd(ipc .. "brightness-down"), { locked = true, repeating = true})
+hl.bind("XF86MonBrightnessUp", cmd("brightnessctl set +5%"), { locked = true, repeating = true})
+hl.bind("XF86MonBrightnessDown", cmd("brightnessctl set 5%-"), { locked = true, repeating = true})

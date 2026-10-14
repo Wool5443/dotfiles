@@ -1,0 +1,10 @@
+[Unit]
+Description=Local model compatibility adapter for AFFiNE
+Requires=affine-ollama.service
+After=affine-ollama.service
+[Service]
+ExecStart=/usr/bin/python3 /home/twenty/Documents/Codex/affine-local-ai/model-adapter.py
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=default.target

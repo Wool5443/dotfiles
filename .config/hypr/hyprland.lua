@@ -16,6 +16,3 @@ require("hyprhardware")
 require("hyprstyle")
 require("hyprbind")
 require("hyprwindowrules")
-
--- For Noctalia Color templates
-require("noctalia").apply_theme()

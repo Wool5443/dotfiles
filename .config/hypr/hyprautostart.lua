@@ -11,7 +11,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("rclone mount Google: ~/SharedDrive --drive-shared-with-me --vfs-cache-mode full")
 
     -- Shell
-    hl.exec_cmd("noctalia")
     hl.exec_cmd("snappy-switcher --daemon")
     hl.exec_cmd("~/.local/bin/snypr daemon --systray")
 

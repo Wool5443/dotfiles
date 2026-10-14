@@ -1,7 +1,23 @@
 [Desktops]
-Number=10
+Id_1=b23fe04e-1811-4aeb-909e-d4888554f828
+Number=1
 Rows=1
 
+[Plugins]
+screenedgeEnabled=false
+
+[Tiling][b23fe04e-1811-4aeb-909e-d4888554f828][10d16ea5-8456-40c8-bcbb-efc417fc78f8]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Wayland]
+InputMethod[$e]=
+
 [Windows]
-FocusPolicy=FocusFollowsMouse
 DelayFocusInterval=0
+
+[Xwayland]
+Scale=1
+
+[org.kde.kdecoration2]
+library=org.kde.kwin.aurorae.v2
