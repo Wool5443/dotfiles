@@ -2,7 +2,7 @@
 twenty_calendars = ""
 
 [calendar_reminders]
-digest_date = "2026-10-05"
+digest_date = "2026-10-10"
 fired = ""
 
 [security_migrations]
