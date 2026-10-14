@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=telegram
+Exec=flatpak run org.telegram.desktop
+TryExec=flatpak
+OnlyShowIn=KDE;
+Terminal=false

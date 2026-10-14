@@ -1,0 +1,63 @@
+[kwin]
+_k_friendly_name=KWin
+Window Close=Meta+X,none,Window Close
+Window Fullscreen=Meta+F,none,Window Fullscreen
+Window Above Other Windows=Meta+P,none,Window Above Other Windows
+Walk Through Windows=Alt+Tab,none,Walk Through Windows
+Walk Through Windows (Reverse)=Alt+Shift+Tab,none,Walk Through Windows (Reverse)
+Edit Tiles=none,none,Edit Tiles
+Switch to Desktop 1=Meta+1,none,Switch to Desktop 1
+Window to Desktop 1=Meta+Shift+1,none,Window to Desktop 1
+Switch to Desktop 2=Meta+2,none,Switch to Desktop 2
+Window to Desktop 2=Meta+Shift+2,none,Window to Desktop 2
+Switch to Desktop 3=Meta+3,none,Switch to Desktop 3
+Window to Desktop 3=Meta+Shift+3,none,Window to Desktop 3
+Switch to Desktop 4=Meta+4,none,Switch to Desktop 4
+Window to Desktop 4=Meta+Shift+4,none,Window to Desktop 4
+Switch to Desktop 5=Meta+5,none,Switch to Desktop 5
+Window to Desktop 5=Meta+Shift+5,none,Window to Desktop 5
+Switch to Desktop 6=Meta+6,none,Switch to Desktop 6
+Window to Desktop 6=Meta+Shift+6,none,Window to Desktop 6
+Switch to Desktop 7=Meta+7,none,Switch to Desktop 7
+Window to Desktop 7=Meta+Shift+7,none,Window to Desktop 7
+Switch to Desktop 8=Meta+8,none,Switch to Desktop 8
+Window to Desktop 8=Meta+Shift+8,none,Window to Desktop 8
+Switch to Desktop 9=Meta+9,none,Switch to Desktop 9
+Window to Desktop 9=Meta+Shift+9,none,Window to Desktop 9
+Switch to Desktop 10=Meta+0,none,Switch to Desktop 10
+Window to Desktop 10=Meta+Shift+0,none,Window to Desktop 10
+Switch Window Left=Meta+H,none,Switch Window Left
+Switch Window Down=Meta+J,none,Switch Window Down
+Switch Window Up=Meta+K,none,Switch Window Up
+Switch Window Right=Meta+L,none,Switch Window Right
+
+[plasmashell]
+_k_friendly_name=Plasma
+activate application launcher=Meta+R,none,Activate Application Launcher
+show-on-mouse-pos=Meta+Shift+V,none,Show Clipboard Items at Mouse Position
+activate task manager entry 1=none,none,Activate Task Manager Entry 1
+activate task manager entry 2=none,none,Activate Task Manager Entry 2
+activate task manager entry 3=none,none,Activate Task Manager Entry 3
+activate task manager entry 4=none,none,Activate Task Manager Entry 4
+activate task manager entry 5=none,none,Activate Task Manager Entry 5
+activate task manager entry 6=none,none,Activate Task Manager Entry 6
+activate task manager entry 7=none,none,Activate Task Manager Entry 7
+activate task manager entry 8=none,none,Activate Task Manager Entry 8
+activate task manager entry 9=none,none,Activate Task Manager Entry 9
+activate task manager entry 10=none,none,Activate Task Manager Entry 10
+
+[services][kitty.desktop]
+_launch=Meta+T
+
+[services][app.zen_browser.zen.desktop]
+_launch=Meta+B
+
+[services][org.kde.dolphin.desktop]
+_launch=Meta+E
+
+[services][org.kde.spectacle.desktop]
+RectangularRegionScreenShot=Print
+CurrentMonitorScreenShot=Shift+Print
+ActiveWindowScreenShot=Ctrl+Print
+RecordRegion=Meta+Shift+Print
+RecordScreen=Meta+Ctrl+Print

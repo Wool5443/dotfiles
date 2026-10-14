@@ -1,9 +1,23 @@
 #!/usr/bin/env sh
-# Dependencies: wf-recorder slurp libnotify pactl
+# KDE: Spectacle (Plasma Wayland). Hyprland: wf-recorder slurp libnotify pactl
 
 set -eu
 
 mode="${1:-fullscreen}"
+
+# Spectacle uses KWin's capture API. Run again to stop recording.
+# Its GUI manages the save location and encoding settings.
+case ":${XDG_CURRENT_DESKTOP:-}:" in
+*:KDE:*)
+    case "$mode" in
+    region) exec spectacle --record region ;;
+    output | fullscreen | full) exec spectacle --record screen ;;
+    window) exec spectacle --record window ;;
+    *) printf 'Unknown screencast mode: %s\n' "$mode" >&2; exit 2 ;;
+    esac
+    ;;
+esac
+
 dir="${XDG_VIDEOS_DIR:-$HOME/Videos}/Screencasts"
 template="${SCREENCAST_TEMPLATE:-Screencast_%Y-%m-%d_%H-%M-%S.mp4}"
 pidfile="${XDG_RUNTIME_DIR:-/tmp}/wf-recorder-screencast.pid"

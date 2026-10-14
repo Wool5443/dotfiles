@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=throne
+Exec=throne -tray
+TryExec=throne
+OnlyShowIn=KDE;
+Terminal=false

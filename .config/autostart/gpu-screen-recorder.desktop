@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=gpu-screen-recorder
+Exec=flatpak run com.dec05eba.gpu_screen_recorder gsr-ui
+TryExec=flatpak
+OnlyShowIn=KDE;
+Terminal=false

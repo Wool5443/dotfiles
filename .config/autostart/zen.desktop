@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=zen
+Exec=flatpak run app.zen_browser.zen
+TryExec=flatpak
+OnlyShowIn=KDE;
+Terminal=false
