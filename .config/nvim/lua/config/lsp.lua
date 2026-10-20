@@ -19,6 +19,11 @@ function M.setup()
     vim.lsp.config("*", {
         capabilities = capabilities
     })
+    vim.lsp.config("godot_lsp", {
+        cmd = { vim.fn.expand("~/Apps/gdscript-lsp/target/release/godot-lsp") },
+        filetypes = { "gdscript" },
+        root_markers = { "project.godot", ".git" },
+    })
     vim.lsp.config("basedpyright", {
         settings = {
             basedpyright = {
@@ -103,6 +108,7 @@ function M.setup()
         "basedpyright",
         "bashls",
         "clangd",
+        "godot_lsp",
         "lua_ls",
         "ruff",
         "rust_analyzer",

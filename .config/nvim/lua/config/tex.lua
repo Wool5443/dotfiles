@@ -1,5 +1,21 @@
 local M = {}
 
+local function character_start(line, col)
+    col = math.min(col, #line)
+    while col > 0 and col < #line and line:byte(col + 1) >= 0x80 and line:byte(col + 1) < 0xC0 do
+        col = col - 1
+    end
+    return col
+end
+
+local function character_end(line, col)
+    col = math.min(col + 1, #line)
+    while col < #line and line:byte(col + 1) >= 0x80 and line:byte(col + 1) < 0xC0 do
+        col = col + 1
+    end
+    return col
+end
+
 local function range_from_marks(start_mark, end_mark, mode)
     local start_pos = vim.api.nvim_buf_get_mark(0, start_mark)
     local end_pos = vim.api.nvim_buf_get_mark(0, end_mark)
@@ -21,7 +37,8 @@ local function range_from_marks(start_mark, end_mark, mode)
         start_col = 0
         end_col = #vim.api.nvim_buf_get_lines(0, end_row, end_row + 1, false)[1]
     else
-        end_col = end_col + 1
+        local line = vim.api.nvim_buf_get_lines(0, end_row, end_row + 1, false)[1]
+        end_col = character_end(line, end_col)
     end
 
     return start_row, start_col, end_row, end_col
@@ -55,14 +72,14 @@ local function change_block(command, action, start_mark, end_mark)
     local start_row = math.min(start_pos[1], end_pos[1]) - 1
     local end_row = math.max(start_pos[1], end_pos[1]) - 1
     local start_col = math.min(start_pos[2], end_pos[2])
-    local end_col = math.max(start_pos[2], end_pos[2]) + 1
+    local end_col = math.max(start_pos[2], end_pos[2])
     local prefix = "\\" .. command .. "{"
     local suffix = "}"
 
     for row = end_row, start_row, -1 do
         local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1] or ""
-        local line_start_col = math.min(start_col, #line)
-        local line_end_col = math.min(end_col, #line)
+        local line_start_col = character_start(line, start_col)
+        local line_end_col = character_end(line, end_col)
         if line_start_col < line_end_col then
             local text = vim.api.nvim_buf_get_text(0, row, line_start_col, row, line_end_col, {})[1]
             local before_start = vim.api.nvim_buf_get_text(0, row, math.max(line_start_col - #prefix, 0), row,

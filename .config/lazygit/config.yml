@@ -28,11 +28,6 @@ gui:
       - "#ffa0a0"
     defaultFgColor:
       - "#ffdacc"
-    authorColors: {}
-    # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-branch-color
-    branchColorPatterns: {}
-  # Custom icons for filenames and file extensions
-  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-files-icon--color
   customIcons:
     # Map of filenames to icon properties (icon and color)
     filenames: {}
