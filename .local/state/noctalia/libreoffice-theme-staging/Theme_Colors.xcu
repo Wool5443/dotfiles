@@ -23,11 +23,11 @@
         <node oor:name="ButtonColor"><prop oor:name="Color" oor:op="fuse"><value>121212</value></prop></node>
         <node oor:name="ButtonTextColor"><prop oor:name="Color" oor:op="fuse"><value>ffdacc</value></prop></node>
         <node oor:name="AccentColor"><prop oor:name="Color" oor:op="fuse"><value>d06666</value></prop></node>
-        <node oor:name="DisabledColor"><prop oor:name="Color" oor:op="fuse"><value>463e38</value></prop></node>
+        <node oor:name="DisabledColor"><prop oor:name="Color" oor:op="fuse"><value>5e5148</value></prop></node>
         <node oor:name="DisabledTextColor"><prop oor:name="Color" oor:op="fuse"><value>f0ebe6</value></prop></node>
         <node oor:name="ShadowColor"><prop oor:name="Color" oor:op="fuse"><value>808080</value></prop></node>
         <node oor:name="Shadow"><prop oor:name="Color" oor:op="fuse"><value xsi:nil="false" /></prop><prop oor:name="IsVisible" oor:op="fuse"><value>false</value></prop></node>
-        <node oor:name="SeparatorColor"><prop oor:name="Color" oor:op="fuse"><value>463e38</value></prop></node>
+        <node oor:name="SeparatorColor"><prop oor:name="Color" oor:op="fuse"><value>5e5148</value></prop></node>
         <node oor:name="FaceColor"><prop oor:name="Color" oor:op="fuse"><value>080808</value></prop></node>
         <node oor:name="ActiveColor"><prop oor:name="Color" oor:op="fuse"><value>d06666</value></prop></node>
         <node oor:name="ActiveTextColor"><prop oor:name="Color" oor:op="fuse"><value>1a1a1a</value></prop></node>
@@ -44,7 +44,7 @@
         <node oor:name="MenuBorderColor"><prop oor:name="Color" oor:op="fuse"><value>70635a</value></prop></node>
         <node oor:name="InactiveColor"><prop oor:name="Color" oor:op="fuse"><value>080808</value></prop></node>
         <node oor:name="InactiveTextColor"><prop oor:name="Color" oor:op="fuse"><value>f0ebe6</value></prop></node>
-        <node oor:name="InactiveBorderColor"><prop oor:name="Color" oor:op="fuse"><value>463e38</value></prop></node>
+        <node oor:name="InactiveBorderColor"><prop oor:name="Color" oor:op="fuse"><value>5e5148</value></prop></node>
 
         <node oor:name="BASICEditor"><prop oor:name="Color" oor:op="fuse"><value>ffffff</value></prop></node>
         <node oor:name="BASICError"><prop oor:name="Color" oor:op="fuse"><value>d32f2f</value></prop></node>
