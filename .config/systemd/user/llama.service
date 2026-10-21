@@ -1,0 +1,13 @@
+[Unit]
+Description=Local llama server with Gemma 3 1B
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/twenty/.local/bin/llama serve -hf ggml-org/gemma-3-1b-it-GGUF:Q4_K_M --offline --host 127.0.0.1 --port 9931 --alias ggml-org/gemma-3-1b-it-GGUF:Q4_K_M -c 4096 -t 4 -ngl 0 --parallel 1
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=20
+
+[Install]
+WantedBy=default.target
