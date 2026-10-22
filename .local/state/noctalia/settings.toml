@@ -10,7 +10,7 @@ order = [ "default", "instruments" ]
     background_opacity = 0.71999998390674591
     capsule = true
     concave_edge_corners = false
-    end = [ "tray", "notifications", "clipboard", "group:g4", "group:g3", "group:g5" ]
+    end = [ "status", "tray", "notifications", "clipboard", "group:g4", "group:g3", "group:g5" ]
     margin_edge = 7
     margin_ends = 10
     padding = 19
@@ -201,11 +201,11 @@ enabled = [
     "ashur-d/nvim-projects",
     "alexander/screen-toolkit",
     "noctalia/translator",
-    "cleboost/hotspot",
     "noctalia/timer",
     "blackbartblues/keymap",
     "kjvdven/case-convert",
-    "nightwatch75/file-search"
+    "nightwatch75/file-search",
+    "gabedunn/voxtype"
 ]
 
 [shell]
@@ -286,6 +286,9 @@ show_label = false
 
 [widget.ram]
 show_value = false
+
+[widget.status]
+type = "gabedunn/voxtype:status"
 
 [widget.sysmon]
 show_value = false
