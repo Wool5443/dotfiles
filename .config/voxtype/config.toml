@@ -295,9 +295,6 @@ on_recording_stop = false
 # Show notification with transcribed text after transcription completes
 on_transcription = true
 
-[output.post_process]
-command = "python3 /home/twenty/.config/voxtype/format-transcription.py"
-
 # Notification urgency level: "low", "normal", or "critical".
 # On GNOME, "low" notifications are delivered to the drawer without a popup banner.
 # Use "normal" (default) to ensure notifications appear as banners.

@@ -3,7 +3,7 @@ twenty_calendars = ""
 
 [calendar_reminders]
 digest_date = "2026-10-21"
-fired = "br5akm93c86hs8rcu92lcpu074|1792742400|86400"
+fired = ""
 
 [security_migrations]
 calendar_credentials_v1 = true

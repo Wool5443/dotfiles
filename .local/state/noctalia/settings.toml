@@ -10,7 +10,7 @@ order = [ "default", "instruments" ]
     background_opacity = 0.71999998390674591
     capsule = true
     concave_edge_corners = false
-    end = [ "status", "tray", "notifications", "clipboard", "group:g4", "group:g3", "group:g5" ]
+    end = [ "group:g2", "tray", "notifications", "clipboard", "group:g4", "group:g3", "group:g5" ]
     margin_edge = 7
     margin_ends = 10
     padding = 19
@@ -19,6 +19,7 @@ order = [ "default", "instruments" ]
         [[bar.default.capsule_group]]
         accordion = false
         accordion_direction = "end"
+        border_width = 1.0
         enabled = true
         fill = "surface_variant"
         id = "g3"
@@ -29,6 +30,7 @@ order = [ "default", "instruments" ]
         [[bar.default.capsule_group]]
         accordion = false
         accordion_direction = "end"
+        border_width = 1.0
         enabled = true
         fill = "surface_variant"
         id = "g4"
@@ -39,6 +41,7 @@ order = [ "default", "instruments" ]
         [[bar.default.capsule_group]]
         accordion = false
         accordion_direction = "end"
+        border_width = 1.0
         enabled = true
         fill = "surface_variant"
         id = "g5"
@@ -49,10 +52,22 @@ order = [ "default", "instruments" ]
         [[bar.default.capsule_group]]
         accordion = false
         accordion_direction = "end"
+        border_width = 1.0
         enabled = true
         fill = "surface_variant"
         id = "g1"
         members = [ "cpu", "temp", "ram", "sysmon" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.default.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        border_width = 1.0
+        enabled = true
+        fill = "surface_variant"
+        id = "g2"
+        members = [ "status_2", "status" ]
         opacity = 1.0
         padding = 6.0
 
@@ -106,7 +121,6 @@ enabled = false
 
 [dock]
 auto_hide = true
-enabled = true
 layer = "overlay"
 pinned = [ "app.zen_browser.zen", "org.telegram.desktop", "com.spotify.Client" ]
 reserve_space = false
@@ -181,11 +195,18 @@ caffeine = false
 keyboard_layout = false
 media = false
 
+[plugin_settings."alexander/mimir"]
+api_endpoint = "http://127.0.0.1:9931/v1"
+tool_permission = "off"
+
 [plugin_settings."alexander/screen-toolkit"]
 record-audio-in = true
 record-audio-out = true
 record-fps = 30
 selected-ocr-lang = "eng+ru"
+
+[plugin_settings."ashur-d/nvim-projects"]
+projects_dir = "/home/twenty/Programming"
 
 [plugin_settings."cleboost/hotspot"]
 password = "stafffffy"
@@ -205,7 +226,9 @@ enabled = [
     "blackbartblues/keymap",
     "kjvdven/case-convert",
     "nightwatch75/file-search",
-    "gabedunn/voxtype"
+    "gabedunn/voxtype",
+    "thaer99ob/default-apps",
+    "alexander/mimir"
 ]
 
 [shell]
@@ -289,6 +312,9 @@ show_value = false
 
 [widget.status]
 type = "gabedunn/voxtype:status"
+
+[widget.status_2]
+type = "alexander/mimir:status"
 
 [widget.sysmon]
 show_value = false

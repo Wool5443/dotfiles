@@ -1,9 +1,10 @@
 hl.on("hyprland.start", function()
     -- System
     hl.exec_cmd(
-        "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP")
+        "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_DESKTOP XCURSOR_THEME XCURSOR_SIZE HYPRCURSOR_THEME HYPRCURSOR_SIZE")
     hl.exec_cmd("systemctl --user start gnome-keyring-daemon.service")
     hl.exec_cmd("systemctl --user start hyprland-session.target")
+    hl.exec_cmd("xsettingsd")
     hl.exec_cmd("gsettings set org.gnome.desktop.interface text-scaling-factor 1.25")
 
     -- GDrive
