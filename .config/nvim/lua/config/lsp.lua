@@ -1,28 +1,11 @@
 local M = {}
 
 function M.setup()
-    require("mason").setup {
-        ensure_installed = {
-            "basedpyright",
-            "bash-language-server",
-            "docker-compose-language-service",
-            "docker-language-server",
-            "dockerfile-language-server",
-            "lua-language-server",
-            "ruff",
-            "texlab",
-            "tinymist",
-        }
-    }
+    require("mason").setup()
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
     vim.lsp.config("*", {
         capabilities = capabilities
-    })
-    vim.lsp.config("godot_lsp", {
-        cmd = { vim.fn.expand("~/Apps/gdscript-lsp/target/release/godot-lsp") },
-        filetypes = { "gdscript" },
-        root_markers = { "project.godot", ".git" },
     })
     vim.lsp.config("basedpyright", {
         settings = {
@@ -108,14 +91,20 @@ function M.setup()
         "basedpyright",
         "bashls",
         "clangd",
-        "godot_lsp",
+        "docker_compose_language_service",
+        "docker_language_server",
+        "dockerls",
         "lua_ls",
         "ruff",
         "rust_analyzer",
         "texlab",
         "tinymist",
-        "tinymist",
         "ts_ls",
+    }
+
+    require("mason-lspconfig").setup {
+        ensure_installed = servers,
+        automatic_enable = false,
     }
 
     for _, server in ipairs(servers) do

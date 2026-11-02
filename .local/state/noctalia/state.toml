@@ -2,11 +2,12 @@
 twenty_calendars = ""
 
 [calendar_reminders]
-digest_date = "2026-10-21"
-fired = ""
+digest_date = "2026-11-01"
+fired = "_70qj6ga288pjgba28orj8b9k74q30b9p65336ba46kqj8ga58kqk8cq264|1793644200|86400"
 
 [security_migrations]
 calendar_credentials_v1 = true
 
 [theme_templates]
 applied_builtin_ids = "btop gtk3 gtk4 hyprland kcolorscheme kitty qt"
+applied_community_ids = "bat codex fastfetch fzf hyprtoolkit konsole lazygit libreoffice obsidian snappy-switcher steam zathura zed"

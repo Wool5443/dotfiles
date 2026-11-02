@@ -56,6 +56,7 @@ vim.pack.add {
     { src = "https://github.com/EdenEast/nightfox.nvim" },
 
     { src = "https://github.com/mason-org/mason.nvim" },
+    { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/Civitasv/cmake-tools.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
     { src = "https://github.com/lervag/vimtex" },
@@ -536,6 +537,12 @@ require("todo-comments").setup()
 require("neogen").setup {}
 
 -- vimtex
+-- Custom literal environments used in tutoring materials.
+vim.g.vimtex_syntax_custom_envs = vim.list_extend(vim.g.vimtex_syntax_custom_envs or {}, {
+    { name = "python", region = "texLstZonePython", nested = "python" },
+    { name = "inputdata", region = "texVerbZoneInput" },
+    { name = "outputdata", region = "texVerbZoneOutput" },
+})
 vim.g.vimtex_view_method = "zathura"
 vim.g.vimtex_quickfix_open_on_warning = 0
 vim.g.vimtex_compiler_latexmk = {

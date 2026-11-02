@@ -1,4 +1,4 @@
-config_version = 15
+config_version = 16
 
 [audio]
 enable_overdrive = true
@@ -9,19 +9,20 @@ order = [ "default", "instruments" ]
     [bar.default]
     background_opacity = 0.71999998390674591
     capsule = true
+    center = [ "clock", "media" ]
     concave_edge_corners = false
     end = [ "group:g2", "tray", "notifications", "clipboard", "group:g4", "group:g3", "group:g5" ]
     margin_edge = 7
     margin_ends = 10
     padding = 19
-    start = [ "group:g1", "taskbar", "active_window", "media" ]
+    start = [ "group:g1", "taskbar", "active_window" ]
 
         [[bar.default.capsule_group]]
         accordion = false
         accordion_direction = "end"
         border_width = 1.0
         enabled = true
-        fill = "surface_variant"
+        fill = "surface_container"
         id = "g3"
         members = [ "volume", "input_volume", "brightness", "battery" ]
         opacity = 1.0
@@ -32,7 +33,7 @@ order = [ "default", "instruments" ]
         accordion_direction = "end"
         border_width = 1.0
         enabled = true
-        fill = "surface_variant"
+        fill = "surface_container"
         id = "g4"
         members = [ "network", "bluetooth", "keyboard_layout" ]
         opacity = 1.0
@@ -43,7 +44,7 @@ order = [ "default", "instruments" ]
         accordion_direction = "end"
         border_width = 1.0
         enabled = true
-        fill = "surface_variant"
+        fill = "surface_container"
         id = "g5"
         members = [ "session" ]
         opacity = 1.0
@@ -54,7 +55,7 @@ order = [ "default", "instruments" ]
         accordion_direction = "end"
         border_width = 1.0
         enabled = true
-        fill = "surface_variant"
+        fill = "surface_container"
         id = "g1"
         members = [ "cpu", "temp", "ram", "sysmon" ]
         opacity = 1.0
@@ -65,7 +66,7 @@ order = [ "default", "instruments" ]
         accordion_direction = "end"
         border_width = 1.0
         enabled = true
-        fill = "surface_variant"
+        fill = "surface_container"
         id = "g2"
         members = [ "status_2", "status" ]
         opacity = 1.0
@@ -73,7 +74,7 @@ order = [ "default", "instruments" ]
 
     [bar.instruments]
     auto_hide = true
-    center = [ "caffeine", "lid-guard", "gamermode", "widget", "widget_2", "wallpaper", "bar" ]
+    center = [ "caffeine", "lid-guard", "widget", "widget_2", "wallpaper", "bar" ]
     enabled = true
     end = []
     layer = "overlay"
@@ -171,7 +172,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -284,7 +285,7 @@ directory = "/home/twenty/Pictures/Wallpapers"
 
 [widget.active_window]
 max_length = 100
-min_length = 0
+min_length = 50
 
 [widget.bar]
 type = "noctalia/timer:bar"
@@ -295,14 +296,12 @@ format = "{:%-I:%M:%S %p %d.%m.%Y}"
 [widget.cpu]
 show_value = false
 
-[widget.gamermode]
-type = "nomadcxx/gamer-mode:gamermode"
-
 [widget.lid-guard]
 type = "8bury/lid-guard:lid-guard"
 
 [widget.media]
 max_length = 154
+min_length = 50
 
 [widget.network]
 show_label = false

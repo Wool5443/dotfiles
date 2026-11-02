@@ -1,0 +1,5 @@
+# Содержимое этих окружений форматтер должен сохранять посимвольно.
+verbatimEnvironments:
+  python: 1
+  inputdata: 1
+  outputdata: 1

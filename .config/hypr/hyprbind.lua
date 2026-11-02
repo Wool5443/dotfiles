@@ -24,8 +24,8 @@ hl.bind(main_mod .. " + t", cmd(apps.terminal))
 
 hl.bind(main_mod .. " + f4", cmd("hyprctl kill"))
 
-hl.bind("ALT + v", cmd("voxtype record toggle"))
-hl.bind("ALT + Escape", cmd("voxtype record cancel"))
+hl.bind("CTRL + ALT + v", cmd("voxtype record toggle"))
+hl.bind("CTRL + ALT + Escape", cmd("voxtype record cancel"))
 
 -- Tiling
 hl.bind(main_mod .. " + x", hl.dsp.window.close())
