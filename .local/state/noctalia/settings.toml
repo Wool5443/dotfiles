@@ -78,7 +78,7 @@ order = [ "default", "instruments" ]
     enabled = true
     end = []
     layer = "overlay"
-    margin_ends = 400
+    margin_ends = 430
     position = "right"
     reserve_space = false
     show_on_workspace_switch = false
@@ -249,7 +249,6 @@ time_format = "{:%-I:%M %p}"
 [theme]
 builtin = "Ayu"
 community_palette = "Oasis Abyss"
-mode = "dark"
 source = "community"
 wallpaper_scheme = "m3-content"
 

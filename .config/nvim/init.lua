@@ -59,6 +59,7 @@ vim.pack.add {
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
     { src = "https://github.com/Civitasv/cmake-tools.nvim" },
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+    { src = "https://github.com/hiphish/rainbow-delimiters.nvim" },
     { src = "https://github.com/lervag/vimtex" },
     { src = "https://github.com/neovim/nvim-lspconfig" },
 
@@ -200,27 +201,11 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 load_colorscheme()
 
 -- treesitter
-require("nvim-treesitter.config").setup {
-    ensure_installed = {
-        "python",
-        "c",
-        "cpp",
-        "bash",
-        "typst",
-    },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-    incremental_selection = {
-        enable = true,
-    },
-    indent = {
-        enable = true,
-    },
-}
+local treesitter_languages = { "lua", "python", "c", "cpp", "bash", "typst" }
+require("nvim-treesitter").install(treesitter_languages)
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "<filetype>" },
+    group = vim.api.nvim_create_augroup("TwentyTreesitter", { clear = true }),
+    pattern = { "lua", "python", "c", "cpp", "sh", "bash", "typst" },
     callback = function() vim.treesitter.start() end,
 })
 
