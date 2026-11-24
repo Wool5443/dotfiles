@@ -20,7 +20,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("flatpak run org.telegram.desktop", { workspace = "2 silent" })
     -- hl.exec_cmd("karing")
     hl.exec_cmd("throne -tray")
-    hl.exec_cmd("flatpak run com.spotify.Client", { workspace = "10" })
+    hl.exec_cmd("spotify", { workspace = "10" })
     hl.exec_cmd("flatpak run com.dec05eba.gpu_screen_recorder gsr-ui")
 end)
 

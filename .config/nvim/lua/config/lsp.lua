@@ -11,11 +11,24 @@ function M.setup()
         settings = {
             basedpyright = {
                 analysis = {
+                    -- This editable package uses an import hook, which static analysis cannot follow.
+                    extraPaths = { vim.fn.expand("~/Documents/Work/Shkolkovo/modules") },
                     diagnosticMode = "openFilesOnly",
                     typeCheckingMode = "basic",
                     inlayHints = {
                         callArgumentNames = true
                     }
+                },
+            },
+        },
+    })
+    vim.lsp.config("ruff", {
+        init_options = {
+            settings = {
+                configuration = {
+                    lint = {
+                        ["extend-ignore"] = { "SIM102" },
+                    },
                 },
             },
         },

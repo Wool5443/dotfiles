@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitor desktop font scaling changes
+
+[Service]
+ExecStart=/usr/bin/python3 %h/.local/state/font-scale-watch.py
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

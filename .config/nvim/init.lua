@@ -313,7 +313,7 @@ require("gitsigns").setup {
         end, { expr = true, desc = "Previous git hunk" })
         map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "Stage git hunk" })
         map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "Reset git hunk" })
-        map("n", "<leader>hp", gitsigns.preview_hunk, { desc = "Preview git hunk" })
+        map("n", "<leader>hp", require("config.git_preview"), { desc = "Preview git hunk" })
         map("n", "<leader>hb", gitsigns.blame_line, { desc = "Git blame line" })
     end,
 }

@@ -2,12 +2,16 @@
 twenty_calendars = ""
 
 [calendar_reminders]
-digest_date = "2026-11-06"
-fired = "_6oq48c1l6oq42ba26d0k2b9k8d238ba16ss34b9m6p1k2ea16l1jed9g64|1794308400|86400"
+digest_date = "2026-11-19"
+fired = """_8d236e1m61238b9p6ksjib9k8p1j0b9o6h230ba26kojgd2368qjidho8o|1795528800|86400
+n13ijhf43midf2m2q51hjd65v8|1795518000|86400"""
+
+[calendar_sync]
+personal_last_synced = "1795515886"
 
 [security_migrations]
 calendar_credentials_v1 = true
 
 [theme_templates]
 applied_builtin_ids = "btop gtk3 gtk4 hyprland kcolorscheme kitty qt"
-applied_community_ids = "bat codex fastfetch fzf hyprtoolkit konsole lazygit libreoffice obsidian snappy-switcher steam zathura zed"
+applied_community_ids = "bat codex fastfetch fzf hyprtoolkit konsole lazygit libreoffice snappy-switcher steam zathura zed"
